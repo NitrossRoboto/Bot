@@ -13,7 +13,7 @@ const axios = require('axios');
 const got = require('got');
 
 // Sql
-const NitrossDB = config.DATABASE.define('4.0', {
+const NitrossDB = config.DATABASE.define('Bot', {
     info: {
       type: DataTypes.STRING,
       allowNull: false
@@ -84,7 +84,7 @@ async function Nitross () {
 
         const authInfo = conn.base64EncodedAuthInfo();
         if (StrSes_Db.length < 1) {
-            await RavanaDB.create({ info: "StringSession", value: Session.createStringSession(authInfo) });
+            await NitrossDB.create({ info: "StringSession", value: Session.createStringSession(authInfo) });
         } else {
             await StrSes_Db[0].update({ value: Session.createStringSession(authInfo) });
         }
