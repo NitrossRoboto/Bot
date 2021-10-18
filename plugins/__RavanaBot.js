@@ -11,7 +11,7 @@ const Lang = Language.getString('__RavanaBot');
 
 const td = Config.WORKTYPE == 'public' ? false : true
 
-const MTEXT = '\n*꧁𓊈𒆜🅱🅾🆃 🅸🅽🅵🅾𒆜𓊉꧂*\n\nHay Im '+Config.BOT+',\n\n'+Config.MENUTEXT+'\n\n★彡[ Contact Owner: *wa.me/'+Config.OWNERNUM+'*\n★彡[ Version: *'+Config.VERSION+'*\n★彡[ Branch: *'+Config.BRANCH+'*\n★彡[ Language: *EN*\n★彡[ Work Type: *'+Config.WORKTYPE+'*\n\n\n   *🌷😲  𝐜𝐨𝐦𝐦𝕒ή𝒹𝓢 ᗰ𝔢𝕟𝕌  💝♙*\n\n'
+const MTEXT = '\n*꧁𓊈𒆜🅱🅾🆃 🅸🅽🅵🅾𒆜𓊉꧂*\n\nHay Im '+Config.BOT+',\n\n'+Config.MENUTEXT+'\n\n★彡[ Contact Owner: *wa.me/'+Config.OWNERNUM+'*\n★彡[ Version: *'+Config.VERSION+'*\n★彡[ Branch: *'+Config.BRANCH+'*\n★彡[ Language: *EN*\n★彡[ Work Type: *'+Config.WORKTYPE+'*\n\n\n   *🌷😲 Nitross 𝐜𝐨𝐦𝐦𝕒ή𝒹𝓢 ᗰ𝔢𝕟𝕌  💝♙*\n\n'
 
 
     RaOne.addCommand({pattern: 'ravana ?(.*)', fromMe: td, dontAddCommandList: true}, (async (message, match) => {
