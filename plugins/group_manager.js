@@ -1,7 +1,5 @@
-//https://github.com/RAVANA-SL/slRavana
-
 const {MessageType, GroupSettingChange} = require('@adiwajshing/baileys');
-const Raone = require('../events');
+const Nitross = require('../events');
 const Config = require('../config');
 
 const Language = require('../language');
@@ -26,7 +24,7 @@ async function checkImAdmin(message, user = message.client.user.jid) {
 }
 if (Config.WORKTYPE == 'admin') {
     
-Raone.addCommand({pattern: 'ban ?(.*)', fromMe: false, dontAddCommandList: true, onlyGroup: true, desc: Lang.BAN_DESC}, (async (message, match) => {  
+Nitross.addCommand({pattern: 'ban ?(.*)', fromMe: false, dontAddCommandList: true, onlyGroup: true, desc: Lang.BAN_DESC}, (async (message, match) => {  
     var im = await checkImAdmin(message);
     var us = await checkUsAdmin(message);
     if (!us) return await message.client.sendMessage(message.jid,Lang.PLKADMIN ,MessageType.text ,{quoted: message.data });
@@ -66,7 +64,7 @@ Raone.addCommand({pattern: 'ban ?(.*)', fromMe: false, dontAddCommandList: true,
     }
 }));
 
-Raone.addCommand({pattern: 'add(?: |$)(.*)', fromMe: false, dontAddCommandList: true, onlyGroup: true, desc: Lang.ADD_DESC}, (async (message, match) => {  
+Nitross.addCommand({pattern: 'add(?: |$)(.*)', fromMe: false, dontAddCommandList: true, onlyGroup: true, desc: Lang.ADD_DESC}, (async (message, match) => {  
     var im = await checkImAdmin(message);
     var us = await checkUsAdmin(message);
     if (!us) return await message.client.sendMessage(message.jid,Lang.PLKADMIN,MessageType.text ,{quoted: message.data });
@@ -102,7 +100,7 @@ Raone.addCommand({pattern: 'add(?: |$)(.*)', fromMe: false, dontAddCommandList: 
     }
 }));
 
-Raone.addCommand({pattern: 'promote ?(.*)', fromMe: false, dontAddCommandList: true, onlyGroup: true, desc: Lang.PROMOTE_DESC}, (async (message, match) => {    
+Nitross.addCommand({pattern: 'promote ?(.*)', fromMe: false, dontAddCommandList: true, onlyGroup: true, desc: Lang.PROMOTE_DESC}, (async (message, match) => {    
     var im = await checkImAdmin(message);
     var us = await checkUsAdmin(message);
     if (!us) return await message.client.sendMessage(message.jid,Lang.PLKADMIN,MessageType.text ,{quoted: message.data });
@@ -162,7 +160,7 @@ Raone.addCommand({pattern: 'promote ?(.*)', fromMe: false, dontAddCommandList: t
     }
 }));
 
-Raone.addCommand({pattern: 'demote ?(.*)', fromMe: false, onlyGroup: true, desc: Lang.DEMOTE_DESC, dontAddCommandList: true}, (async (message, match) => {    
+Nitross.addCommand({pattern: 'demote ?(.*)', fromMe: false, onlyGroup: true, desc: Lang.DEMOTE_DESC, dontAddCommandList: true}, (async (message, match) => {    
     var im = await checkImAdmin(message);
     var us = await checkUsAdmin(message);
     if (!us) return await message.client.sendMessage(message.jid,Lang.PLKADMIN ,MessageType.text ,{quoted: message.data });
@@ -194,7 +192,7 @@ Raone.addCommand({pattern: 'demote ?(.*)', fromMe: false, onlyGroup: true, desc:
     }
 }));
 
-Raone.addCommand({pattern: 'mute ?(.*)', fromMe: false, dontAddCommandList: true, onlyGroup: true, desc: Lang.MUTE_DESC}, (async (message, match) => {    
+Nitross.addCommand({pattern: 'mute ?(.*)', fromMe: false, dontAddCommandList: true, onlyGroup: true, desc: Lang.MUTE_DESC}, (async (message, match) => {    
     var im = await checkImAdmin(message);
     var us = await checkUsAdmin(message);
     if (!us) return await message.client.sendMessage(message.jid,Lang.PLKADMIN ,MessageType.text ,{quoted: message.data });
@@ -1552,7 +1550,7 @@ Raone.addCommand({pattern: 'mute ?(.*)', fromMe: false, dontAddCommandList: true
     }
 }));
 
-Raone.addCommand({pattern: 'unmute ?(.*)', fromMe: false, dontAddCommandList: true, onlyGroup: true, desc: Lang.UNMUTE_DESC}, (async (message, match) => {    
+Nitross.addCommand({pattern: 'unmute ?(.*)', fromMe: false, dontAddCommandList: true, onlyGroup: true, desc: Lang.UNMUTE_DESC}, (async (message, match) => {    
     var im = await checkImAdmin(message);
     var us = await checkUsAdmin(message);
     if (!us) return await message.client.sendMessage(message.jid,Lang.PLKADMIN,MessageType.text ,{quoted: message.data });
@@ -1568,7 +1566,7 @@ Raone.addCommand({pattern: 'unmute ?(.*)', fromMe: false, dontAddCommandList: tr
     }
 }));
 
-Raone.addCommand({pattern: 'invite ?(.*)', fromMe: false, dontAddCommandList: true, onlyGroup: true, desc: Lang.INVITE_DESC}, (async (message, match) => {    
+Nitross.addCommand({pattern: 'invite ?(.*)', fromMe: false, dontAddCommandList: true, onlyGroup: true, desc: Lang.INVITE_DESC}, (async (message, match) => {    
     var im = await checkImAdmin(message);
     var us = await checkUsAdmin(message);
     if (!us) return await message.client.sendMessage(message.jid,Lang.PLKADMIN,MessageType.text ,{quoted: message.data });
@@ -1577,7 +1575,7 @@ Raone.addCommand({pattern: 'invite ?(.*)', fromMe: false, dontAddCommandList: tr
     await message.client.sendMessage(message.jid,Lang.INVITE + ' https://chat.whatsapp.com/' + invite, MessageType.text);
 }));
 
-Raone.addCommand({pattern: 'rename ?(.*)', onlyGroup: false, fromMe: true,desc: Asena}, (async (message, match) => {
+Nitross.addCommand({pattern: 'rename ?(.*)', onlyGroup: false, fromMe: true,desc: Asena}, (async (message, match) => {
     var im = await checkImAdmin(message);
     var us = await checkUsAdmin(message);
     if (!us) return await message.client.sendMessage(message.jid,Lang.PLKADMIN,MessageType.text ,{quoted: message.data });

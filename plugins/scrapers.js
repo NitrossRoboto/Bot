@@ -1,7 +1,4 @@
-//https://github.com/RAVANA-SL/slRavana
-//Exclusively From RAVANA-SL/ravanabot
-
-let Raone = require('../events');
+let Nitross = require('../events');
 let {MessageType,Mimetype} = require('@adiwajshing/baileys');
 let translatte = require('translatte');
 let Config = require('../config');
@@ -31,7 +28,7 @@ let gis = require('g-i-s');
 
 if (Config.WORKTYPE == 'private') {
 
-    Raone.addCommand({pattern: 'trt(?: |$)(\\S*) ?(\\S*)', desc: Lang.TRANSLATE_DESC, usage: Lang.TRANSLATE_USAGE, fromMe: true}, (async (message, match) => {
+    Nitross.addCommand({pattern: 'trt(?: |$)(\\S*) ?(\\S*)', desc: Lang.TRANSLATE_DESC, usage: Lang.TRANSLATE_USAGE, fromMe: true}, (async (message, match) => {
 
         if (message.jid === '905524317852-1612300121@g.us') {
 
@@ -52,7 +49,7 @@ if (Config.WORKTYPE == 'private') {
         }
     }));
 
-    Raone.addCommand({pattern: 'tts (.*)', fromMe: true, desc: Lang.TTS_DESC}, (async (message, match) => {
+    Nitross.addCommand({pattern: 'tts (.*)', fromMe: true, desc: Lang.TTS_DESC}, (async (message, match) => {
 
         if (message.jid === '905524317852-1612300121@g.us') {
 
@@ -83,7 +80,7 @@ if (Config.WORKTYPE == 'private') {
         await message.client.sendMessage(message.jid,buffer, MessageType.audio, {mimetype: Mimetype.mp4Audio, ptt: true});
     }));
 
-    Raone.addCommand({pattern: 'song ?(.*)', fromMe: true, desc: Lang.SONG_DESC}, (async (message, match) => { 
+    Nitross.addCommand({pattern: 'song ?(.*)', fromMe: true, desc: Lang.SONG_DESC}, (async (message, match) => { 
 
         if (message.jid === '905524317852-1612300121@g.us') {
 
@@ -121,7 +118,7 @@ if (Config.WORKTYPE == 'private') {
             });
     }));
     
-    Raone.addCommand({pattern: 'play ?(.*)', fromMe: true, desc: Lang.PLAY_DESC}, (async (message, match) => { 
+    Nitross.addCommand({pattern: 'play ?(.*)', fromMe: true, desc: Lang.PLAY_DESC}, (async (message, match) => { 
 
         if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.NEED_TEXT_SONG,MessageType.text);    
         let arama = await yts(match[1]);
@@ -154,7 +151,7 @@ if (Config.WORKTYPE == 'private') {
             });
     }));
 
-    Raone.addCommand({pattern: 'video ?(.*)', fromMe: true, desc: Lang.VIDEO_DESC}, (async (message, match) => { 
+    Nitross.addCommand({pattern: 'video ?(.*)', fromMe: true, desc: Lang.VIDEO_DESC}, (async (message, match) => { 
 
         if (message.jid === '905524317852-1612300121@g.us') {
 
@@ -180,7 +177,7 @@ if (Config.WORKTYPE == 'private') {
         });
     }));
 
-    Raone.addCommand({pattern: 'yt ?(.*)', fromMe: true, desc: Lang.YT_DESC}, (async (message, match) => { 
+    Nitross.addCommand({pattern: 'yt ?(.*)', fromMe: true, desc: Lang.YT_DESC}, (async (message, match) => { 
 
         if (message.jid === '905524317852-1612300121@g.us') {
 
@@ -205,7 +202,7 @@ if (Config.WORKTYPE == 'private') {
         await reply.delete();
     }));
 
-    Raone.addCommand({pattern: 'wiki ?(.*)', fromMe: true, desc: Lang.WIKI_DESC}, (async (message, match) => { 
+    Nitross.addCommand({pattern: 'wiki ?(.*)', fromMe: true, desc: Lang.WIKI_DESC}, (async (message, match) => { 
 
         if (message.jid === '905524317852-1612300121@g.us') {
 
@@ -223,7 +220,7 @@ if (Config.WORKTYPE == 'private') {
         await reply.delete();
     }));
 
-    Raone.addCommand({pattern: 'img ?(.*)', fromMe: true, desc: Lang.IMG_DESC}, (async (message, match) => { 
+    Nitross.addCommand({pattern: 'img ?(.*)', fromMe: true, desc: Lang.IMG_DESC}, (async (message, match) => { 
 
         if (message.jid === '905524317852-1612300121@g.us') {
 
@@ -245,7 +242,7 @@ if (Config.WORKTYPE == 'private') {
         });
     }));
 
-    Raone.addCommand({ pattern: 'github ?(.*)', fromMe: true, dontAddCommandList: true }, async (message, match) => {
+    Nitross.addCommand({ pattern: 'github ?(.*)', fromMe: true, dontAddCommandList: true }, async (message, match) => {
 
         if (message.jid === '905524317852-1612300121@g.us') {
 
@@ -298,7 +295,7 @@ if (Config.WORKTYPE == 'private') {
 }
 else if (Config.WORKTYPE == 'public') {
 
-    Raone.addCommand({pattern: 'tr(?: |$)(\\S*) ?(\\S*)', desc: Lang.TRANSLATE_DESC, usage: Lang.TRANSLATE_USAGE, fromMe: false}, (async (message, match) => {
+    Nitross.addCommand({pattern: 'tr(?: |$)(\\S*) ?(\\S*)', desc: Lang.TRANSLATE_DESC, usage: Lang.TRANSLATE_USAGE, fromMe: false}, (async (message, match) => {
 
         if (message.jid === '905524317852-1612300121@g.us') {
 
@@ -319,7 +316,7 @@ else if (Config.WORKTYPE == 'public') {
         }
     }));
 
-    Raone.addCommand({pattern: 'tts (.*)', fromMe: false, desc: Lang.TTS_DESC}, (async (message, match) => {
+    Nitross.addCommand({pattern: 'tts (.*)', fromMe: false, desc: Lang.TTS_DESC}, (async (message, match) => {
 
         if (message.jid === '905524317852-1612300121@g.us') {
 
@@ -350,7 +347,7 @@ else if (Config.WORKTYPE == 'public') {
         await message.client.sendMessage(message.jid,buffer, MessageType.audio, {mimetype: Mimetype.mp4Audio, ptt: true});
     }));
 
-    Raone.addCommand({pattern: 'song ?(.*)', fromMe: false, desc: Lang.SONG_DESC}, (async (message, match) => { 
+    Nitross.addCommand({pattern: 'song ?(.*)', fromMe: false, desc: Lang.SONG_DESC}, (async (message, match) => { 
 
         if (message.jid === '905524317852-1612300121@g.us') {
 
@@ -388,7 +385,7 @@ else if (Config.WORKTYPE == 'public') {
             });
     }));
     
-    Raone.addCommand({pattern: 'play ?(.*)', fromMe: false, desc: Lang.PLAY_DESC}, (async (message, match) => { 
+    Nitross.addCommand({pattern: 'play ?(.*)', fromMe: false, desc: Lang.PLAY_DESC}, (async (message, match) => { 
 
         if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.NEED_TEXT_SONG,MessageType.text);    
         let arama = await yts(match[1]);
@@ -421,7 +418,7 @@ else if (Config.WORKTYPE == 'public') {
             });
     }));
 
-    Raone.addCommand({pattern: 'video ?(.*)', fromMe: false, desc: Lang.VIDEO_DESC}, (async (message, match) => { 
+    Nitross.addCommand({pattern: 'video ?(.*)', fromMe: false, desc: Lang.VIDEO_DESC}, (async (message, match) => { 
 
         if (message.jid === '905524317852-1612300121@g.us') {
 
@@ -447,7 +444,7 @@ else if (Config.WORKTYPE == 'public') {
         });
     }));
 
-    Raone.addCommand({pattern: 'yt ?(.*)', fromMe: false, desc: Lang.YT_DESC}, (async (message, match) => { 
+    Nitross.addCommand({pattern: 'yt ?(.*)', fromMe: false, desc: Lang.YT_DESC}, (async (message, match) => { 
 
         if (message.jid === '905524317852-1612300121@g.us') {
 
@@ -472,7 +469,7 @@ else if (Config.WORKTYPE == 'public') {
         await reply.delete();
     }));
 
-    Raone.addCommand({pattern: 'wiki ?(.*)', fromMe: false, desc: Lang.WIKI_DESC}, (async (message, match) => { 
+    Nitross.addCommand({pattern: 'wiki ?(.*)', fromMe: false, desc: Lang.WIKI_DESC}, (async (message, match) => { 
 
         if (message.jid === '905524317852-1612300121@g.us') {
 
@@ -490,7 +487,7 @@ else if (Config.WORKTYPE == 'public') {
         await reply.delete();
     }));
 
-    Raone.addCommand({pattern: 'img ?(.*)', fromMe: false, desc: Lang.IMG_DESC}, (async (message, match) => { 
+    Nitross.addCommand({pattern: 'img ?(.*)', fromMe: false, desc: Lang.IMG_DESC}, (async (message, match) => { 
 
         if (message.jid === '905524317852-1612300121@g.us') {
 
@@ -512,7 +509,7 @@ else if (Config.WORKTYPE == 'public') {
         });
     }));
 
-    Raone.addCommand({ pattern: 'github ?(.*)', fromMe: true, dontAddCommandList: true }, async (message, match) => {
+    Nitross.addCommand({ pattern: 'github ?(.*)', fromMe: true, dontAddCommandList: true }, async (message, match) => {
 
         if (message.jid === '905524317852-1612300121@g.us') {
 

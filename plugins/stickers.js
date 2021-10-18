@@ -1,6 +1,4 @@
-//https://github.com/RAVANA-SL/slRavana
-
-const Raone = require('../events');
+const Nitross = require('../events');
 const {MessageType, Mimetype} = require('@adiwajshing/baileys');
 const fs = require('fs');
 const ffmpeg = require('fluent-ffmpeg');
@@ -12,7 +10,7 @@ const Language = require('../language');
 const Lang = Language.getString('sticker');
 
 if (Config.WORKTYPE == 'private') {
-    Raone.addCommand({pattern: 'sticker$', fromMe: true, deleteCommand: true, desc: Lang.STICKER_DESC}, (async (message, match) => {    
+    Nitross.addCommand({pattern: 'sticker$', fromMe: true, deleteCommand: true, desc: Lang.STICKER_DESC}, (async (message, match) => {    
 
         if (message.reply_message === false) return await message.client.sendMessage(message.jid,Lang.NEED_REPLY, MessageType.text);
         var downloading = await message.client.sendMessage(message.jid,Lang.DOWNLOADING,MessageType.text);
@@ -48,7 +46,7 @@ if (Config.WORKTYPE == 'private') {
 }
 else if (Config.WORKTYPE == 'public') {
 
-    Raone.addCommand({pattern: 'sticker$', fromMe: false, deleteCommand: false, desc: Lang.STICKER_DESC}, (async (message, match) => {    
+    Nitross.addCommand({pattern: 'sticker$', fromMe: false, deleteCommand: false, desc: Lang.STICKER_DESC}, (async (message, match) => {    
 
         if (message.reply_message === false) return await message.client.sendMessage(message.jid,Lang.NEED_REPLY, MessageType.text);
         var downloading = await message.client.sendMessage(message.jid,Lang.DOWNLOADING,MessageType.text);

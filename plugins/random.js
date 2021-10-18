@@ -1,6 +1,4 @@
-//https://github.com/RAVANA-SL/slRavana
-
-const Raone = require('../events');
+const Nitross = require('../events');
 const { MessageType, MessageOptions, Mimetype } = require('@adiwajshing/baileys');
 const fs = require('fs');
 const axios = require('axios');
@@ -8,7 +6,7 @@ const Config = require('../config');
 const NEED_WORD = "*Must Enter some Words*"
 
 
-Raone.addCommand({ pattern: 'random ?(.*)', fromMe: false, desc: 'word image' }, (async (message, match) => {
+Nitross.addCommand({ pattern: 'random ?(.*)', fromMe: false, desc: 'word image' }, (async (message, match) => {
 
     var r_text = new Array ();
 

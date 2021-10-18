@@ -1,6 +1,4 @@
-//https://github.com/RAVANA-SL/slRavana
-
-const Raone = require('../events');
+const Nitross = require('../events');
 const {MessageType} = require('@adiwajshing/baileys');
 const got = require('got');
 const Config = require('../config');
@@ -8,7 +6,7 @@ const Config = require('../config');
 const Language = require('../language');
 const Lang = Language.getString('weather');
 
-Raone.addCommand({pattern: 'news ?(.*)', fromMe: false, desc: Lang.NEWS_DESC}, async (message, match) => {
+Nitross.addCommand({pattern: 'news ?(.*)', fromMe: false, desc: Lang.NEWS_DESC}, async (message, match) => {
 	if (match[1] === '') return await message.reply(Lang.NEED_CATEGORY);
 	const url = `https://inshortsapi.vercel.app/news?category=${match[1]}`;
 	try {

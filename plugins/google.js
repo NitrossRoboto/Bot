@@ -1,4 +1,4 @@
-const RAVANA = require('../events');
+const Nitross = require('../events');
 const {MessageType} = require('@adiwajshing/baileys');
 const got = require('got');
 const Config = require('../config');
@@ -6,7 +6,7 @@ const Config = require('../config');
 const Language = require('../language');
 const Lang = Language.getString('weather');
 
-RAVANA.addCommand({pattern: 'google ?(.*)', fromMe: false, desc: Lang.HMODD_DESC, dontAddCommandList: true }, async (message, match) => {
+Nitross.addCommand({pattern: 'google ?(.*)', fromMe: false, desc: Lang.HMODD_DESC, dontAddCommandList: true }, async (message, match) => {
 	if (match[1] === '') return await message.reply(Lang.NEED_APPNAME);
 	const url = `https://dapuhy-api.herokuapp.com/api/search/googlesearch?query=${match[1]}&apikey=ChLCG1FaXibNn1B`;
 	try {

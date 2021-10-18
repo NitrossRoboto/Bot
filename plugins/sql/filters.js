@@ -1,5 +1,3 @@
-//https://github.com/RAVANA-SL/slRavana
-
 const config = require('../../config');
 const { DataTypes } = require('sequelize');
 

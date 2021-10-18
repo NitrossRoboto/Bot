@@ -1,6 +1,4 @@
-//https://github.com/RAVANA-SL/slRavana
-
-const Raone = require('../events')
+const Nitross = require('../events')
 const { MessageType } = require('@adiwajshing/baileys')
 const axios = require('axios')
 const Config = require('../config');
@@ -13,7 +11,7 @@ const DOWN = "Downlading plz waite"
 const NOT = "i cloud't find this"
 if (Config.WORKTYPE == 'private') {
 
-    Raone.addCommand({ pattern: 'ig ?(.*)', fromMe: true, desc: 'Download in instagram' }, (async (message, match) => {
+    Nitross.addCommand({ pattern: 'ig ?(.*)', fromMe: true, desc: 'Download in instagram' }, (async (message, match) => {
         if (match[0].includes('install')) return;
         if (match[1] === '') return await message.client.sendMessage(message.jid, Lang.NEED_WORD, MessageType.text, { quoted: message.data });
         if (!match[1].includes('www.instagram.com')) return await message.client.sendMessage(message.jid, Lang.NEED_WORD, MessageType.text, { quoted: message.data });
@@ -39,7 +37,7 @@ if (Config.WORKTYPE == 'private') {
     }));
 
     /*
-    Raone.addCommand({ pattern: 'tiktok ?(.*)', fromMe: true, desc: Tlang.TİKTOK }, async (message, match) => {
+    Nitross.addCommand({ pattern: 'tiktok ?(.*)', fromMe: true, desc: Tlang.TİKTOK }, async (message, match) => {
 
         const userName = match[1]
 
@@ -71,7 +69,7 @@ if (Config.WORKTYPE == 'private') {
 }
 else if (Config.WORKTYPE == 'public') {
 
-    Raone.addCommand({ pattern: 'ig ?(.*)', fromMe: false, desc: Lang.DESC }, (async (message, match) => {
+    Nitross.addCommand({ pattern: 'ig ?(.*)', fromMe: false, desc: Lang.DESC }, (async (message, match) => {
         if (match[0].includes('install')) return;
         if (match[1] === '') return await message.client.sendMessage(message.jid, Lang.NEED_WORD, MessageType.text, { quoted: message.data });
         if (!match[1].includes('www.instagram.com')) return await message.client.sendMessage(message.jid, Lang.NEED_WORD, MessageType.text, { quoted: message.data });
@@ -96,7 +94,7 @@ else if (Config.WORKTYPE == 'public') {
 
     }));
 
-    Raone.addCommand({ pattern: 'ig ?(.*)', fromMe: true, desc: Lang.DESC, dontAddCommandList: true }, (async (message, match) => {
+    Nitross.addCommand({ pattern: 'ig ?(.*)', fromMe: true, desc: Lang.DESC, dontAddCommandList: true }, (async (message, match) => {
         if (match[0].includes('install')) return;
         if (match[1] === '') return await message.client.sendMessage(message.jid, Lang.NEED_WORD, MessageType.text, { quoted: message.data });
         if (!match[1].includes('www.instagram.com')) return await message.client.sendMessage(message.jid, Lang.NEED_WORD, MessageType.text, { quoted: message.data });
@@ -121,7 +119,7 @@ else if (Config.WORKTYPE == 'public') {
 
     }));
     
-    Raone.addCommand({ pattern: 'tiktok ?(.*)', fromMe: false, desc: 'Download in tiktok (with out watermark)' }, async (message, match) => {
+    Nitross.addCommand({ pattern: 'tiktok ?(.*)', fromMe: false, desc: 'Download in tiktok (with out watermark)' }, async (message, match) => {
 
         const userName = match[1]
 
@@ -150,7 +148,7 @@ else if (Config.WORKTYPE == 'public') {
       },
     )
     /*
-    Raone.addCommand({ pattern: 'tiktok ?(.*)', fromMe: true, desc: Tlang.TİKTOK }, async (message, match) => {
+    Nitross.addCommand({ pattern: 'tiktok ?(.*)', fromMe: true, desc: Tlang.TİKTOK }, async (message, match) => {
 
         const userName = match[1]
 

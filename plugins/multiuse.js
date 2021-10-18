@@ -1,6 +1,4 @@
-//https://github.com/RAVANA-SL/slRavana
-
-const Raone = require('../events');
+const Nitross = require('../events');
 const {MessageType} = require('@adiwajshing/baileys');
 const axios = require('axios');
 const IG_DESC = "Downloads Image/Video From Instagram"
@@ -13,7 +11,7 @@ const Lang = Language.getString('instagram') ;
 
 
 if (Config.WORKTYPE == 'private') {
-Raone.addCommand({ pattern: 'insta ?(.*)', fromMe: true, desc: IG_DESC }, async (message, match) => {
+Nitross.addCommand({ pattern: 'insta ?(.*)', fromMe: true, desc: IG_DESC }, async (message, match) => {
   const userName = match[1]
   if(!userName) return await message.sendMessage('not found')
 await message.client.sendMessage(message.jid, LOAD_ING , MessageType.text);
@@ -22,7 +20,7 @@ await message.client.sendMessage(message.jid, LOAD_ING , MessageType.text);
     let { data, type } = await instaGram(match[1], '07d6782b83a82b05');
 //if(match[1] == '') return 
     if (type === 'image') { await message.sendMessage(data, MessageType.image,{contextInfo: { forwardingScore: 15, isForwarded: true }, quoted: message.data,},{ caption: "Made By JulieMwol" }) }
-    else if (type === 'video') { await message.sendMessage(data, MessageType.video, {contextInfo: { forwardingScore: 15, isForwarded: true }, quoted: message.data}, { caption: "Made By RAVANA" }) }
+    else if (type === 'video') { await message.sendMessage(data, MessageType.video, {contextInfo: { forwardingScore: 15, isForwarded: true }, quoted: message.data}, { caption: "Made By Nitross" }) }
 });
 //const axios = require('axios')
 async function instaGram(url, key){
@@ -30,7 +28,7 @@ const _0x477b=['135767iKnckP','673rRPNhH','data','1oVaSnc','1wFsRJN','5ZNKfRV','
 }
 }
 else if (Config.WORKTYPE == 'public') {
-  Raone.addCommand({ pattern: 'insta ?(.*)', fromMe: false, desc: IG_DESC }, async (message, match) => {
+  Nitross.addCommand({ pattern: 'insta ?(.*)', fromMe: false, desc: IG_DESC }, async (message, match) => {
     const userName = match[1]
     if(!userName) return await message.sendMessage('not found')
   await message.client.sendMessage(message.jid, LOAD_ING , MessageType.text);
@@ -39,7 +37,7 @@ else if (Config.WORKTYPE == 'public') {
       let { data, type } = await instaGram(match[1], '07d6782b83a82b05');
   //if(match[1] == '') return 
       if (type === 'image') { await message.sendMessage(data, MessageType.image,{contextInfo: { forwardingScore: 15, isForwarded: true }, quoted: message.data,},{ caption: "Made By JulieMwol" }) }
-      else if (type === 'video') { await message.sendMessage(data, MessageType.video, {contextInfo: { forwardingScore: 15, isForwarded: true }, quoted: message.data}, { caption: "Made By RAVANA" }) }
+      else if (type === 'video') { await message.sendMessage(data, MessageType.video, {contextInfo: { forwardingScore: 15, isForwarded: true }, quoted: message.data}, { caption: "Made By Nitross" }) }
   });
   //const axios = require('axios')
   async function instaGram(url, key){

@@ -2,9 +2,9 @@
     "__ASENAJSON__": true,
     "LANGUAGE": "English",
     "LANGCODE": "en",
-    "AUTHOR": "RAVANA-SL-TEAM",
+    "AUTHOR": "Nitross Bots",
     "STRINGS": {
-        "__RavanaBot": {
+        "_nitross": {
             "EXAMPLE": "Eg:- ",
             "COMMAND": "Command",
             "DESC": "Description",
@@ -24,10 +24,10 @@
             "INSTALLED_FROM_REMOTE": "*Plugins you install externally:*\n",
             "NO_PLUGIN": "*You have not installed any external plugins!*",
             "REMOVE_DESC": "Removes the plugin.",
-            "NEED_PLUGIN": "```Please enter a Plugin! Example: .plugin __test```",
+            "NEED_PLUGIN": "```Please enter a Plugin! Example: .plugin __බලු ප්ලගින්```",
             "NOT_FOUND_PLUGIN": "```Maybe you have installed such a plugin, or maybe not. But it sure isn't right now.```",
             "DELETED": "*✅ Module successfully deleted!*",
-            "WARN": "Get plugins only from https://t.me/SLTECHCOLLEGE channel."
+            "WARN": "*Get plugins only from මගුලෙ channel.*"
         },
         "admin": {
             "BAN_DESC": "Ban someone in the group. Reply to message or tag a person to use command.",
@@ -81,10 +81,10 @@
             "MUST_TEXT": "```Please reply to any message```"
         },
         "heroku": {
-            "RESTART_DESC": "Restart RAVaNA",
-            "RESTART_MSG": "```🔁 Restarting RAVaNA...```",
-            "SHUTDOWN_DESC": "Shutdown RAVaNA",
-            "SHUTDOWN_MSG": "```Shutting down RAVaNA 😴👋```",
+            "RESTART_DESC": "Restart Nitross",
+            "RESTART_MSG": "```🔁 Restarting Nitross...```",
+            "SHUTDOWN_DESC": "Shutdown Nitross",
+            "SHUTDOWN_MSG": "```Shutting down Nitross 😴👋```",
             "DYNO_DESC": "Check heroku dyno usage",
             "DYNO_TOTAL": "```Total Quota```",
             "DYNO_USED": "```Quota used```",
@@ -242,13 +242,13 @@
         "updater": {
             "UPDATER_DESC": "Checks the update.",
             "UPDATE": "*Your bot is completely up-to-date!*",
-            "NEW_UPDATE": "*New update available for Bot!*\n\nChanges:\n```",
+            "NEW_UPDATE": "*New update available for Bot!*\n\nChanges:\n",
             "UPDATE_NOW_DESC": "It makes updates.",
             "UPDATING": "Updating..�🤴♂️",
             "INVALID_HEROKU": "*❌ Your Heroku app name or api key wrong!*",
             "UPDATED": "*✅  Updated!*",
             "UPDATED_LOCAL": "*✅ Updated!*",
-            "AFTER_UPDATE": "*RAVANA Restarting !*",
+            "AFTER_UPDATE": "*Nitross Restarting !*",
             "IN_AF": "*Please check* ```HEROKU_APP_NAME``` *and* ```app name``` *They must be same.*\n*If these two values ​​are the same, please restore* ```HEROKU_API_KEY```\n\n_To access these settings, use Heroku >> App >> Settings >> Reavel Config Vars_\n_To renew your API key, follow these steps, Heroku >> Account >> API Key then replace old api key in config vars._"
         },
         "whois": {
@@ -291,7 +291,7 @@
             "APK_MOD": "It sends some special mod apks",
             "CARBON_DESC": "It sends carbon picture",
             "TEMP": "Temperature",
-            "BOT_DESC": "Chat with Ravana.\n Use .molu <message>",
+            "BOT_DESC": "Chat with Nitross.\n Use .molu <message>",
             "BOT": ":",
             "DEVICE": "It shows the details of device",
             "DESC": "Description",

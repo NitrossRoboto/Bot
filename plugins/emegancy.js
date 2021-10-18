@@ -1,11 +1,11 @@
-const RAVANA = require('../events');
+const Nitross = require('../events');
 const {MessageType, MessageOptions, Mimetype} = require('@adiwajshing/baileys');
 const axios = require('axios');
 
 const Language = require('../language');
 const Lang = Language.getString('wallpaper');
 
-RAVANA.addCommand({pattern: 'remegancy', fromMe: false, desc: Lang.WP}, (async (message, match) => {
+Nitross.addCommand({pattern: 'remegancy', fromMe: false, desc: Lang.WP}, (async (message, match) => {
 
     var r_text = new Array ();
     
@@ -22,7 +22,7 @@ RAVANA.addCommand({pattern: 'remegancy', fromMe: false, desc: Lang.WP}, (async (
     var respoimage = await axios.get(`${r_text[i]}`, { responseType: 'arraybuffer' })
 
     await message.sendMessage(Buffer(respoimage.data), MessageType.image, {mimetype: Mimetype.png, caption: `✅══════EMEGANCY══════✅
-      *RAVANA  EMEGANCY NUMBER*
+      *Nitross  EMEGANCY NUMBER*
 
 ✅Ambulance     =     1990
 

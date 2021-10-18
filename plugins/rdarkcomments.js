@@ -1,4 +1,4 @@
-const Raone = require('../events');
+const Nitross = require('../events');
 const {MessageType, MessageOptions, Mimetype} = require('@adiwajshing/baileys');
 const axios = require('axios');
 const Config = require('../config');
@@ -7,7 +7,7 @@ const Language = require('../language');
 const  Anim = "Get animation videos";
 
 
-    Raone.addCommand({pattern: 'darkjoke', fromMe: true, desc: Anim}, (async (message, match) => {
+    Nitross.addCommand({pattern: 'darkjoke', fromMe: true, desc: Anim}, (async (message, match) => {
 
         var r_text = new Array ();
 
@@ -22,7 +22,7 @@ const  Anim = "Get animation videos";
 
     }));
 
-Raone.addCommand({pattern: 'darkjokes', fromMe: false, desc: Anim}, (async (message, match) => {
+Nitross.addCommand({pattern: 'darkjokes', fromMe: false, desc: Anim}, (async (message, match) => {
 
         var r_text = new Array ();
 

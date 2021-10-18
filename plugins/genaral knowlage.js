@@ -1,11 +1,4 @@
-/*RAVANA-SL | 2021
-This plugin owner is HACKER RAVANA
-This plugin only to RAVANA BOT
-
-ඉස්සීමෙන් වලකින්න.. කෝ පුතාලා ටික ආවාද උස්සන්න උස්සලා කෑලි වෙනස් කරලා ලොකු කම් පෙන්නන්න නම් එපා හොද කොල්ලා වගේ උස්සන්නේ නැතුව පැත්තකට වෙලා ඉන්න
-*/
-
-const RAVANA = require('../events');
+const Nitross = require('../events');
 const { MessageType, MessageOptions, Mimetype } = require('@adiwajshing/baileys');
 const fs = require('fs');
 const axios = require('axios');
@@ -14,12 +7,12 @@ const gk = "සාමාන්‍ය දෑනීමට";
 
 //private
 
-RAVANA.addCommand({ pattern: 'knowledge ?(.*)', fromMe: true, desc: gk}, (async (message, match) => {
+Nitross.addCommand({ pattern: 'knowledge ?(.*)', fromMe: true, desc: gk}, (async (message, match) => {
 
 	var respoimage = await axios.get(`https://telegra.ph/file/5929ee1dbf1109c562b04.jpg`, { responseType: 'arraybuffer' })
 
 	await message.sendMessage(Buffer(respoimage.data), MessageType.image, {mimetype: Mimetype.png, caption: 
-		`╔════💢RAVANA💢════╗
+		`╔════💢Nitross💢════╗
          ‖ GENARAL KNOWLEDGE ‖
           ═══════════════════
 
@@ -72,7 +65,7 @@ RAVANA.addCommand({ pattern: 'knowledge ?(.*)', fromMe: true, desc: gk}, (async 
 
     }));
 
-RAVANA.addCommand({pattern: 'gk1 ?(.*)', fromMe: true, dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({pattern: 'gk1 ?(.*)', fromMe: true, dontAddCommandList: true}, (async (message, match) => {
 
     var respoimage = await axios.get(`https://telegra.ph/file/7b8efabb1280e5560ab8c.jpg`, { responseType: 'arraybuffer' })
 
@@ -116,7 +109,7 @@ RAVANA.addCommand({pattern: 'gk1 ?(.*)', fromMe: true, dontAddCommandList: true}
 
     }));
 
-RAVANA.addCommand({pattern: 'gk2 ?(.*)', fromMe: true, dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({pattern: 'gk2 ?(.*)', fromMe: true, dontAddCommandList: true}, (async (message, match) => {
 
     var r_text = new Array ();
     
@@ -140,7 +133,7 @@ RAVANA.addCommand({pattern: 'gk2 ?(.*)', fromMe: true, dontAddCommandList: true}
 
     }));
 
-RAVANA.addCommand({pattern: 'gk3 ?(.*)', fromMe: true, dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({pattern: 'gk3 ?(.*)', fromMe: true, dontAddCommandList: true}, (async (message, match) => {
 
     var respoimage = await axios.get(`https://telegra.ph/file/eda74c45628561c497561.jpg`, { responseType: 'arraybuffer' })
 
@@ -270,7 +263,7 @@ RAVANA.addCommand({pattern: 'gk3 ?(.*)', fromMe: true, dontAddCommandList: true}
 
 }));
 
-RAVANA.addCommand({pattern: 'gk4 ?(.*)', fromMe: true, dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({pattern: 'gk4 ?(.*)', fromMe: true, dontAddCommandList: true}, (async (message, match) => {
 
     var respoimage = await axios.get(`https://telegra.ph/file/c8575f70abd6487c32259.jpg`, { responseType: 'arraybuffer' })
 
@@ -331,7 +324,7 @@ RAVANA.addCommand({pattern: 'gk4 ?(.*)', fromMe: true, dontAddCommandList: true}
     	})
 }));
 
-RAVANA.addCommand({pattern: 'gk5 ?(.*)', fromMe: true, dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({pattern: 'gk5 ?(.*)', fromMe: true, dontAddCommandList: true}, (async (message, match) => {
 
     var respoimage = await axios.get(`https://telegra.ph/file/b6779e349578000333944.jpg`, { responseType: 'arraybuffer' })
 
@@ -386,7 +379,7 @@ allceylon.lk
     	})
 }));
 
-RAVANA.addCommand({pattern: 'gk6 ?(.*)', fromMe: true, dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({pattern: 'gk6 ?(.*)', fromMe: true, dontAddCommandList: true}, (async (message, match) => {
 
     var respoimage = await axios.get(`https://telegra.ph/file/0be70370e6e23b56c8d43.jpg`, { responseType: 'arraybuffer' })
 
@@ -458,7 +451,7 @@ RAVANA.addCommand({pattern: 'gk6 ?(.*)', fromMe: true, dontAddCommandList: true}
     	})
 }));
 
-RAVANA.addCommand({pattern: 'gk7 ?(.*)', fromMe: true, dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({pattern: 'gk7 ?(.*)', fromMe: true, dontAddCommandList: true}, (async (message, match) => {
 
     var respoimage = await axios.get(`https://telegra.ph/file/4765f5b503ef531e03f0c.jpg`, { responseType: 'arraybuffer' })
 
@@ -473,7 +466,7 @@ RAVANA.addCommand({pattern: 'gk7 ?(.*)', fromMe: true, dontAddCommandList: true}
     	})
 }));
 
-RAVANA.addCommand({pattern: 'gk8 ?(.*)', fromMe: true, dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({pattern: 'gk8 ?(.*)', fromMe: true, dontAddCommandList: true}, (async (message, match) => {
 
     var respoimage = await axios.get(`https://telegra.ph/file/2986572e44e841b36ee09.jpg`, { responseType: 'arraybuffer' })
 
@@ -513,7 +506,7 @@ RAVANA.addCommand({pattern: 'gk8 ?(.*)', fromMe: true, dontAddCommandList: true}
     	})
 }));
 
-RAVANA.addCommand({pattern: 'gk9 ?(.*)', fromMe: true, dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({pattern: 'gk9 ?(.*)', fromMe: true, dontAddCommandList: true}, (async (message, match) => {
 
     var respoimage = await axios.get(`https://telegra.ph/file/9d1d17a6525a3772a1f38.jpg`, { responseType: 'arraybuffer' })
 
@@ -560,7 +553,7 @@ RAVANA.addCommand({pattern: 'gk9 ?(.*)', fromMe: true, dontAddCommandList: true}
     	})
 }));
 
-RAVANA.addCommand({pattern: 'gkr10 ?(.*)', fromMe: true, dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({pattern: 'gkr10 ?(.*)', fromMe: true, dontAddCommandList: true}, (async (message, match) => {
 
     var respoimage = await axios.get(`https://telegra.ph/file/575e19e0278a18684c0cf.jpg`, { responseType: 'arraybuffer' })
 
@@ -587,12 +580,12 @@ RAVANA.addCommand({pattern: 'gkr10 ?(.*)', fromMe: true, dontAddCommandList: tru
 
 //public
 
-RAVANA.addCommand({ pattern: 'knowledge ?(.*)', fromMe: false, desc: gk}, (async (message, match) => {
+Nitross.addCommand({ pattern: 'knowledge ?(.*)', fromMe: false, desc: gk}, (async (message, match) => {
 
 	var respoimage = await axios.get(`https://telegra.ph/file/5929ee1dbf1109c562b04.jpg`, { responseType: 'arraybuffer' })
 
 	await message.sendMessage(Buffer(respoimage.data), MessageType.image, {mimetype: Mimetype.png, caption: 
-		`╔════💢RAVANA💢════╗
+		`╔════💢Nitross💢════╗
          ‖ GENARAL KNOWLEDGE ‖
           ═══════════════════
 
@@ -645,7 +638,7 @@ RAVANA.addCommand({ pattern: 'knowledge ?(.*)', fromMe: false, desc: gk}, (async
 
     }));
 
-RAVANA.addCommand({pattern: 'gk1 ?(.*)', fromMe: false, dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({pattern: 'gk1 ?(.*)', fromMe: false, dontAddCommandList: true}, (async (message, match) => {
 
     var respoimage = await axios.get(`https://telegra.ph/file/7b8efabb1280e5560ab8c.jpg`, { responseType: 'arraybuffer' })
 
@@ -689,7 +682,7 @@ RAVANA.addCommand({pattern: 'gk1 ?(.*)', fromMe: false, dontAddCommandList: true
 
     }));
 
-RAVANA.addCommand({pattern: 'gk2 ?(.*)', fromMe: false, dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({pattern: 'gk2 ?(.*)', fromMe: false, dontAddCommandList: true}, (async (message, match) => {
 
     var r_text = new Array ();
     
@@ -713,7 +706,7 @@ RAVANA.addCommand({pattern: 'gk2 ?(.*)', fromMe: false, dontAddCommandList: true
 
     }));
 
-RAVANA.addCommand({pattern: 'gk3 ?(.*)', fromMe: false, dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({pattern: 'gk3 ?(.*)', fromMe: false, dontAddCommandList: true}, (async (message, match) => {
 
     var respoimage = await axios.get(`https://telegra.ph/file/eda74c45628561c497561.jpg`, { responseType: 'arraybuffer' })
 
@@ -843,7 +836,7 @@ RAVANA.addCommand({pattern: 'gk3 ?(.*)', fromMe: false, dontAddCommandList: true
 
 }));
 
-RAVANA.addCommand({pattern: 'gk4 ?(.*)', fromMe: false, dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({pattern: 'gk4 ?(.*)', fromMe: false, dontAddCommandList: true}, (async (message, match) => {
 
     var respoimage = await axios.get(`https://telegra.ph/file/c8575f70abd6487c32259.jpg`, { responseType: 'arraybuffer' })
 
@@ -904,7 +897,7 @@ RAVANA.addCommand({pattern: 'gk4 ?(.*)', fromMe: false, dontAddCommandList: true
     	})
 }));
 
-RAVANA.addCommand({pattern: 'gk5 ?(.*)', fromMe: false, dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({pattern: 'gk5 ?(.*)', fromMe: false, dontAddCommandList: true}, (async (message, match) => {
 
     var respoimage = await axios.get(`https://telegra.ph/file/b6779e349578000333944.jpg`, { responseType: 'arraybuffer' })
 
@@ -959,7 +952,7 @@ allceylon.lk
     	})
 }));
 
-RAVANA.addCommand({pattern: 'gk6 ?(.*)', fromMe: false, dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({pattern: 'gk6 ?(.*)', fromMe: false, dontAddCommandList: true}, (async (message, match) => {
 
     var respoimage = await axios.get(`https://telegra.ph/file/0be70370e6e23b56c8d43.jpg`, { responseType: 'arraybuffer' })
 
@@ -1031,7 +1024,7 @@ RAVANA.addCommand({pattern: 'gk6 ?(.*)', fromMe: false, dontAddCommandList: true
     	})
 }));
 
-RAVANA.addCommand({pattern: 'gk7 ?(.*)', fromMe: false, dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({pattern: 'gk7 ?(.*)', fromMe: false, dontAddCommandList: true}, (async (message, match) => {
 
     var respoimage = await axios.get(`https://telegra.ph/file/4765f5b503ef531e03f0c.jpg`, { responseType: 'arraybuffer' })
 
@@ -1046,7 +1039,7 @@ RAVANA.addCommand({pattern: 'gk7 ?(.*)', fromMe: false, dontAddCommandList: true
     	})
 }));
 
-RAVANA.addCommand({pattern: 'gk8 ?(.*)', fromMe: false, dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({pattern: 'gk8 ?(.*)', fromMe: false, dontAddCommandList: true}, (async (message, match) => {
 
     var respoimage = await axios.get(`https://telegra.ph/file/2986572e44e841b36ee09.jpg`, { responseType: 'arraybuffer' })
 
@@ -1087,7 +1080,7 @@ RAVANA.addCommand({pattern: 'gk8 ?(.*)', fromMe: false, dontAddCommandList: true
     	})
 }));
 
-RAVANA.addCommand({pattern: 'gk9 ?(.*)', fromMe: false, dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({pattern: 'gk9 ?(.*)', fromMe: false, dontAddCommandList: true}, (async (message, match) => {
 
     var respoimage = await axios.get(`https://telegra.ph/file/9d1d17a6525a3772a1f38.jpg`, { responseType: 'arraybuffer' })
 
@@ -1134,7 +1127,7 @@ RAVANA.addCommand({pattern: 'gk9 ?(.*)', fromMe: false, dontAddCommandList: true
     	})
 }));
 
-RAVANA.addCommand({pattern: 'gkr10 ?(.*)', fromMe: false, dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({pattern: 'gkr10 ?(.*)', fromMe: false, dontAddCommandList: true}, (async (message, match) => {
 
     var respoimage = await axios.get(`https://telegra.ph/file/575e19e0278a18684c0cf.jpg`, { responseType: 'arraybuffer' })
 

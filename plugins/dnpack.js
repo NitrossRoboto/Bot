@@ -1,12 +1,12 @@
-const RAVANA = require('../events');
+const Nitross = require('../events');
 const { MessageType, MessageOptions, Mimetype } = require('@adiwajshing/baileys');
 const fs = require('fs');
 const axios = require('axios');
 const Config = require('../config');
-const lol = "need some word\n🗡🗡"
-const dnpack = "dn logo pack";
+const lol = "වචනයක් ඕනේ...🙄"
+const dnpack = "DN Logo Pack";
     
-RAVANA.addCommand({pattern: 'dnpack', fromMe: true, desc: dnpack}, (async (message, match) => {
+Nitross.addCommand({pattern: 'dnpack', fromMe: true, desc: dnpack}, (async (message, match) => {
 
     var r_text = new Array ();
     
@@ -84,7 +84,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: true, desc: dnpack}, (async (messa
 }));
 
 
-    RAVANA.addCommand({ pattern: 'dn3ds ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+    Nitross.addCommand({ pattern: 'dn3ds ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -94,7 +94,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: true, desc: dnpack}, (async (messa
 
     }));
 
-    RAVANA.addCommand({ pattern: 'dnwp ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+    Nitross.addCommand({ pattern: 'dnwp ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -104,7 +104,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: true, desc: dnpack}, (async (messa
 
     }));
  
-     RAVANA.addCommand({ pattern: 'dnz3d ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+     Nitross.addCommand({ pattern: 'dnz3d ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -114,7 +114,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: true, desc: dnpack}, (async (messa
 
     }));
 
-        RAVANA.addCommand({ pattern: 'dnwg ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+        Nitross.addCommand({ pattern: 'dnwg ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -124,28 +124,28 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: true, desc: dnpack}, (async (messa
 
     }));
 
-        RAVANA.addCommand({ pattern: 'dnjuvs ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+        Nitross.addCommand({ pattern: 'dnjuvs ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
-        var ttinullimage = await axios.get(`https://dapuhy-api.herokuapp.com/api/ephoto/juventus?text1=RAVANA&text2=${encodeURIComponent(match[1])}&apikey=ChLCG1FaXibNn1B`, { responseType: 'arraybuffer' })
+        var ttinullimage = await axios.get(`https://dapuhy-api.herokuapp.com/api/ephoto/juventus?text1=Nitross&text2=${encodeURIComponent(match[1])}&apikey=ChLCG1FaXibNn1B`, { responseType: 'arraybuffer' })
 
         await message.sendMessage(Buffer.from(ttinullimage.data), MessageType.image, { mimetype: Mimetype.jpg, caption: Config.CP_TEXT})
 
     }));
 
-        RAVANA.addCommand({ pattern: 'dnpals ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+        Nitross.addCommand({ pattern: 'dnpals ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
-        var ttinullimage = await axios.get(`https://dapuhy-api.herokuapp.com/api/ephoto/paulscholes?text1=RAVANAa&text2=${encodeURIComponent(match[1])}&apikey=ChLCG1FaXibNn1B`, { responseType: 'arraybuffer' })
+        var ttinullimage = await axios.get(`https://dapuhy-api.herokuapp.com/api/ephoto/paulscholes?text1=Nitrossa&text2=${encodeURIComponent(match[1])}&apikey=ChLCG1FaXibNn1B`, { responseType: 'arraybuffer' })
 
         await message.sendMessage(Buffer.from(ttinullimage.data), MessageType.image, { mimetype: Mimetype.jpg, caption: Config.CP_TEXT})
 
     }));
 
 
-        RAVANA.addCommand({ pattern: 'dndmb ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+        Nitross.addCommand({ pattern: 'dndmb ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -155,7 +155,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: true, desc: dnpack}, (async (messa
 
     }));
 
-         RAVANA.addCommand({ pattern: 'dnnm ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+         Nitross.addCommand({ pattern: 'dnnm ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -165,17 +165,17 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: true, desc: dnpack}, (async (messa
 
     }));
 
-         RAVANA.addCommand({ pattern: 'dnpf ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+         Nitross.addCommand({ pattern: 'dnpf ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
-        var ttinullimage = await axios.get(`https://dapuhy-api.herokuapp.com/api/photofunia/arrowsigns?text1=RAVANA&text2=${encodeURIComponent(match[1])}&apikey=ChLCG1FaXibNn1B`, { responseType: 'arraybuffer' })
+        var ttinullimage = await axios.get(`https://dapuhy-api.herokuapp.com/api/photofunia/arrowsigns?text1=Nitross&text2=${encodeURIComponent(match[1])}&apikey=ChLCG1FaXibNn1B`, { responseType: 'arraybuffer' })
 
         await message.sendMessage(Buffer.from(ttinullimage.data), MessageType.image, { mimetype: Mimetype.jpg, caption: Config.CP_TEXT})
 
     }));
     
-        RAVANA.addCommand({ pattern: 'dnhad ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+        Nitross.addCommand({ pattern: 'dnhad ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -185,7 +185,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: true, desc: dnpack}, (async (messa
 
     }));
 
-         RAVANA.addCommand({ pattern: 'dnh2ad ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+         Nitross.addCommand({ pattern: 'dnh2ad ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -195,7 +195,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: true, desc: dnpack}, (async (messa
 
     }));
 
-         RAVANA.addCommand({ pattern: 'dnad ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+         Nitross.addCommand({ pattern: 'dnad ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -205,7 +205,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: true, desc: dnpack}, (async (messa
 
     }));
 
-           RAVANA.addCommand({ pattern: 'dnrb ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+           Nitross.addCommand({ pattern: 'dnrb ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -215,7 +215,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: true, desc: dnpack}, (async (messa
 
     }));
 
-          RAVANA.addCommand({ pattern: 'dnbt ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+          Nitross.addCommand({ pattern: 'dnbt ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -226,7 +226,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: true, desc: dnpack}, (async (messa
     }));    
 
 
-           RAVANA.addCommand({ pattern: 'dnsn ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+           Nitross.addCommand({ pattern: 'dnsn ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -237,7 +237,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: true, desc: dnpack}, (async (messa
     }));  
 
 
-          RAVANA.addCommand({ pattern: 'dnst ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+          Nitross.addCommand({ pattern: 'dnst ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -248,7 +248,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: true, desc: dnpack}, (async (messa
     }));  
 
 
-         RAVANA.addCommand({ pattern: 'dnbc ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+         Nitross.addCommand({ pattern: 'dnbc ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -259,7 +259,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: true, desc: dnpack}, (async (messa
     }));
 
 
-       RAVANA.addCommand({ pattern: 'dngb ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+       Nitross.addCommand({ pattern: 'dngb ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -269,7 +269,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: true, desc: dnpack}, (async (messa
 
     }));
 
-     RAVANA.addCommand({ pattern: 'dnw3d ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+     Nitross.addCommand({ pattern: 'dnw3d ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -279,7 +279,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: true, desc: dnpack}, (async (messa
 
     }));
 
-     RAVANA.addCommand({ pattern: 'dnglow ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+     Nitross.addCommand({ pattern: 'dnglow ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -289,7 +289,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: true, desc: dnpack}, (async (messa
 
     }));
 
-     RAVANA.addCommand({ pattern: 'dnpm ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+     Nitross.addCommand({ pattern: 'dnpm ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -299,7 +299,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: true, desc: dnpack}, (async (messa
 
     }));
 
-     RAVANA.addCommand({ pattern: 'dnc3d ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+     Nitross.addCommand({ pattern: 'dnc3d ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -309,7 +309,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: true, desc: dnpack}, (async (messa
 
     }));
 
-     RAVANA.addCommand({ pattern: 'dngrb ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+     Nitross.addCommand({ pattern: 'dngrb ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -319,7 +319,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: true, desc: dnpack}, (async (messa
 
     }));
 
-     RAVANA.addCommand({ pattern: 'dnhm ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+     Nitross.addCommand({ pattern: 'dnhm ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -329,7 +329,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: true, desc: dnpack}, (async (messa
 
     }));
 
-     RAVANA.addCommand({ pattern: 'dnmb2 ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+     Nitross.addCommand({ pattern: 'dnmb2 ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -339,7 +339,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: true, desc: dnpack}, (async (messa
 
     }));
 
-     RAVANA.addCommand({ pattern: 'dncl ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+     Nitross.addCommand({ pattern: 'dncl ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -349,7 +349,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: true, desc: dnpack}, (async (messa
 
     }));
 
-     RAVANA.addCommand({ pattern: 'dnwc ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+     Nitross.addCommand({ pattern: 'dnwc ?(.*)', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -360,7 +360,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: true, desc: dnpack}, (async (messa
     }));                       
 
 
-RAVANA.addCommand({pattern: 'dnpack', fromMe: false, desc: dnpack}, (async (message, match) => {
+Nitross.addCommand({pattern: 'dnpack', fromMe: false, desc: dnpack}, (async (message, match) => {
 
     var r_text = new Array ();
     
@@ -375,7 +375,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: false, desc: dnpack}, (async (mess
 
     await message.sendMessage(Buffer(respoimage.data), MessageType.image, {mimetype: Mimetype.png, caption: `⚡━━━━━💢DN Logo Pack💢━━━━━⚡
 
-============RAVANA(DNpack)============
+============Nitross(DNpack)============
 
          💥 *LOGO PACK* 💥
 
@@ -431,14 +431,14 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: false, desc: dnpack}, (async (mess
 
      🔰𝘾𝙤𝙢𝙢𝙖𝙣𝙙➜ .dnwc <text>
 
-      ═════💢RAVANA💢═════
+      ═════💢Nitross💢═════
 
 `}) 
 
 }));
 
 
-    RAVANA.addCommand({ pattern: 'dn3ds ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+    Nitross.addCommand({ pattern: 'dn3ds ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -448,7 +448,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: false, desc: dnpack}, (async (mess
 
     }));
 
-    RAVANA.addCommand({ pattern: 'dnwp ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+    Nitross.addCommand({ pattern: 'dnwp ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -458,7 +458,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: false, desc: dnpack}, (async (mess
 
     }));
  
-     RAVANA.addCommand({ pattern: 'dnz3d ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+     Nitross.addCommand({ pattern: 'dnz3d ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -468,7 +468,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: false, desc: dnpack}, (async (mess
 
     }));
 
-        RAVANA.addCommand({ pattern: 'dnwg ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+        Nitross.addCommand({ pattern: 'dnwg ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -478,28 +478,28 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: false, desc: dnpack}, (async (mess
 
     }));
 
-        RAVANA.addCommand({ pattern: 'dnjuvs ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+        Nitross.addCommand({ pattern: 'dnjuvs ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
-        var ttinullimage = await axios.get(`https://dapuhy-api.herokuapp.com/api/ephoto/juventus?text1=RAVANA&text2=${encodeURIComponent(match[1])}&apikey=ChLCG1FaXibNn1B`, { responseType: 'arraybuffer' })
+        var ttinullimage = await axios.get(`https://dapuhy-api.herokuapp.com/api/ephoto/juventus?text1=Nitross&text2=${encodeURIComponent(match[1])}&apikey=ChLCG1FaXibNn1B`, { responseType: 'arraybuffer' })
 
         await message.sendMessage(Buffer.from(ttinullimage.data), MessageType.image, { mimetype: Mimetype.jpg, caption: Config.CP_TEXT})
 
     }));
 
-        RAVANA.addCommand({ pattern: 'dnpals ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+        Nitross.addCommand({ pattern: 'dnpals ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
-        var ttinullimage = await axios.get(`https://dapuhy-api.herokuapp.com/api/ephoto/paulscholes?text1=RAVANAa&text2=${encodeURIComponent(match[1])}&apikey=ChLCG1FaXibNn1B`, { responseType: 'arraybuffer' })
+        var ttinullimage = await axios.get(`https://dapuhy-api.herokuapp.com/api/ephoto/paulscholes?text1=Nitrossa&text2=${encodeURIComponent(match[1])}&apikey=ChLCG1FaXibNn1B`, { responseType: 'arraybuffer' })
 
         await message.sendMessage(Buffer.from(ttinullimage.data), MessageType.image, { mimetype: Mimetype.jpg, caption: Config.CP_TEXT})
 
     }));
 
 
-        RAVANA.addCommand({ pattern: 'dndmb ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+        Nitross.addCommand({ pattern: 'dndmb ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -509,7 +509,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: false, desc: dnpack}, (async (mess
 
     }));
 
-         RAVANA.addCommand({ pattern: 'dnnm ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+         Nitross.addCommand({ pattern: 'dnnm ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -519,17 +519,17 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: false, desc: dnpack}, (async (mess
 
     }));
 
-         RAVANA.addCommand({ pattern: 'dnpf ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+         Nitross.addCommand({ pattern: 'dnpf ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
-        var ttinullimage = await axios.get(`https://dapuhy-api.herokuapp.com/api/photofunia/arrowsigns?text1=RAVANA&text2=${encodeURIComponent(match[1])}&apikey=ChLCG1FaXibNn1B`, { responseType: 'arraybuffer' })
+        var ttinullimage = await axios.get(`https://dapuhy-api.herokuapp.com/api/photofunia/arrowsigns?text1=Nitross&text2=${encodeURIComponent(match[1])}&apikey=ChLCG1FaXibNn1B`, { responseType: 'arraybuffer' })
 
         await message.sendMessage(Buffer.from(ttinullimage.data), MessageType.image, { mimetype: Mimetype.jpg, caption: Config.CP_TEXT})
 
     }));
     
-        RAVANA.addCommand({ pattern: 'dnhad ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+        Nitross.addCommand({ pattern: 'dnhad ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -539,7 +539,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: false, desc: dnpack}, (async (mess
 
     }));
 
-         RAVANA.addCommand({ pattern: 'dnh2ad ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+         Nitross.addCommand({ pattern: 'dnh2ad ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -549,7 +549,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: false, desc: dnpack}, (async (mess
 
     }));
 
-         RAVANA.addCommand({ pattern: 'dnad ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+         Nitross.addCommand({ pattern: 'dnad ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -559,7 +559,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: false, desc: dnpack}, (async (mess
 
     }));
 
-           RAVANA.addCommand({ pattern: 'dnrb ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+           Nitross.addCommand({ pattern: 'dnrb ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -569,7 +569,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: false, desc: dnpack}, (async (mess
 
     }));
 
-          RAVANA.addCommand({ pattern: 'dnbt ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+          Nitross.addCommand({ pattern: 'dnbt ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -580,7 +580,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: false, desc: dnpack}, (async (mess
     }));    
 
 
-           RAVANA.addCommand({ pattern: 'dnsn ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+           Nitross.addCommand({ pattern: 'dnsn ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -591,7 +591,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: false, desc: dnpack}, (async (mess
     }));  
 
 
-          RAVANA.addCommand({ pattern: 'dnst ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+          Nitross.addCommand({ pattern: 'dnst ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -602,7 +602,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: false, desc: dnpack}, (async (mess
     }));  
 
 
-         RAVANA.addCommand({ pattern: 'dnbc ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+         Nitross.addCommand({ pattern: 'dnbc ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -613,7 +613,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: false, desc: dnpack}, (async (mess
     }));
 
 
-       RAVANA.addCommand({ pattern: 'dngb ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+       Nitross.addCommand({ pattern: 'dngb ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -623,7 +623,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: false, desc: dnpack}, (async (mess
 
     }));
 
-     RAVANA.addCommand({ pattern: 'dnw3d ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+     Nitross.addCommand({ pattern: 'dnw3d ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -633,7 +633,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: false, desc: dnpack}, (async (mess
 
     }));
 
-     RAVANA.addCommand({ pattern: 'dnglow ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+     Nitross.addCommand({ pattern: 'dnglow ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -643,7 +643,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: false, desc: dnpack}, (async (mess
 
     }));
 
-     RAVANA.addCommand({ pattern: 'dnpm ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+     Nitross.addCommand({ pattern: 'dnpm ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -653,7 +653,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: false, desc: dnpack}, (async (mess
 
     }));
 
-     RAVANA.addCommand({ pattern: 'dnc3d ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+     Nitross.addCommand({ pattern: 'dnc3d ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -663,7 +663,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: false, desc: dnpack}, (async (mess
 
     }));
 
-     RAVANA.addCommand({ pattern: 'dngrb ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+     Nitross.addCommand({ pattern: 'dngrb ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -673,7 +673,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: false, desc: dnpack}, (async (mess
 
     }));
 
-     RAVANA.addCommand({ pattern: 'dnhm ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+     Nitross.addCommand({ pattern: 'dnhm ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -683,7 +683,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: false, desc: dnpack}, (async (mess
 
     }));
 
-     RAVANA.addCommand({ pattern: 'dnmb2 ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+     Nitross.addCommand({ pattern: 'dnmb2 ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -693,7 +693,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: false, desc: dnpack}, (async (mess
 
     }));
 
-     RAVANA.addCommand({ pattern: 'dncl ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+     Nitross.addCommand({ pattern: 'dncl ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 
@@ -703,7 +703,7 @@ RAVANA.addCommand({pattern: 'dnpack', fromMe: false, desc: dnpack}, (async (mess
 
     }));
 
-     RAVANA.addCommand({ pattern: 'dnwc ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+     Nitross.addCommand({ pattern: 'dnwc ?(.*)', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
         if (match[1] === '') return await message.sendMessage(lol);
 

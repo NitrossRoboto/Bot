@@ -1,25 +1,22 @@
-/* # Exclusively from RAVANA Coded by Budy X modifi by HACKER RAVANA 
-*/
-
-const RAVANA = require('../events');
+const Nitross = require('../events');
 const { MessageType, MessageOptions, Mimetype } = require('@adiwajshing/baileys');
 const fs = require('fs');
 const axios = require('axios');
 const Config = require('../config');
-const lib = "RAVANA LIBRARY"; 
+const lib = "Nitross LIBRARY"; 
 
 
 if (Config.WORKTYPE == 'private') {
 
-     RAVANA.addCommand({ pattern: 'library ?(.*)', fromMe: true, desc: lib}, (async (message, match) => {
+     Nitross.addCommand({ pattern: 'library ?(.*)', fromMe: true, desc: lib}, (async (message, match) => {
 
-        await message.sendMessage("*╔═▣═══❖⦁⦁⦁💢⦁⦁⦁❖═══▣═╗*\n*║  *RAVANA LIBRARY*  ║\n*╚═══❖═══▣ ╩ ▣════❖═══╝*\n\n\n🔷java පිලිබද.\n\n.pdfjavan\n🔷javaScript පිලිබද.\n\n.pdfjs\n🔷HTML පිලිබද.\n\n.pdfhtml\n🔷Arduno පිලිබද.\n\n.pdfarduno\n🔷c# පිලිබද.\n\n.pdfcsh\n🔷c++ පිලිබද.\n\n.pdfcplus\n🔷Microbit පිලිබද.\n\n.pdfmicrobit\n🔷PHP පිලිබද.\n\n.pdfphp\n🔷Android studio පිලිබද.\n\n.pdfas\n\n🔷MicroController පිලිබද.\n\n.pdfmc\n\n\n\nපොත් කියවා දැනුම ලබමු🥰");    
+        await message.sendMessage("*╔═▣═══❖⦁⦁⦁💢⦁⦁⦁❖═══▣═╗*\n*║  *Education LIBRARY*  ║\n*╚═══❖═══▣ ╩ ▣════❖═══╝*\n\n\n🔷java පිලිබද.\n\n.pdfjavan\n🔷javaScript පිලිබද.\n\n.pdfjs\n🔷HTML පිලිබද.\n\n.pdfhtml\n🔷Arduno පිලිබද.\n\n.pdfarduno\n🔷c# පිලිබද.\n\n.pdfcsh\n🔷c++ පිලිබද.\n\n.pdfcplus\n🔷Microbit පිලිබද.\n\n.pdfmicrobit\n🔷PHP පිලිබද.\n\n.pdfphp\n🔷Android studio පිලිබද.\n\n.pdfas\n\n🔷MicroController පිලිබද.\n\n.pdfmc\n\n\n\nපොත් කියවා දැනුම ලබමු🥰");    
 
     }));
 
 //java books
 
-     RAVANA.addCommand({ pattern: 'pdfjava', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+     Nitross.addCommand({ pattern: 'pdfjava', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
         var webimage = await axios.get(`https://netfiletolink.herokuapp.com/41409`, { responseType: 'arraybuffer' })
 
@@ -27,7 +24,7 @@ if (Config.WORKTYPE == 'private') {
 
     }));
 
-    RAVANA.addCommand({ pattern: 'pdfjava', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+    Nitross.addCommand({ pattern: 'pdfjava', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
         var webimage = await axios.get(`https://netfiletolink.herokuapp.com/44218`, { responseType: 'arraybuffer' })
 
@@ -35,7 +32,7 @@ if (Config.WORKTYPE == 'private') {
 
     }));
 
-    RAVANA.addCommand({ pattern: 'pdfjava', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+    Nitross.addCommand({ pattern: 'pdfjava', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
         var webimage = await axios.get(`https://netfiletolink.herokuapp.com/44220`, { responseType: 'arraybuffer' })
 
@@ -45,7 +42,7 @@ if (Config.WORKTYPE == 'private') {
 
 //java script
 
-    RAVANA.addCommand({ pattern: 'pdfjs', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+    Nitross.addCommand({ pattern: 'pdfjs', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
         var webimage = await axios.get(`https://netfiletolink.herokuapp.com/44216`, { responseType: 'arraybuffer' })
 
@@ -55,7 +52,7 @@ if (Config.WORKTYPE == 'private') {
 
 //HTML
 
-RAVANA.addCommand({ pattern: 'pdfhtml', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({ pattern: 'pdfhtml', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
     var webimage = await axios.get(`https://netfiletolink.herokuapp.com/44224`, { responseType: 'arraybuffer' })
 
@@ -65,7 +62,7 @@ RAVANA.addCommand({ pattern: 'pdfhtml', fromMe: true,dontAddCommandList: true}, 
 
 //Arduno
 
-RAVANA.addCommand({ pattern: 'pdfarduno', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({ pattern: 'pdfarduno', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
     var webimage = await axios.get(`https://netfiletolink.herokuapp.com/44236`, { responseType: 'arraybuffer' })
 
@@ -73,7 +70,7 @@ RAVANA.addCommand({ pattern: 'pdfarduno', fromMe: true,dontAddCommandList: true}
 
 }));
 
-RAVANA.addCommand({ pattern: 'pdfarduno', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({ pattern: 'pdfarduno', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
     var webimage = await axios.get(`https://netfiletolink.herokuapp.com/44237`, { responseType: 'arraybuffer' })
 
@@ -83,7 +80,7 @@ RAVANA.addCommand({ pattern: 'pdfarduno', fromMe: true,dontAddCommandList: true}
 
 //c#
 
-RAVANA.addCommand({ pattern: 'pdfcsh', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({ pattern: 'pdfcsh', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
     var webimage = await axios.get(`https://netfiletolink.herokuapp.com/44242`, { responseType: 'arraybuffer' })
 
@@ -93,7 +90,7 @@ RAVANA.addCommand({ pattern: 'pdfcsh', fromMe: true,dontAddCommandList: true}, (
 
 //c++
 
-RAVANA.addCommand({ pattern: 'pdfcplus', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({ pattern: 'pdfcplus', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
     var webimage = await axios.get(`https://netfiletolink.herokuapp.com/44247`, { responseType: 'arraybuffer' })
 
@@ -103,7 +100,7 @@ RAVANA.addCommand({ pattern: 'pdfcplus', fromMe: true,dontAddCommandList: true},
 
 //Microbit
 
-RAVANA.addCommand({ pattern: 'pdfmicrobit', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({ pattern: 'pdfmicrobit', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
     var webimage = await axios.get(`https://netfiletolink.herokuapp.com/44257`, { responseType: 'arraybuffer' })
 
@@ -113,7 +110,7 @@ RAVANA.addCommand({ pattern: 'pdfmicrobit', fromMe: true,dontAddCommandList: tru
 
 //PHP
 
-RAVANA.addCommand({ pattern: 'pdfphp', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({ pattern: 'pdfphp', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
     var webimage = await axios.get(`https://netfiletolink.herokuapp.com/44272`, { responseType: 'arraybuffer' })
 
@@ -123,7 +120,7 @@ RAVANA.addCommand({ pattern: 'pdfphp', fromMe: true,dontAddCommandList: true}, (
 
 //Android studio
 
-RAVANA.addCommand({ pattern: 'pdfas', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({ pattern: 'pdfas', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
     var webimage = await axios.get(`https://netfiletolink.herokuapp.com/44278`, { responseType: 'arraybuffer' })
 
@@ -131,7 +128,7 @@ RAVANA.addCommand({ pattern: 'pdfas', fromMe: true,dontAddCommandList: true}, (a
 
 }));
 
-RAVANA.addCommand({ pattern: 'pdfas', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({ pattern: 'pdfas', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
     var webimage = await axios.get(`https://netfiletolink.herokuapp.com/44279`, { responseType: 'arraybuffer' })
 
@@ -141,7 +138,7 @@ RAVANA.addCommand({ pattern: 'pdfas', fromMe: true,dontAddCommandList: true}, (a
 
 //Microcontroller
 
-RAVANA.addCommand({ pattern: 'pdfmc', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({ pattern: 'pdfmc', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
     var webimage = await axios.get(`https://netfiletolink.herokuapp.com/44282`, { responseType: 'arraybuffer' })
 
@@ -149,7 +146,7 @@ RAVANA.addCommand({ pattern: 'pdfmc', fromMe: true,dontAddCommandList: true}, (a
 
 }));
 
-RAVANA.addCommand({ pattern: 'pdfmc', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({ pattern: 'pdfmc', fromMe: true,dontAddCommandList: true}, (async (message, match) => {
 
     var webimage = await axios.get(`https://netfiletolink.herokuapp.com/44283`, { responseType: 'arraybuffer' })
 
@@ -161,15 +158,15 @@ RAVANA.addCommand({ pattern: 'pdfmc', fromMe: true,dontAddCommandList: true}, (a
 
 else if (Config.WORKTYPE == 'public') {
 
-    RAVANA.addCommand({ pattern: 'library ?(.*)', fromMe: false,desc: lib}, (async (message, match) => {
+    Nitross.addCommand({ pattern: 'library ?(.*)', fromMe: false,desc: lib}, (async (message, match) => {
 
-await message.sendMessage("*╔═▣═══❖⦁⦁⦁💢⦁⦁⦁❖═══▣═╗*\n*║  *RAVANA LIBRARY*  ║\n*╚═══❖═══▣ ╩ ▣════❖═══╝*\n\n\n🔷java පිලිබද.\n\n.pdfjavan\n🔷javaScript පිලිබද.\n\n.pdfjs\n🔷HTML පිලිබද.\n\n.pdfhtml\n🔷Arduno පිලිබද.\n\n.pdfarduno\n🔷c# පිලිබද.\n\n.pdfcsh\n🔷c++ පිලිබද.\n\n.pdfcplus\n🔷Microbit පිලිබද.\n\n.pdfmicrobit\n🔷PHP පිලිබද.\n\n.pdfphp\n🔷Android studio පිලිබද.\n\n.pdfas\n\n🔷MicroController පිලිබද.\n\n.pdfmc\n\n\n\nපොත් කියවා දැනුම ලබමු🥰");    
+await message.sendMessage("*╔═▣═══❖⦁⦁⦁💢⦁⦁⦁❖═══▣═╗*\n*║  *Nitross LIBRARY*  ║\n*╚═══❖═══▣ ╩ ▣════❖═══╝*\n\n\n🔷java පිලිබද.\n\n.pdfjavan\n🔷javaScript පිලිබද.\n\n.pdfjs\n🔷HTML පිලිබද.\n\n.pdfhtml\n🔷Arduno පිලිබද.\n\n.pdfarduno\n🔷c# පිලිබද.\n\n.pdfcsh\n🔷c++ පිලිබද.\n\n.pdfcplus\n🔷Microbit පිලිබද.\n\n.pdfmicrobit\n🔷PHP පිලිබද.\n\n.pdfphp\n🔷Android studio පිලිබද.\n\n.pdfas\n\n🔷MicroController පිලිබද.\n\n.pdfmc\n\n\n\nපොත් කියවා දැනුම ලබමු🥰");    
 
 }));
 
    //java books
 
-   RAVANA.addCommand({ pattern: 'pdfjava', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+   Nitross.addCommand({ pattern: 'pdfjava', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
     var webimage = await axios.get(`https://netfiletolink.herokuapp.com/41409`, { responseType: 'arraybuffer' })
 
@@ -177,7 +174,7 @@ await message.sendMessage("*╔═▣═══❖⦁⦁⦁💢⦁⦁⦁❖══
 
 }));
 
-RAVANA.addCommand({ pattern: 'pdfjava', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({ pattern: 'pdfjava', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
     var webimage = await axios.get(`https://netfiletolink.herokuapp.com/44218`, { responseType: 'arraybuffer' })
 
@@ -185,7 +182,7 @@ RAVANA.addCommand({ pattern: 'pdfjava', fromMe: false,dontAddCommandList: true},
 
 }));
 
-RAVANA.addCommand({ pattern: 'pdfjava', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({ pattern: 'pdfjava', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
     var webimage = await axios.get(`https://netfiletolink.herokuapp.com/44220`, { responseType: 'arraybuffer' })
 
@@ -195,7 +192,7 @@ RAVANA.addCommand({ pattern: 'pdfjava', fromMe: false,dontAddCommandList: true},
 
 //java script
 
-RAVANA.addCommand({ pattern: 'pdfjs', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({ pattern: 'pdfjs', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
     var webimage = await axios.get(`https://netfiletolink.herokuapp.com/44216`, { responseType: 'arraybuffer' })
 
@@ -205,7 +202,7 @@ RAVANA.addCommand({ pattern: 'pdfjs', fromMe: false,dontAddCommandList: true}, (
 
 //HTML
 
-RAVANA.addCommand({ pattern: 'pdfhtml', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({ pattern: 'pdfhtml', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
 var webimage = await axios.get(`https://netfiletolink.herokuapp.com/44224`, { responseType: 'arraybuffer' })
 
@@ -215,7 +212,7 @@ await message.sendMessage(Buffer.from(webimage.data), MessageType.document, { mi
 
 //Arduno
 
-RAVANA.addCommand({ pattern: 'pdfarduno', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({ pattern: 'pdfarduno', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
 var webimage = await axios.get(`https://netfiletolink.herokuapp.com/44236`, { responseType: 'arraybuffer' })
 
@@ -223,7 +220,7 @@ await message.sendMessage(Buffer.from(webimage.data), MessageType.document, { mi
 
 }));
 
-RAVANA.addCommand({ pattern: 'pdfarduno', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({ pattern: 'pdfarduno', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
 var webimage = await axios.get(`https://netfiletolink.herokuapp.com/44237`, { responseType: 'arraybuffer' })
 
@@ -233,7 +230,7 @@ await message.sendMessage(Buffer.from(webimage.data), MessageType.document, { mi
 
 //c#
 
-RAVANA.addCommand({ pattern: 'pdfcsh', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({ pattern: 'pdfcsh', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
 var webimage = await axios.get(`https://netfiletolink.herokuapp.com/44242`, { responseType: 'arraybuffer' })
 
@@ -243,7 +240,7 @@ await message.sendMessage(Buffer.from(webimage.data), MessageType.document, { mi
 
 //c++
 
-RAVANA.addCommand({ pattern: 'pdfcplus', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({ pattern: 'pdfcplus', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
 var webimage = await axios.get(`https://netfiletolink.herokuapp.com/44247`, { responseType: 'arraybuffer' })
 
@@ -253,7 +250,7 @@ await message.sendMessage(Buffer.from(webimage.data), MessageType.document, { mi
 
 //Microbit
 
-RAVANA.addCommand({ pattern: 'pdfmicrobit', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({ pattern: 'pdfmicrobit', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
 var webimage = await axios.get(`https://netfiletolink.herokuapp.com/44257`, { responseType: 'arraybuffer' })
 
@@ -263,7 +260,7 @@ await message.sendMessage(Buffer.from(webimage.data), MessageType.document, { mi
 
 //PHP
 
-RAVANA.addCommand({ pattern: 'pdfphp', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({ pattern: 'pdfphp', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
 var webimage = await axios.get(`https://netfiletolink.herokuapp.com/44272`, { responseType: 'arraybuffer' })
 
@@ -273,7 +270,7 @@ await message.sendMessage(Buffer.from(webimage.data), MessageType.document, { mi
 
 //Android studio
 
-RAVANA.addCommand({ pattern: 'pdfas', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({ pattern: 'pdfas', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
 var webimage = await axios.get(`https://netfiletolink.herokuapp.com/44278`, { responseType: 'arraybuffer' })
 
@@ -281,7 +278,7 @@ await message.sendMessage(Buffer.from(webimage.data), MessageType.document, { mi
 
 }));
 
-RAVANA.addCommand({ pattern: 'pdfas', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({ pattern: 'pdfas', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
 var webimage = await axios.get(`https://netfiletolink.herokuapp.com/44279`, { responseType: 'arraybuffer' })
 
@@ -291,7 +288,7 @@ await message.sendMessage(Buffer.from(webimage.data), MessageType.document, { mi
 
 //Microcontroller
 
-RAVANA.addCommand({ pattern: 'pdfmc', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({ pattern: 'pdfmc', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
 var webimage = await axios.get(`https://netfiletolink.herokuapp.com/44282`, { responseType: 'arraybuffer' })
 
@@ -299,7 +296,7 @@ await message.sendMessage(Buffer.from(webimage.data), MessageType.document, { mi
 
 }));
 
-RAVANA.addCommand({ pattern: 'pdfmc', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({ pattern: 'pdfmc', fromMe: false,dontAddCommandList: true}, (async (message, match) => {
 
 var webimage = await axios.get(`https://netfiletolink.herokuapp.com/44283`, { responseType: 'arraybuffer' })
 

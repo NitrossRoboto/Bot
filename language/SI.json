@@ -2,9 +2,9 @@
     "__ASENAJSON__": true,
     "LANGUAGE": "Sinhala",
     "LANGCODE": "si",
-    "AUTHOR": "RAVANA-SL-TEAM",
+    "AUTHOR": "Nitross Bots",
     "STRINGS": {
-        "__RavanaBot": {
+        "_nitross": {
             "EXAMPLE": ":- ",
             "COMMAND": "❱❱",
             "DESC": "❱",
@@ -35,7 +35,7 @@
             "BANNED": "*සමාවන්න , ඔබව මෙම ගෘපයෙන් ඉවත් කිරීම පිලිබදව!*\n\n\n",
             "GIVE_ME_USER": "\n\n\n*මට පුද්ගලයෙකු ලබා දෙන්න 😈*\n\n\n",
             "ADD_DESC": "පුද්ගලයෙකු whatsapp group වෙත ඇතුලත් කිරීම*",
-            "ADDED": "*අපගේ whatsapp ගෘපය වෙත ඔබව සාදරයෙන් පිලිගන්නවා ( 🌹 )*\n*_මම SL RAVANA BOT_*",
+            "ADDED": "*අපගේ whatsapp ගෘපය වෙත ඔබව සාදරයෙන් පිලිගන්නවා ( 🌹 )*\n*_මම SL Nitross BOT_*",
             "ALREADY_PROMOTED": "\n\n\n```ඔහු/ඇය දැනටමත් පරිපාලකයෙකු වේ 🌝```\n\n\n",
             "PLKADMIN": ".report you are not admin \n\n 🇩​🇴​🇳​🇹​ 🇹​🇷​🇾​ 🇦​🇬​🇦​🇮​🇳​, 🇮​🇫​ 🇾​🇴​🇺​ 🇹​🇷​🇾​ 🇾​🇴​🇺​ 🇼​🇮​🇱​🇱​ 🇧​🇪​ 🇷​🇪​🇲​🇴​🇻​🇪​🇩​ 🇧​🇾​ 🇦​🇩​🇲​🇮​🇳​🇸​",
             "PROMOTED": "*> සුබපැතුම , ඔබ දැන් මෙමෙ Whatsapp ගෘපයේ Admin කෙනෙකු වේ 😎____*\n\n\n",
@@ -242,13 +242,13 @@
         "updater": {
             "UPDATER_DESC": "Checks the update.",
             "UPDATE": "*Your bot is completely up-to-date!*",
-            "NEW_UPDATE": "*New update available for Bot!*\n\nChanges:\n```",
+            "NEW_UPDATE": "*New update available for Bot!*\n\nChanges:\n",
             "UPDATE_NOW_DESC": "It makes updates.",
             "UPDATING": "Updating..�🤴♂️",
             "INVALID_HEROKU": "*❌ Your Heroku app name or api key wrong!*",
             "UPDATED": "*✅  Updated!*",
             "UPDATED_LOCAL": "*✅ Updated!*",
-            "AFTER_UPDATE": "*RAVANA Restarting !*",
+            "AFTER_UPDATE": "*Nitross Restarting !*",
             "IN_AF": "*Please check* ```HEROKU_APP_NAME``` *and* ```app name``` *They must be same.*\n*If these two values ​​are the same, please restore* ```HEROKU_API_KEY```\n\n_To access these settings, use Heroku >> App >> Settings >> Reavel Config Vars_\n_To renew your API key, follow these steps, Heroku >> Account >> API Key then replace old api key in config vars._"
         },
         "whois": {
@@ -291,7 +291,7 @@
             "APK_MOD": "It sends some special mod apks",
             "CARBON_DESC": "It sends carbon picture",
             "TEMP": "Temperature",
-            "BOT_DESC": "Chat with Ravana.\n Use .molu <message>",
+            "BOT_DESC": "Chat with Nitross.\n Use .molu <message>",
             "BOT": ":",
             "DEVICE": "It shows the details of device",
             "DESC": "Description",

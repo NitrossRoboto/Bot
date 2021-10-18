@@ -1,8 +1,5 @@
-//https://github.com/RAVANA-SL/slRavana
-
-
 const {MessageType, GroupSettingChange, ChatModification, WAConnectionTest} = require('@adiwajshing/baileys');
-const Raone = require('../events');
+const Nitross = require('../events');
 const Config = require('../config');
 
 const Language = require('../language');
@@ -18,14 +15,14 @@ async function checkImAdmin(message, user = message.client.user.jid) {
     return sonuc.includes(true);
 }
 
-Raone.addCommand({pattern: 'clear', fromMe: true, desc: END, dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({pattern: 'clear', fromMe: true, desc: END, dontAddCommandList: true}, (async (message, match) => {
 
-    await message.sendMessage('```cleaning chat by nitross...```');
+    await message.sendMessage('```🗑️ Cleaning Chat By Nitross...```');
     await message.client.modifyChat (message.jid, ChatModification.delete);
-    await message.sendMessage('```🏳 Chat cleared By Nitross 🏳```');
+    await message.sendMessage('```✅ Chat cleared By Nitross```');
 }));
 
-Raone.addCommand({pattern: 'clean ?(.*)', fromMe: true, desc: END, dontAddCommandList: true}, (async (message, match) => {
+Nitross.addCommand({pattern: 'clean ?(.*)', fromMe: true, desc: END, dontAddCommandList: true}, (async (message, match) => {
 
     await message.sendMessage('Chat clearing...');   
     await message.client.modifyChat (match[1] == '' ? message.jid : match [1], ChatModification.delete);

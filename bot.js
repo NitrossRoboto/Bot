@@ -1,4 +1,4 @@
-//https://github.com/RAVANA-SL/slRavana
+// https://github.com/NitrossRoboto/Bot //
 
 const fs = require("fs");
 const path = require("path");
@@ -6,14 +6,14 @@ const events = require("./events");
 const chalk = require('chalk');
 const config = require('./config');
 const {WAConnection, MessageOptions, MessageType, Mimetype, Presence} = require('@adiwajshing/baileys');
-const {Message, StringSession, Image, Video} = require('./RaoneBot/');
+const {Message, StringSession, Image, Video} = require('./NitrossBot/');
 const { DataTypes } = require('sequelize');
 const { getMessage } = require("./plugins/sql/greetings");
 const axios = require('axios');
 const got = require('got');
 
 // Sql
-const RaOneDB = config.DATABASE.define('4.0', {
+const NitrossDB = config.DATABASE.define('4.0', {
     info: {
       type: DataTypes.STRING,
       allowNull: false
@@ -54,9 +54,9 @@ Array.prototype.remove = function() {
     return this;
 };
 
-async function Ravana () {
+async function Nitross () {
     await config.DATABASE.sync();
-    var StrSes_Db = await RaOneDB.findAll({
+    var StrSes_Db = await NitrossDB.findAll({
         where: {
           info: 'StringSession'
         }
@@ -84,7 +84,7 @@ async function Ravana () {
 
         const authInfo = conn.base64EncodedAuthInfo();
         if (StrSes_Db.length < 1) {
-            await RaOneDB.create({ info: "StringSession", value: Session.createStringSession(authInfo) });
+            await NitrossDB.create({ info: "StringSession", value: Session.createStringSession(authInfo) });
         } else {
             await StrSes_Db[0].update({ value: Session.createStringSession(authInfo) });
         }
@@ -94,7 +94,7 @@ async function Ravana () {
         console.log(`${chalk.green.bold('Whats')}${chalk.blue.bold('Asena')}
 ${chalk.white.bold('Version:')} ${chalk.red.bold(config.VERSION)}
 
-${chalk.blue.italic('⭕ Ravana WhatsApp වෙත සම්බන්ධ වෙමින් </> කරුණාකර රැඳී සිටින්න ❕\n⭕ Ravana Connecting to WhatsApp</> Please Wait ❕\n\n')}`);
+${chalk.blue.italic('⭕ Nitross Roboto, WhatsApp වෙත සම්බන්ධ වෙමින් </> කරුණාකර රැඳී සිටින්න ❕\n⭕ NitrossRoboto Connecting to WhatsApp</> Please Wait ❕\n\n')}`);
     });
     
 
@@ -130,14 +130,14 @@ ${chalk.blue.italic('⭕ Ravana WhatsApp වෙත සම්බන්ධ වෙ�
         });
 
         console.log(
-            chalk.green.bold('🤴 ප්ලගීන install කරන ලදි\n6️⃣ Plugins Installed ✅ \n\n🤴 රාවණා බොට් දැන් වැඩකරනු ලැබේ\n💌 Ravana Bot Now Working 🪀‍\n📌 කරුණාකර ඔබේ whatsapp ගිනුම පරික්ෂා කරන්න\n📌 Please check your whatsapp account\n\n')
+            chalk.green.bold('🤴 ප්ලගීන install කරන ලදි\n6️⃣ Plugins Installed ✅ \n\n🤴 නයිට්‍රස් බොට් දැන් වැඩකරනු ලැබේ\n💌 Nitross Bot Is Working... 🪀‍\n📌 කරුණාකර ඔබේ whatsapp ගිනුම පරික්ෂා කරන්න\n📌 Please check your whatsapp account\n\n')
         );
 
         if (config.LANG == 'SI') {
-            await conn.sendMessage(conn.user.jid, fs.readFileSync("./rimg/r2.jpg"), MessageType.image, { caption: `☮ Ravana Bot Now Working 💌\n\n👋 Hay ${conn.user.name} welcome to Ravana bot 💗🙌\n\n🔮 _කරුණාකර මෙහි ප්ලගීන උත්සාහ නොකරන්න. මෙය ඔබගේ ලොග් අංකයයි. ⚙ ඔබට ඕනෑම චැට් එකක විධාන උත්සාහ කළ හැකිය :)_\n\n*☮ RAVANA Bot  භාවිතා කිරීම ගැන ස්තුතියි 💌*`});
+            await conn.sendMessage(conn.user.jid, fs.readFileSync("./media/images/main.jpg"), MessageType.image, { caption: `☮ Nitross Bot Now Working 💌\n\n👋 Hay ${conn.user.name} welcome to Nitross Bot 💗🙌\n\n🔮 _කරුණාකර මෙහි ප්ලගීන උත්සාහ නොකරන්න. මෙය ඔබගේ ලොග් අංකයයි. ⚙ ඔබට ඕනෑම චැට් එකක විධාන උත්සාහ කළ හැකිය :)_\n\n*☮ Nitross Bot  භාවිතා කිරීම ගැන ස්තුතියි 💌*`});
             
         } else {
-            await conn.sendMessage(conn.user.jid, fs.readFileSync("./rimg/r2.jpg"), MessageType.image, { caption: `☮ Ravana Bot Now Working 💌\n\n👋 Hay ${conn.user.name} welcome to Ravana bot 💗🙌\n\n🔮 _Please do not try plugins here. This is your login number. ⚙You can try the command in any chat :)_\n\n*💗 Thank You For Using Ravana Bot 💌`});
+            await conn.sendMessage(conn.user.jid, fs.readFileSync(".//media/images/main.jpg"), MessageType.image, { caption: `☮ Nitross Bot Now Working 💌\n\n👋 Hay ${conn.user.name} Welcome to Nitross Bot 💗🙌\n\n🔮 _Please do not try plugins here. This is your login number. ⚙You can try the command in any chat :)_\n\n*💗 Thank You For Using Nitross Bot 💌`});
         }
     });
     
@@ -385,10 +385,10 @@ ${chalk.blue.italic('⭕ Ravana WhatsApp වෙත සම්බන්ධ වෙ�
                             await command.function(whats, match);
                         } catch (error) {
                             if (config.LANG == 'SI') {
-                                await conn.sendMessage(conn.user.jid, fs.readFileSync("./rimg/Rs.jpg"), MessageType.image, { caption: '*⚕️  රාවණා බොට්හි දෝෂයක් සිදුවී ඇත  ⚕️*\n\n*රාවණා බොට්හි දෝෂයක් සිදුවී ඇත කරුණාකර එය අපගේ කණ්ඩායමට යොමු කරන්න* : *_https://chat.whatsapp.com/Fo65f7TcUjx9FUJlFCSZks*\n\n*දෝෂය:* ```' + error + '```\n\n' });
+                                await conn.sendMessage(conn.user.jid, fs.readFileSync("./media/images/logo.jpg"), MessageType.image, { caption: '*⚕️ දෝෂයක් සිදුවී ඇත  ⚕️*\n\n*දෝෂය:* ```' + error + '```\n\n' });
                                 
                             } else {
-                                await conn.sendMessage(conn.user.jid, fs.readFileSync("./rimg/Rs.jpg"), MessageType.image, { caption: '*⚕️ ERROR ANALYSIS RAVANA BOT ⚕️*\n\n*An error has occurred in the Ravana bot. Please refer it to our team* : *_https://chat.whatsapp.com/Fo65f7TcUjx9FUJlFCSZks*\n\n*error:* ```' + error + '```\n\n' });
+                                await conn.sendMessage(conn.user.jid, fs.readFileSync("./media/images/logo.jpg"), MessageType.image, { caption: '*⚕️ ERROR ANALYSIS Nitross Bot ⚕️* \n\n*error:* ```' + error + '```\n\n' });
                             }
                         }
                     }
@@ -412,4 +412,4 @@ ${chalk.blue.italic('⭕ Ravana WhatsApp වෙත සම්බන්ධ වෙ�
     }
 }
 
-Ravana();
+Nitross();

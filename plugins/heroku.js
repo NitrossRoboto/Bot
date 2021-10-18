@@ -1,6 +1,4 @@
-//https://github.com/RAVANA-SL/slRavana
-
-const Raone = require('../events');
+const Nitross = require('../events');
 const Config = require('../config');
 const Heroku = require('heroku-client');
 const {secondsToHms} = require('./afk');
@@ -19,7 +17,7 @@ const heroku = new Heroku({
 
 let baseURI = '/apps/' + Config.HEROKU.APP_NAME;
 
-Raone.addCommand({pattern: 'degis ?(.*)', fromMe: true, dontAddCommandList: true, desc: Lang.DEGİS_DESC}, (async (message, match) => {
+Nitross.addCommand({pattern: 'degis ?(.*)', fromMe: true, dontAddCommandList: true, desc: Lang.DEGİS_DESC}, (async (message, match) => {
 
     if (match[1] == '') {
         return await message.client.sendMessage(message.jid, Lang.DEGİS_NONE, MessageType.text); 
@@ -153,7 +151,7 @@ Raone.addCommand({pattern: 'degis ?(.*)', fromMe: true, dontAddCommandList: true
 }));
 
 
-Raone.addCommand({pattern: 'restart$', fromMe: true, dontAddCommandList: true, desc: Lang.RESTART_DESC}, (async (message, match) => {
+Nitross.addCommand({pattern: 'restart$', fromMe: true, dontAddCommandList: true, desc: Lang.RESTART_DESC}, (async (message, match) => {
 
     await message.client.sendMessage(message.jid,Lang.RESTART_MSG, MessageType.text);
     console.log(baseURI);
@@ -162,7 +160,7 @@ Raone.addCommand({pattern: 'restart$', fromMe: true, dontAddCommandList: true, d
     });
 }));
 
-Raone.addCommand({pattern: 'shutdown$', fromMe: true, dontAddCommandList: true, desc: Lang.SHUTDOWN_DESC}, (async(message, match) => {
+Nitross.addCommand({pattern: 'shutdown$', fromMe: true, dontAddCommandList: true, desc: Lang.SHUTDOWN_DESC}, (async(message, match) => {
 
     await heroku.get(baseURI + '/formation').then(async (formation) => {
         forID = formation[0].id;
@@ -180,7 +178,7 @@ Raone.addCommand({pattern: 'shutdown$', fromMe: true, dontAddCommandList: true, 
 
 if (Config.WORKTYPE == 'private') {
 
-    Raone.addCommand({pattern: 'dyno$', fromMe: true, dontAddCommandList: true, desc: Lang.DYNO_DESC}, (async (message, match) => {
+    Nitross.addCommand({pattern: 'dyno$', fromMe: true, dontAddCommandList: true, desc: Lang.DYNO_DESC}, (async (message, match) => {
 
         heroku.get('/account').then(async (account) => {
             // have encountered some issues while calling this API via heroku-client
@@ -213,7 +211,7 @@ if (Config.WORKTYPE == 'private') {
 }
 else if (Config.WORKTYPE == 'public') {
 
-    Raone.addCommand({pattern: 'dyno$', fromMe: false, dontAddCommandList: true, desc: Lang.DYNO_DESC}, (async (message, match) => {
+    Nitross.addCommand({pattern: 'dyno$', fromMe: false, dontAddCommandList: true, desc: Lang.DYNO_DESC}, (async (message, match) => {
 
         heroku.get('/account').then(async (account) => {
             // have encountered some issues while calling this API via heroku-client
@@ -245,7 +243,7 @@ else if (Config.WORKTYPE == 'public') {
     }));
 }
 
-Raone.addCommand({pattern: 'setvar ?(.*)', fromMe: true, dontAddCommandList: true, desc: Lang.SETVAR_DESC}, (async(message, match) => {
+Nitross.addCommand({pattern: 'setvar ?(.*)', fromMe: true, dontAddCommandList: true, desc: Lang.SETVAR_DESC}, (async(message, match) => {
 
     if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.KEY_VAL_MISSING, MessageType.text);
 
@@ -661,7 +659,7 @@ Raone.addCommand({pattern: 'setvar ?(.*)', fromMe: true, dontAddCommandList: tru
 }));
 
 
-Raone.addCommand({pattern: 'delvar ?(.*)', fromMe: true, dontAddCommandList: true, desc: Lang.DELVAR_DESC}, (async (message, match) => {
+Nitross.addCommand({pattern: 'delvar ?(.*)', fromMe: true, dontAddCommandList: true, desc: Lang.DELVAR_DESC}, (async (message, match) => {
 
     if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.KEY_VAL_MISSING, MessageType.text);
     await heroku.get(baseURI + '/config-vars').then(async (vars) => {
@@ -683,7 +681,7 @@ Raone.addCommand({pattern: 'delvar ?(.*)', fromMe: true, dontAddCommandList: tru
 
 }));
 
-Raone.addCommand({pattern: 'getvar ?(.*)', fromMe: true, dontAddCommandList: true, desc: Lang.GETVAR_DESC}, (async (message, match) => {
+Nitross.addCommand({pattern: 'getvar ?(.*)', fromMe: true, dontAddCommandList: true, desc: Lang.GETVAR_DESC}, (async (message, match) => {
 
     if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.KEY_VAL_MISSING, MessageType.text);
     await heroku.get(baseURI + '/config-vars').then(async (vars) => {

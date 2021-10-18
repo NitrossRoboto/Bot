@@ -1,7 +1,4 @@
-//https://github.com/RAVANA-SL/slRavana
-
-
-const Raone = require('../events');
+const Nitross = require('../events');
 const {MessageType} = require('@adiwajshing/baileys');
 const got = require('got');
 const axios = require('axios');
@@ -13,7 +10,7 @@ const Lang = Language.getString('weather');
 
 if (config.WORKTYPE == 'private') {
 
-    Raone.addCommand({pattern: 'sweather ?(.*)', fromMe: true, desc: "Gives you the weekly interpretations of space weather observations provided by the Space Weather Research Center (SWRC) for a p."}, async (message, match) => {
+    Nitross.addCommand({pattern: 'sweather ?(.*)', fromMe: true, desc: "Gives you the weekly interpretations of space weather observations provided by the Space Weather Research Center (SWRC) for a p."}, async (message, match) => {
 	  if (match[1] === 'where is it?') return await message.reply("wait...");
 	  const url = `https://api.nasa.gov/DONKI/notifications?type=all&api_key=ccdRSkRerDoJHn2g36DGnJgyctfkGDml3ZzMWWxL`;
 	  try {
@@ -35,7 +32,7 @@ if (config.WORKTYPE == 'private') {
 	  }
   });
 
-    Raone.addCommand({pattern: 'compliment ?(.*)', fromMe: true, desc: Lang.CM_DESC}, async (message, match) => {
+    Nitross.addCommand({pattern: 'compliment ?(.*)', fromMe: true, desc: Lang.CM_DESC}, async (message, match) => {
 	  if (match[1] === 'xx') return await message.reply(Lang.NEED_LOCATIONA);
 	  const url = `https://complimentr.com/api`;
 	  try {
@@ -47,7 +44,7 @@ if (config.WORKTYPE == 'private') {
 	  }
   });
 
-    Raone.addCommand({pattern: 'happymod ?(.*)', fromMe: true, desc: Lang.HMODD_DESC, dontAddCommandList: true }, async (message, match) => {
+    Nitross.addCommand({pattern: 'happymod ?(.*)', fromMe: true, desc: Lang.HMODD_DESC, dontAddCommandList: true }, async (message, match) => {
 	  if (match[1] === '') return await message.reply(Lang.NEED_APPNAME);
 	  const url = `https://api.zeks.xyz/api/happymod?apikey=&q=${match[1]}&apikey=1hroZ3ju94h0PBjCNKsfhYaSuLs`;
 	  try {
@@ -62,7 +59,7 @@ if (config.WORKTYPE == 'private') {
 	  }
   });
 
-    Raone.addCommand({pattern: 'insult ?(.*)', fromMe: true, desc: Lang.EVINS_DESC}, async (message, match) => {
+    Nitross.addCommand({pattern: 'insult ?(.*)', fromMe: true, desc: Lang.EVINS_DESC}, async (message, match) => {
 	  if (match[1] === 'xx') return await message.reply(Lang.NEED_LOCATIONA);
 	  const url = `https://evilinsult.com/generate_insult.php?lang=en&type=json`;
 	  try {
@@ -74,7 +71,7 @@ if (config.WORKTYPE == 'private') {
 	  }
   });
 
-    Raone.addCommand({ pattern: 'movie ?(.*)', fromMe: true, desc: "Shows movie info." }, (async (message, match) => {
+    Nitross.addCommand({ pattern: 'movie ?(.*)', fromMe: true, desc: "Shows movie info." }, (async (message, match) => {
 	  if (match[1] === '') return await message.client.sendMessage(message.jid, '```Give me a name.```', MessageType.text, { quoted: message.data });
 	  let url = `http://www.omdbapi.com/?apikey=742b2d09&t=${match[1]}&plot=full`
 	  const response = await got(url);
@@ -101,7 +98,7 @@ if (config.WORKTYPE == 'private') {
 	  await message.client.sendMessage(message.jid, msg, MessageType.text, { quoted: message.data });
   }));
 
-    Raone.addCommand({pattern: 'joke ?(.*)', fromMe: false, desc: Lang.JOKE_DESC}, async (message, match) => {
+    Nitross.addCommand({pattern: 'joke ?(.*)', fromMe: false, desc: Lang.JOKE_DESC}, async (message, match) => {
 	  if (match[1] === 'xx') return await message.reply(Lang.NEED_LOCATIONA);
 	  const url = `https://official-joke-api.appspot.com/random_joke`;
 	  try {
@@ -115,7 +112,7 @@ if (config.WORKTYPE == 'private') {
   });
 
    
-    Raone.addCommand({pattern: 'owner', fromMe: true, desc: 'shows the detail of bot owner'}, (async (message, match) => {
+    Nitross.addCommand({pattern: 'owner', fromMe: true, desc: 'shows the detail of bot owner'}, (async (message, match) => {
 
         if (message.jid === '15369524516-1612300121@g.us') {
 
@@ -130,7 +127,7 @@ if (config.WORKTYPE == 'private') {
         }
     }));
 
-    Raone.addCommand({pattern: 'quote ?(.*)', fromMe: true, desc: Lang.QUOTE_DESC}, async (message, match) => {
+    Nitross.addCommand({pattern: 'quote ?(.*)', fromMe: true, desc: Lang.QUOTE_DESC}, async (message, match) => {
 	  if (match[1] === 'xx') return await message.reply(Lang.NEED_LOCATIONA);
 	  const url = `https://api.quotable.io/random`;
 	  try {
@@ -146,7 +143,7 @@ if (config.WORKTYPE == 'private') {
 }
 else if (config.WORKTYPE == 'public') {
 
-    Raone.addCommand({pattern: 'sweather ?(.*)', fromMe: true, desc: "Gives you the weekly interpretations of space weather observations provided by the Space Weather Research Center (SWRC) for a p."}, async (message, match) => {
+    Nitross.addCommand({pattern: 'sweather ?(.*)', fromMe: true, desc: "Gives you the weekly interpretations of space weather observations provided by the Space Weather Research Center (SWRC) for a p."}, async (message, match) => {
 	  if (match[1] === 'where is it?') return await message.reply("wait...");
 	  const url = `https://api.nasa.gov/DONKI/notifications?type=all&api_key=ccdRSkRerDoJHn2g36DGnJgyctfkGDml3ZzMWWxL`;
 	  try {
@@ -168,7 +165,7 @@ else if (config.WORKTYPE == 'public') {
 	  }
   });
 
-    Raone.addCommand({pattern: 'compliment ?(.*)', fromMe: false, desc: Lang.CM_DESC}, async (message, match) => {
+    Nitross.addCommand({pattern: 'compliment ?(.*)', fromMe: false, desc: Lang.CM_DESC}, async (message, match) => {
 	  if (match[1] === 'xx') return await message.reply(Lang.NEED_LOCATIONA);
 	  const url = `https://complimentr.com/api`;
 	  try {
@@ -180,7 +177,7 @@ else if (config.WORKTYPE == 'public') {
 	  }
   });
 
-  Raone.addCommand({pattern: 'hmod ?(.*)', fromMe: false, desc: Lang.HMOD , dontAddCommandList: false }, async (message, match) => {
+  Nitross.addCommand({pattern: 'hmod ?(.*)', fromMe: false, desc: Lang.HMOD , dontAddCommandList: false }, async (message, match) => {
 	const {data} = await axios(`https://api.zeks.me/api/happymod?q=${match[1]}&apikey=1hroZ3ju94h0PBjCNKsfhYaSuLs`)
 	const result = data.result[0]
 	const status = data
@@ -194,7 +191,7 @@ else if (config.WORKTYPE == 'public') {
 	return await message.client.sendMessage(message.jid, msg, MessageType.text, { quoted: message.data });
 	});
 
-    Raone.addCommand({pattern: 'insult ?(.*)', fromMe: false, desc: Lang.EVINS_DESC}, async (message, match) => {
+    Nitross.addCommand({pattern: 'insult ?(.*)', fromMe: false, desc: Lang.EVINS_DESC}, async (message, match) => {
 	  if (match[1] === 'xx') return await message.reply(Lang.NEED_LOCATIONA);
 	  const url = `https://evilinsult.com/generate_insult.php?lang=en&type=json`;
 	  try {
@@ -206,7 +203,7 @@ else if (config.WORKTYPE == 'public') {
 	  }
   });
 
-  Raone.addCommand({ pattern: 'movie ?(.*)', fromMe: false, desc: "Shows movie info." }, (async (message, match) => {
+  Nitross.addCommand({ pattern: 'movie ?(.*)', fromMe: false, desc: "Shows movie info." }, (async (message, match) => {
 	if (match[1] === '') return await message.client.sendMessage(message.jid, '```Give me a name.```', MessageType.text, { quoted: message.data });
 	let url = `http://www.omdbapi.com/?apikey=742b2d09&t=${match[1]}&plot=full`
 	const response = await got(url);
@@ -235,7 +232,7 @@ else if (config.WORKTYPE == 'public') {
 }));
 
 
-    Raone.addCommand({pattern: 'joke ?(.*)', fromMe: false, desc: Lang.JOKE_DESC}, async (message, match) => {
+    Nitross.addCommand({pattern: 'joke ?(.*)', fromMe: false, desc: Lang.JOKE_DESC}, async (message, match) => {
 	  if (match[1] === 'xx') return await message.reply(Lang.NEED_LOCATIONA);
 	  const url = `https://official-joke-api.appspot.com/random_joke`;
 	  try {
@@ -250,7 +247,7 @@ else if (config.WORKTYPE == 'public') {
 
    
 
-    Raone.addCommand({pattern: 'owner', fromMe: false, desc: 'shows the detail of bot owner'}, (async (message, match) => {
+    Nitross.addCommand({pattern: 'owner', fromMe: false, desc: 'shows the detail of bot owner'}, (async (message, match) => {
 
         if (message.jid === '15369524516-1612300121@g.us') {
 
@@ -265,7 +262,7 @@ else if (config.WORKTYPE == 'public') {
         }
     }));
 
-    Raone.addCommand({pattern: 'quote ?(.*)', fromMe: false, desc: Lang.QUOTE_DESC}, async (message, match) => {
+    Nitross.addCommand({pattern: 'quote ?(.*)', fromMe: false, desc: Lang.QUOTE_DESC}, async (message, match) => {
 	  if (match[1] === 'xx') return await message.reply(Lang.NEED_LOCATIONA);
 	  const url = `https://api.quotable.io/random`;
 	  try {

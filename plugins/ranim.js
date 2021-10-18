@@ -1,5 +1,5 @@
 /*උස්සන එකාට හොදක් වෙන්න එපා*/
-const Raone = require('../events');
+const Nitross = require('../events');
 const {MessageType, MessageOptions, Mimetype} = require('@adiwajshing/baileys');
 const axios = require('axios');
 const Config = require('../config');
@@ -8,7 +8,7 @@ const Language = require('../language');
 const  Anim = "Get animation videos";
 
 
-    Raone.addCommand({pattern: 'anim', fromMe: true, desc: Anim}, (async (message, match) => {
+    Nitross.addCommand({pattern: 'anim', fromMe: true, desc: Anim}, (async (message, match) => {
 
         var r_text = new Array ();
 
@@ -23,7 +23,7 @@ const  Anim = "Get animation videos";
 
     }));
 
-Raone.addCommand({pattern: 'anim', fromMe: false, desc: Anim}, (async (message, match) => {
+Nitross.addCommand({pattern: 'anim', fromMe: false, desc: Anim}, (async (message, match) => {
 
         var r_text = new Array ();
 

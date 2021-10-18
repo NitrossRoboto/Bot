@@ -1,10 +1,10 @@
 {
-    "__RAVANAJSON__": true,
+    "__NitrossJSON__": true,
     "LANGUAGE": "Sinhala",
     "LANGCODE": "si",
-    "AUTHOR": "RAVANA-SL-TEAM",
+    "AUTHOR": "Nitross-SL-TEAM",
     "STRINGS": {
-        "__RavanaBot": {
+        "_nitross": {
             "COMMAND": "විධානය",
             "DESC": "විස්තරය",
             "EXAMPLE": "උදාහරණ",
@@ -80,10 +80,10 @@
             "MUST_TEXT": "```Please reply to any message```"
         },
         "heroku": {
-            "RESTART_DESC": "Restart RAVaNA",
-            "RESTART_MSG": "```🔁 Restarting RAVaNA...```",
-            "SHUTDOWN_DESC": "Shutdown RAVaNA",
-            "SHUTDOWN_MSG": "```Shutting down RAVaNA 😴👋```",
+            "RESTART_DESC": "Restart Nitross",
+            "RESTART_MSG": "```🔁 Restarting Nitross...```",
+            "SHUTDOWN_DESC": "Shutdown Nitross",
+            "SHUTDOWN_MSG": "```Shutting down Nitross 😴👋```",
             "DYNO_DESC": "Check heroku dyno usage",
             "DYNO_TOTAL": "```Total Quota```",
             "DYNO_USED": "```Quota used```",
@@ -241,13 +241,13 @@
         "updater": {
             "UPDATER_DESC": "Checks the update.",
             "UPDATE": "*Your bot is completely up-to-date!*",
-            "NEW_UPDATE": "*New update available for Bot!*\n\nChanges:\n```",
+            "NEW_UPDATE": "*New update available for Bot!*\n\nChanges:\n",
             "UPDATE_NOW_DESC": "It makes updates.",
             "UPDATING": "Updating..�🤴♂️",
             "INVALID_HEROKU": "*❌ Your Heroku app name or api key wrong!*",
             "UPDATED": "*✅  Updated!*",
             "UPDATED_LOCAL": "*✅ Updated!*",
-            "AFTER_UPDATE": "*RAVANA Restarting !*",
+            "AFTER_UPDATE": "*Nitross Restarting !*",
             "IN_AF": "*Please check* ```HEROKU_APP_NAME``` *and* ```app name``` *They must be same.*\n*If these two values ​​are the same, please restore* ```HEROKU_API_KEY```\n\n_To access these settings, use Heroku >> App >> Settings >> Reavel Config Vars_\n_To renew your API key, follow these steps, Heroku >> Account >> API Key then replace old api key in config vars._"
         },
         "whois": {
