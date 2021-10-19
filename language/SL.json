@@ -2,9 +2,9 @@
     "__NitrossJSON__": true,
     "LANGUAGE": "Sinhala",
     "LANGCODE": "si",
-    "AUTHOR": "Nitross-SL-TEAM",
+    "AUTHOR": "Nitross",
     "STRINGS": {
-        "_nitross": {
+        "_Nitross": {
             "COMMAND": "විධානය",
             "DESC": "විස්තරය",
             "EXAMPLE": "උදාහරණ",
