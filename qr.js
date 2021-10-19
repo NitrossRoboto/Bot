@@ -25,7 +25,7 @@ ${chalk.blue.italic('📶 Connecting to Whatsapp Web... Please Wait ❗')}`);
         );
         
         if (!fs.existsSync('config.env')) {
-            fs.writeFileSync('config.env', `NITROSS_SESSION="${st}"`);
+            fs.writeFileSync('config.env', `RAVANA_SESSION="${st}"`);
         }
         if (conn.user.jid.startsWith('90')) {
             await conn.sendMessage(conn.user.jid,st, MessageType.text)
