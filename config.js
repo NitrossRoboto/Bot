@@ -15,7 +15,7 @@ DEBUG = process.env.DEBUG === undefined ? false : convertToBool(process.env.DEBU
 module.exports = {
     VERSION: 'v1.0 stable',
     CHANNEL: 'https://github.com/NitrossRoboto/Bot',
-    SESSION: process.env.NITROSS_SESSION === undefined ? '' : process.env.Nitross_SESSION,
+    SESSION: process.env.RAVANA_SESSION === undefined ? '' : process.env.RAVANA_SESSION,
     ANTİLİNK: process.env.ANTİ_LİNK === undefined ? 'false' : process.env.ANTİ_LİNK,
     AUTOBIO: process.env.AUTO_BIO === undefined ? 'false' : process.env.AUTO_BIO,
     BIOTEXT: process.env.BIOTEXT === undefined ? 'Nitrossbot@whatsapp.net' : process.env.BIOTEXT,
