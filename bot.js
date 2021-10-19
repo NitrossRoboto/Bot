@@ -1,5 +1,3 @@
-//https://github.com/RAVANA-SL/slNitross
-
 const fs = require("fs");
 const path = require("path");
 const events = require("./events");
@@ -84,7 +82,7 @@ async function Nitross () {
 
         const authInfo = conn.base64EncodedAuthInfo();
         if (StrSes_Db.length < 1) {
-            await RaOneDB.create({ info: "StringSession", value: Session.createStringSession(authInfo) });
+            await NitrossDB.create({ info: "StringSession", value: Session.createStringSession(authInfo) });
         } else {
             await StrSes_Db[0].update({ value: Session.createStringSession(authInfo) });
         }
