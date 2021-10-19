@@ -1,14 +1,14 @@
 {
     "name": "NITROSS ROBOTO",
     "description": "NitrossBot is the Modified Version of WhatsAsena, Made By @RAVANA_SL Team with Baileys.",
-    "logo": "https://telegra.ph/file/d61b511f6769c96bb7424.jpg",
-    "keywords": ["whatsapp", "userbot", "nitross", "WhatsAsena", "srilanka", "bot", "ai"],
+    "logo": "https://telegra.ph/file/d61b511f6769c9b7424.jpg",
+    "keywords": ["whatsapp", "userbot", "nitross", "srilanka", "bot", "ai"],
     "repository": "https://github.com/NitrossRoboto/Bot",
     "website":   "https://github.com/NitrossRoboto/Bot",
     "success_url": "https://github.com/NitrossRoboto/Bot",
     "stack": "container",
     "env": {
-        "RAVANA_SESSION": {
+        "NITROSS_SESSION": {
             "description": "Type here yours Asena Session.",
             "required": true
         },
