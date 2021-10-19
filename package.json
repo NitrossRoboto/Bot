@@ -1,8 +1,8 @@
 {
-  "name": "Nitross",
+  "name": "NitrossRoboto",
   "version": "4.0.1",
   "description": "NitrossRoboto project - Makes it easy and fun to use Whatsapp",
-  "main": "./4.0/bot.js",
+  "main": "./Bot/bot.js",
   "scripts": {
     "start": "supervisor -s bot.js"
   },
