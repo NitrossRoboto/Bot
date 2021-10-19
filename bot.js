@@ -86,8 +86,8 @@ async function Nitross () {
         } else {
             await StrSes_Db[0].update({ value: Session.createStringSession(authInfo) });
         }
-    })    
-
+    })
+    
     conn.on('connecting', async () => {
         console.log(`${chalk.green.bold('Whats')}${chalk.blue.bold('Asena')}
 ${chalk.white.bold('Version:')} ${chalk.red.bold(config.VERSION)}
