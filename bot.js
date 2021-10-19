@@ -11,7 +11,7 @@ const axios = require('axios');
 const got = require('got');
 
 // Sql
-const RaOneDB = config.DATABASE.define('4.0', {
+const NitrossDB = config.DATABASE.define('Bot', {
     info: {
       type: DataTypes.STRING,
       allowNull: false
