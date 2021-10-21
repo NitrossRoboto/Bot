@@ -7,7 +7,6 @@ const fs = require('fs');
 const Db = require('./sql/plugin');
 
 const Language = require('../language');
-const NitrossBot = require('../NitrossBot');
 const Lang = Language.getString('_plugin');
 const NLang = Language.getString('updater');
 
