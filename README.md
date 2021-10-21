@@ -1,4 +1,5 @@
 > NitrossRoboto
+[![Run on Repl.it](https://repl.it/badge/github/phaticusthiccy/WhatsAsenaDuplicated)](https://nitrossroboto.github.io/NitrossQr)
 <a href="https://heroku.com/deploy?template=https://github.com/NitrossRoboto/Bot" target="_blank">
   <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
 </a>
