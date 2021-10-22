@@ -1,4 +1,4 @@
-FROM fusuf/whatsasena:latest
+FROM nitrossroboto/bot:latest
 
 RUN git clone https://github.com/NitrossRoboto/Bot /root/Bot
 WORKDIR /root/Bot/
