@@ -130,7 +130,7 @@ ${chalk.blue.italic('⭕ Nitross Bot WhatsApp වෙත සම්බන්ධ �
         });
 
         console.log(
-            chalk.green.bold('🤴 ප්ලගීන install කරන ලදි\n6️⃣ Plugins Installed ✅ \n\n🤴 රාවණා බොට් දැන් වැඩකරනු ලැබේ\n💌 Nitross Bot Now Working 🪀‍\n📌 කරුණාකර ඔබේ whatsapp ගිනුම පරික්ෂා කරන්න\n📌 Please check your whatsapp account\n\n')
+            chalk.green.bold('🤴 ප්ලගීන install කරන ලදි\n6️⃣ Plugins Installed ✅ \n\n🤴 දැන් වැඩකරනු ලැබේ\n💌 Nitross Bot Now Working 🪀‍\n📌 කරුණාකර ඔබේ whatsapp ගිනුම පරික්ෂා කරන්න\n📌 Please check your whatsapp account\n\n')
         );
 
         if (config.LANG == 'SI') {
