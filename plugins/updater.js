@@ -1,6 +1,6 @@
 const simpleGit = require('simple-git');
 const git = simpleGit();
-const NitrossBotBot = require('../events');
+const NitrossBot = require('../events');
 const {MessageType} = require('@adiwajshing/baileys');
 const Config = require('../config');
 const exec = require('child_process').exec;
@@ -12,7 +12,7 @@ const Language = require('../language');
 const Lang = Language.getString('updater');
 
 
-NitrossBotBot.addCommand({pattern: 'update$', fromMe: true, desc: Lang.UPDATER_DESC}, (async (message, match) => {
+NitrossBot.addCommand({pattern: 'update$', fromMe: true, desc: Lang.UPDATER_DESC}, (async (message, match) => {
     await git.fetch();
     var commits = await git.log([Config.BRANCH + '..origin/' + Config.BRANCH]);
     if (commits.total === 0) {
@@ -24,7 +24,7 @@ NitrossBotBot.addCommand({pattern: 'update$', fromMe: true, desc: Lang.UPDATER_D
         var degisiklikler = Lang.NEW_UPDATE;
         commits['all'].map(
             (commit) => {
-                degisiklikler += '🔹 [' + commit.date.substring(0, 10) + ']: \n ' + commit.message + ' _*<NitrossBot Service>*_ \n\n';
+                degisiklikler += '*📈 Released on* *' + commit.date.substring(0, 10) + '* \n *📜 ' + commit.message + '* \n _*🤖 NitrossBot v2.5 (Beta)*_ \n\n';
             }
         );
         
@@ -35,7 +35,7 @@ NitrossBotBot.addCommand({pattern: 'update$', fromMe: true, desc: Lang.UPDATER_D
     }
 }));
 
-NitrossBotBot.addCommand({pattern: 'update now$', fromMe: true, desc: Lang.UPDATE_NOW_DESC}, (async (message, match) => {
+NitrossBot.addCommand({pattern: 'up now$', fromMe: true, desc: Lang.UPDATE_NOW_DESC}, (async (message, match) => {
     await git.fetch();
     var commits = await git.log([Config.BRANCH + '..origin/' + Config.BRANCH]);
     if (commits.total === 0) {

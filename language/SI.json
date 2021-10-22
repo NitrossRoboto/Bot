@@ -27,7 +27,7 @@
             "NEED_PLUGIN": " \n\n\n ```කරුණාකර ඔබට ඉවත් කිරීමට අවශ්‍ය pluginනය ඇතුලත් කරන්න: උදා:- .plugin __test``` \n\n\n" ,
             "NOT_FOUND_PLUGIN": "```Maybe you have installed such a plugin, or maybe not. But it sure isn't right now.```",
             "DELETED": " \n\n\n *✅ pluginනය සාර්ථකව ඉවත් කරන ලදි!* \n\n\n",
-            "WARN": "අපගේ official plugins මෙහිදී ලබාගන්න https://t.me/SLTECHCOLLEGE channel."
+            "WARN": "*ප්ලගින් කඩ වසා ඇත..!*"
         },
         "admin": {
             "BAN_DESC": "ඔබගේ whatsapp group member කෙනෙකු ඉවත් කිරීමට",
@@ -240,16 +240,16 @@
             "REPLY": "*Please Respond to User's Message to Report!*"
         },
         "updater": {
-            "UPDATER_DESC": "Checks the update.",
-            "UPDATE": "*Your bot is completely up-to-date!*",
-            "NEW_UPDATE": "*New update available for Bot!*\n\nChanges:\n",
-            "UPDATE_NOW_DESC": "It makes updates.",
-            "UPDATING": "Updating..�🤴♂️",
-            "INVALID_HEROKU": "*❌ Your Heroku app name or api key wrong!*",
-            "UPDATED": "*✅  Updated!*",
-            "UPDATED_LOCAL": "*✅ Updated!*",
-            "AFTER_UPDATE": "*Nitross Restarting !*",
-            "IN_AF": "*Please check* ```HEROKU_APP_NAME``` *and* ```app name``` *They must be same.*\n*If these two values ​​are the same, please restore* ```HEROKU_API_KEY```\n\n_To access these settings, use Heroku >> App >> Settings >> Reavel Config Vars_\n_To renew your API key, follow these steps, Heroku >> Account >> API Key then replace old api key in config vars._"
+            "UPDATER_DESC": "*🔄 නව යාවත්කාලීන කිරීම් පරීක්ෂා කරමින්...",
+            "UPDATE": "*ඔබගේ බොට් දැනටමත් යාවත්කාලීන කර ඇත. ✅*",
+            "NEW_UPDATE": "*👉 Nitross Bot වෙත නව යාවත්කාලීන කිරීමක් ලැබී ඇත.!*\n\n*Changes:*: \n",
+            "UPDATE_NOW_DESC": "*It makes updates.*",
+            "UPDATING": "*⏬ යාවත්කාලීන වෙමින් පවතී...* \n *⏳ රැඳීසිටින්න...*",
+            "INVALID_HEROKU": "*❌ ඔබගේ Heroku app name එක හෝ api key එක වැරදියි!*",
+            "UPDATED": "*✅  යාවත්කාලීන වීම සාර්ථකයි!*",
+            "UPDATED_LOCAL": "*✅ යාවත්කාලීන වීම සාර්ථකයි!*",
+            "AFTER_UPDATE": "*▶️ Nitross Bot දැන් ක්‍රියාත්මකයි.*",
+            "IN_AF": "*Please check* ```HEROKU_APP_NAME``` *සහ* ```app name``` *අනිවාර්යයෙන් සමාන විය යුතුය.*\n*ඒවා දෙයාකාර නම්, කරුණාකර නැවත සකසන්න* ```HEROKU_API_KEY```\n\n_මෙම සැකසුම් වෙනස් කිරීමට, Heroku භාවිත කර >> App >> Settings >> Reavel Config Vars වෙත යන්න..._\n_ඔබගේ Heroku API key එක වෙනස් කිරීමට, මෙම උපදෙස් පිළිපදින්න., Heroku වෙත යන්න >> Account >> API Key පසුව ඔබගේ පරණ api key එක වෙනුවට නව api key එක config vars වෙත ගොස් ඇතුලත් කරන්න._"
         },
         "whois": {
             "PL_DESC": "Displays metadata data of group or person.",

@@ -4,7 +4,6 @@ const Config = require('../config');
 const fs = require('fs');
 const axios = require('axios');
 const Language = require('../language');
-const NitrossBot = require('../NitrossBot');
 const Lang = Language.getString('_nitross');
 
 const td = Config.WORKTYPE == 'public' ? false : true
