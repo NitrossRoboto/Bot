@@ -385,10 +385,10 @@ ${chalk.blue.italic('⭕ Nitross Bot WhatsApp වෙත සම්බන්ධ �
                             await command.function(whats, match);
                         } catch (error) {
                             if (config.LANG == 'SI') {
-                                await conn.sendMessage(conn.user.jid, fs.readFileSync("./rimg/Rs.jpg"), MessageType.image, { caption: '*⚕️  රාවණා බොට්හි දෝෂයක් සිදුවී ඇත  ⚕️*\n\n*රාවණා බොට්හි දෝෂයක් සිදුවී ඇත කරුණාකර එය අපගේ කණ්ඩායමට යොමු කරන්න* : *_https://chat.whatsapp.com/Fo65f7TcUjx9FUJlFCSZks*\n\n*දෝෂය:* ```' + error + '```\n\n' });
+                                await conn.sendMessage(conn.user.jid, fs.readFileSync("./media/images/logo.jpg"), MessageType.image, { caption: '*⚕️  රාවණා බොට්හි දෝෂයක් සිදුවී ඇත  ⚕️*\n\n*රාවණා බොට්හි දෝෂයක් සිදුවී ඇත කරුණාකර එය අපගේ කණ්ඩායමට යොමු කරන්න* : *_https://chat.whatsapp.com/Fo65f7TcUjx9FUJlFCSZks*\n\n*දෝෂය:* ```' + error + '```\n\n' });
                                 
                             } else {
-                                await conn.sendMessage(conn.user.jid, fs.readFileSync("./rimg/Rs.jpg"), MessageType.image, { caption: '*⚕️ ERROR ANALYSIS Nitross Bot ⚕️*\n\n*An error has occurred in the Nitross Bot. Please refer it to our team* : *_https://chat.whatsapp.com/Fo65f7TcUjx9FUJlFCSZks*\n\n*error:* ```' + error + '```\n\n' });
+                                await conn.sendMessage(conn.user.jid, fs.readFileSync("./media/images/logo.jpg"), MessageType.image, { caption: '*⚕️ ERROR ANALYSIS Nitross Bot ⚕️*\n\n*An error has occurred in the Nitross Bot. Please refer it to our team* : *_https://chat.whatsapp.com/Fo65f7TcUjx9FUJlFCSZks*\n\n*error:* ```' + error + '```\n\n' });
                             }
                         }
                     }
