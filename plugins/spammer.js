@@ -18,7 +18,7 @@ const heroku = new Heroku({
 let baseURI = '/apps/' + Config.HEROKU.APP_NAME;
 
 
-NitrossBot.addCommand({pattern: 'killspam', fromMe: true, desc: Lang.STOP_SPAMDESC}, (async (message, match) => {
+NitrossBot.addCommand({pattern: 'killspam', fromMe: true, dontAddCommandList: true, desc: Lang.STOP_SPAMDESC}, (async (message, match) => {
 
     await message.client.sendMessage(message.jid, Lang.STOP_SPAM, MessageType.text);
 
@@ -29,21 +29,18 @@ NitrossBot.addCommand({pattern: 'killspam', fromMe: true, desc: Lang.STOP_SPAMDE
     });
 }));
 
-NitrossBot.addCommand({pattern: 'spam ?(.*)', fromMe: true, desc: Lang.SPAM_DESC}, (async (message, match) => {
+NitrossBot.addCommand({pattern: 'spam ?(.*)', fromMe: true, dontAddCommandList: true, desc: Lang.SPAM_DESC}, (async (message, match) => {
 
-    var fin = ''
-    if (message.reply_message) {
-        fin = message.reply_message.text
-    } else {
-        if (match[1] === '') {
 
-            return await message.client.sendMessage(message.jid, Lang.NEED_WORD);
-        } else {
+    if (match[1] === '') {
 
-            var spam = `${match[1]}`
-            fin = spam.replace(/#/g, "\n");
-        }
+        return await message.client.sendMessage(message.jid, Lang.NEED_WORD);
+
     }
+
+    var spam = `${match[1]}`
+    var fin = spam.replace(/#/g, "\n");
+
     await message.client.sendMessage(message.jid, fin, MessageType.text);
     
     await message.client.sendMessage(message.jid, fin, MessageType.text);

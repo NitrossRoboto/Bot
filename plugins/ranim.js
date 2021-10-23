@@ -1,4 +1,3 @@
-/*උස්සන එකාට හොදක් වෙන්න එපා*/
 const NitrossBot = require('../events');
 const {MessageType, MessageOptions, Mimetype} = require('@adiwajshing/baileys');
 const axios = require('axios');

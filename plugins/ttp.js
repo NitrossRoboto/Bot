@@ -3,21 +3,341 @@ const { MessageType, MessageOptions, Mimetype } = require('@adiwajshing/baileys'
 const fs = require('fs');
 const axios = require('axios');
 const Config = require('../config');
-const td = Config.WORKTYPE == 'public' ? false : true
+const ffmpeg = require('fluent-ffmpeg');
+const {execFile} = require('child_process');
+const cwebp = require('cwebp-bin');
+let wk = Config.WORKTYPE == 'public' ? false : true
+const NitrossStack = require('whatsasena-npm')
+const request = require('request');
+
 const Language = require('../language');
 const Lang = Language.getString('ttp');
 
-NitrossBot.addCommand({ pattern: 'ttp ?(.*)', fromMe: td, desc: Lang.TTP_DESC }, (async (message, match) => {
+var description = ''
+var cmd = ''
+var cmd_desc = ''
+if (Config.LANG == 'TR') description = 'Tüm ttp komutlarını gösterir.', cmd = '*Komut:* ', cmd_desc = '*Açıklama:* '
+if (Config.LANG == 'AZ') description = 'Bütün ttp əmrlərini göstərir.', cmd = '*Əmr:* ', cmd_desc = '*İzahat:* '
+if (Config.LANG == 'EN') description = 'Shows all ttp commands.', cmd = '*Command:* ', cmd_desc = '*Description:* '
+if (Config.LANG == 'RU') description = 'Показывает все команды ttp.', cmd = '*Команда:* ', cmd_desc = '*Объяснение:* '
+if (Config.LANG == 'ES') description = 'Muestra todos los comandos ttp.', cmd = '*Mando:* ', cmd_desc = '*Explicación:* '
+if (Config.LANG == 'HI') description = 'सभी ttp कमांड दिखाता है।', cmd = '*आदेश:* ', cmd_desc = '*व्याख्या:* '
+if (Config.LANG == 'ML') description = 'എല്ലാ ttp കമാൻഡുകളും കാണിക്കുന്നു.', cmd = '*കമാൻഡ്:* ', cmd_desc = '*വിശദീകരണം:* '
+if (Config.LANG == 'PT') description = 'Mostra todos os comandos ttp.', cmd = '*Comando:* ', cmd_desc = '*Explicação:* '
+if (Config.LANG == 'ID') description = '*Menampilkan semua perintah ttp.', cmd = '*Memerintah:* ', cmd_desc = '*Penjelasan:* '
 
-var _0x3ce068=_0x5f03;(function(_0x31d05f,_0x45884e){var _0x4e42e6=_0x5f03,_0x568940=_0x31d05f();while(!![]){try{var _0xc97dd9=-parseInt(_0x4e42e6(0x174))/0x1*(parseInt(_0x4e42e6(0x184))/0x2)+-parseInt(_0x4e42e6(0x178))/0x3*(parseInt(_0x4e42e6(0x170))/0x4)+parseInt(_0x4e42e6(0x188))/0x5*(parseInt(_0x4e42e6(0x177))/0x6)+parseInt(_0x4e42e6(0x17a))/0x7+-parseInt(_0x4e42e6(0x183))/0x8*(-parseInt(_0x4e42e6(0x185))/0x9)+-parseInt(_0x4e42e6(0x17d))/0xa+parseInt(_0x4e42e6(0x181))/0xb;if(_0xc97dd9===_0x45884e)break;else _0x568940['push'](_0x568940['shift']());}catch(_0x4ebc26){_0x568940['push'](_0x568940['shift']());}}}(_0x1221,0x25aad));function _0x1221(){var _0x4dc166=['image','client','6435SxFPnL','4WlQqfi','arraybuffer','NEED_WORD','https://api.xteam.xyz/ttp?file&text=','189SUYRRS','get','sendMessage','396njmKuE','120639MfYgSE','jid','2060324dprDsl','text','data','2562670NSVLuX','*Made\x20by\x20NitrossBot*','from','reply_message','917136OdglTZ','png','848NzNXDU','3142YmbcUS','24201UpbtYN'];_0x1221=function(){return _0x4dc166;};return _0x1221();}function _0x5f03(_0x3bc25b,_0x4e4648){var _0x122182=_0x1221();return _0x5f03=function(_0x5f031a,_0x2153cf){_0x5f031a=_0x5f031a-0x170;var _0x29f89e=_0x122182[_0x5f031a];return _0x29f89e;},_0x5f03(_0x3bc25b,_0x4e4648);}if(message[_0x3ce068(0x180)]){var text=message[_0x3ce068(0x180)][_0x3ce068(0x17b)],uri=encodeURI(text),ttinullimage=await axios[_0x3ce068(0x175)](_0x3ce068(0x173)+uri,{'responseType':_0x3ce068(0x171)});await message[_0x3ce068(0x187)]['sendMessage'](message[_0x3ce068(0x179)],Buffer[_0x3ce068(0x17f)](ttinullimage[_0x3ce068(0x17c)]),MessageType[_0x3ce068(0x186)],{'mimetype':Mimetype[_0x3ce068(0x182)],'caption':'*Made\x20by\x20NitrossBot*','contextInfo':{'forwardingScore':0x31,'isForwarded':!![]},'quoted':message[_0x3ce068(0x17c)]});}else{if(match[0x1]==='')return await message['client'][_0x3ce068(0x176)](message['jid'],Lang[_0x3ce068(0x172)],MessageType[_0x3ce068(0x17b)],{'contextInfo':{'forwardingScore':0x31,'isForwarded':!![]},'quoted':message[_0x3ce068(0x17c)]});var uri=encodeURI(match[0x1]),ttinullimage=await axios['get'](_0x3ce068(0x173)+uri,{'responseType':_0x3ce068(0x171)});await message['client'][_0x3ce068(0x176)](message[_0x3ce068(0x179)],Buffer[_0x3ce068(0x17f)](ttinullimage['data']),MessageType[_0x3ce068(0x186)],{'mimetype':Mimetype['png'],'caption':_0x3ce068(0x17e),'contextInfo':{'forwardingScore':0x31,'isForwarded':!![]},'quoted':message['data']});}
-}));
-
-NitrossBot.addCommand({ pattern: 'attp ?(.*)', fromMe: td, desc: Lang.ATTP_DESC }, (async (message, match) => {
-
-var _0x12005c=_0x4912;(function(_0x377812,_0x162f6d){var _0x3d2346=_0x4912,_0x264252=_0x377812();while(!![]){try{var _0x54ea0c=parseInt(_0x3d2346(0x180))/0x1+-parseInt(_0x3d2346(0x185))/0x2*(-parseInt(_0x3d2346(0x17f))/0x3)+-parseInt(_0x3d2346(0x182))/0x4*(parseInt(_0x3d2346(0x176))/0x5)+-parseInt(_0x3d2346(0x175))/0x6*(parseInt(_0x3d2346(0x184))/0x7)+parseInt(_0x3d2346(0x172))/0x8+parseInt(_0x3d2346(0x179))/0x9+-parseInt(_0x3d2346(0x188))/0xa*(-parseInt(_0x3d2346(0x17d))/0xb);if(_0x54ea0c===_0x162f6d)break;else _0x264252['push'](_0x264252['shift']());}catch(_0x5e06ac){_0x264252['push'](_0x264252['shift']());}}}(_0x2be9,0x4671d));if(message[_0x12005c(0x17c)]){var text=message[_0x12005c(0x17c)][_0x12005c(0x174)],uri=encodeURI(text),ttinullimage=await axios[_0x12005c(0x177)](_0x12005c(0x173)+uri,{'responseType':_0x12005c(0x187)});await message[_0x12005c(0x186)][_0x12005c(0x189)](message[_0x12005c(0x17b)],Buffer[_0x12005c(0x183)](ttinullimage['data']),MessageType[_0x12005c(0x181)],{'mimetype':Mimetype[_0x12005c(0x17e)],'contextInfo':{'forwardingScore':0x31,'isForwarded':!![]},'quoted':message[_0x12005c(0x178)]});}else{if(match[0x1]==='')return await message[_0x12005c(0x186)][_0x12005c(0x189)](message['jid'],Lang[_0x12005c(0x17a)],MessageType[_0x12005c(0x174)],{'contextInfo':{'forwardingScore':0x31,'isForwarded':!![]},'quoted':message[_0x12005c(0x178)]});var uri=encodeURI(match[0x1]),ttinullimage=await axios[_0x12005c(0x177)](_0x12005c(0x173)+uri,{'responseType':'arraybuffer'});await message[_0x12005c(0x186)][_0x12005c(0x189)](message[_0x12005c(0x17b)],Buffer[_0x12005c(0x183)](ttinullimage[_0x12005c(0x178)]),MessageType['sticker'],{'mimetype':Mimetype[_0x12005c(0x17e)],'contextInfo':{'forwardingScore':0x31,'isForwarded':!![]},'quoted':message[_0x12005c(0x178)]});}function _0x4912(_0x15bde7,_0x2d8bf0){var _0x2be906=_0x2be9();return _0x4912=function(_0x4912ff,_0x5b2634){_0x4912ff=_0x4912ff-0x172;var _0x159cfb=_0x2be906[_0x4912ff];return _0x159cfb;},_0x4912(_0x15bde7,_0x2d8bf0);}function _0x2be9(){var _0x1fa414=['2248795ZakLzH','get','data','203463gwwWrs','NEED_WORD','jid','reply_message','22mCTHSN','webp','58131QEROqW','7373FjBXtM','sticker','4VZLnGc','from','6517PLshVd','4xlqyeI','client','arraybuffer','2057080IJqMhc','sendMessage','3383496ijjirL','https://api.xteam.xyz/attp?file&text=','text','1062dkwUSt'];_0x2be9=function(){return _0x1fa414;};return _0x2be9();}
-}));
+NitrossBot.addCommand({ pattern: 'allttp$', fromMe: wk, desc: description }, (async (message, match) => {
+  var t1 = Lang.TTP_DESC
+  var t2 = Lang.ATTP_DESC
+  var t3 = Config.LANG == 'TR' || Config.LANG == 'AZ' ? "Yazıyı su temalı sticker'e çevirir." : "Converts text to water-themed sticker."
+  var t4 = Config.LANG == 'TR' || Config.LANG == 'AZ' ? "Yazıyı el yazısıyla sticker'e çevirir." : "Converts text to hand writing sticker."
+  var t5 = Config.LANG == 'TR' || Config.LANG == 'AZ' ? "Yazıyı blackbird temalı sticker'e çevirir." : "Converts text to blackbird-themed sticker."
+  var t6 = Config.LANG == 'TR' || Config.LANG == 'AZ' ? "Yazıyı sakız temalı sticker'e çevirir." : "Converts text to gum-themed sticker."
+  var t7 = Config.LANG == 'TR' || Config.LANG == 'AZ' ? "Yazıyı şirinler temalı sticker'e çevirir." : "Converts text to smurfs-themed sticker."
+  var t8 = Config.LANG == 'TR' || Config.LANG == 'AZ' ? "Yazıyı elektrik temalı sticker'e çevirir." : "Converts text to electric-themed sticker."
+  var t9 = Config.LANG == 'TR' || Config.LANG == 'AZ' ? "Yazıyı vurgulayan animasyonlu sticker'e çevirir." : "Converts text to highlighted animated sticker."
+  var t10 = Config.LANG == 'TR' || Config.LANG == 'AZ' ? "Yazıyı geçiş animasyonlu sticker'e çevirir." : "Converts text to transition animated sticker."
+  
+  var payload = cmd + '.ttp' + '\n' + cmd_desc + t1 + '\n\n' +
+    cmd + '.attp' + '\n' + cmd_desc + t2 + '\n\n' +
+    cmd + '.wttp' + '\n' + cmd_desc + t3 + '\n\n' +
+    cmd + '.http' + '\n' + cmd_desc + t4 + '\n\n' +
+    cmd + '.ahttp' + '\n' + cmd_desc + t9 + '\n\n' +
+    cmd + '.bttp' + '\n' + cmd_desc + t5 + '\n\n' +
+    cmd + '.gttp' + '\n' + cmd_desc + t6 + '\n\n' +
+    cmd + '.sttp' + '\n' + cmd_desc + t7 + '\n\n' +
+    cmd + '.ettp' + '\n' + cmd_desc + t8 + '\n\n' +
+    cmd + '.pttp' + '\n' + cmd_desc + t10
     
-NitrossBot.addCommand({pattern: 'emoji ?(.*)', fromMe: td, desc: Lang.EMOJI_DESC}, (async (message, match) => {
-
-function _0x40ee(_0x583614,_0x12ef2a){var _0x3abbe5=_0x3abb();return _0x40ee=function(_0x40ee0d,_0x6f465a){_0x40ee0d=_0x40ee0d-0x1d8;var _0x392d7c=_0x3abbe5[_0x40ee0d];return _0x392d7c;},_0x40ee(_0x583614,_0x12ef2a);}var _0x17839b=_0x40ee;(function(_0x340a6f,_0x4df4f8){var _0x3f3689=_0x40ee,_0x8dfe75=_0x340a6f();while(!![]){try{var _0x301ed7=parseInt(_0x3f3689(0x1de))/0x1*(-parseInt(_0x3f3689(0x1e3))/0x2)+-parseInt(_0x3f3689(0x1dd))/0x3+-parseInt(_0x3f3689(0x1e9))/0x4+parseInt(_0x3f3689(0x1d9))/0x5*(-parseInt(_0x3f3689(0x1eb))/0x6)+-parseInt(_0x3f3689(0x1ec))/0x7+parseInt(_0x3f3689(0x1da))/0x8+-parseInt(_0x3f3689(0x1ed))/0x9*(-parseInt(_0x3f3689(0x1e8))/0xa);if(_0x301ed7===_0x4df4f8)break;else _0x8dfe75['push'](_0x8dfe75['shift']());}catch(_0x28d263){_0x8dfe75['push'](_0x8dfe75['shift']());}}}(_0x3abb,0x3f890));function _0x3abb(){var _0x514021=['data','307212qBvFTC','80mjaKLX','sendMessage','image','jid','reply_message','8314sbpDsC','text','arraybuffer','png','*Made\x20By\x20NitrossBot*','5505100KIDVWr','1023888UYUZJi','from','174SpBMMH','1808604ZjTrTz','18Ukhvrp','https://api.zeks.xyz/api/emoji-image?apikey=odsMYXx67ZhT38w5hp5mgRKO8En&emoji=','59315fqKoJC','3620440bifXnq','client'];_0x3abb=function(){return _0x514021;};return _0x3abb();}if(message[_0x17839b(0x1e2)]){var text=message['reply_message']['text'],uri=encodeURI(text),ttinullimage=await axios['get']('https://api.zeks.xyz/api/emoji-image?apikey=odsMYXx67ZhT38w5hp5mgRKO8En&emoji='+uri,{'responseType':'arraybuffer'});await message[_0x17839b(0x1db)][_0x17839b(0x1df)](message['jid'],Buffer[_0x17839b(0x1ea)](ttinullimage[_0x17839b(0x1dc)]),MessageType[_0x17839b(0x1e0)],{'mimetype':Mimetype[_0x17839b(0x1e6)],'caption':_0x17839b(0x1e7),'contextInfo':{'forwardingScore':0x31,'isForwarded':!![]},'quoted':message[_0x17839b(0x1dc)]});}else{if(match[0x1]==='')return await message[_0x17839b(0x1db)][_0x17839b(0x1df)](message[_0x17839b(0x1e1)],Lang['NEED_WORD'],MessageType[_0x17839b(0x1e4)],{'contextInfo':{'forwardingScore':0x31,'isForwarded':!![]},'quoted':message[_0x17839b(0x1dc)]});var uri=encodeURI(match[0x1]),ttinullimage=await axios['get'](_0x17839b(0x1d8)+uri,{'responseType':_0x17839b(0x1e5)});await message[_0x17839b(0x1db)][_0x17839b(0x1df)](message[_0x17839b(0x1e1)],Buffer[_0x17839b(0x1ea)](ttinullimage[_0x17839b(0x1dc)]),MessageType['image'],{'mimetype':Mimetype['png'],'caption':_0x17839b(0x1e7),'contextInfo':{'forwardingScore':0x31,'isForwarded':!![]},'quoted':message[_0x17839b(0x1dc)]});}
+  await message.client.sendMessage(message.jid,payload, MessageType.text)
+}));
+NitrossBot.addCommand({ pattern: 'ttp ?(.*)', fromMe: wk, dontAddCommandList: true }, (async (message, match) => {
+  if (message.reply_message) {
+    var text = message.reply_message.text
+    var uri = encodeURI(text)
+    var ttinullimage = await axios.get('https://api.xteam.xyz/ttp?file&text=' + uri, { responseType: 'arraybuffer' })
+    await message.client.sendMessage(message.jid,Buffer.from(ttinullimage.data), MessageType.image, { mimetype: Mimetype.png, caption: 'Made by WhatsAsena' })
+  } else {
+    if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.NEED_WORD, MessageType.text);
+    var uri = encodeURI(match[1])
+    var ttinullimage = await axios.get('https://api.xteam.xyz/ttp?file&text=' + uri, { responseType: 'arraybuffer' })
+    await message.client.sendMessage(message.jid,Buffer.from(ttinullimage.data), MessageType.image, { mimetype: Mimetype.png, caption: 'Made by WhatsAsena' })
+  }
+}));
+NitrossBot.addCommand({ pattern: 'attp ?(.*)', fromMe: wk, dontAddCommandList: true }, (async (message, match) => {
+  if (message.reply_message) {
+    var text = message.reply_message.text
+    var uri = encodeURI(text)
+    var ttinullimage = await axios.get('https://api.xteam.xyz/attp?file&text=' + uri, { responseType: 'arraybuffer' })
+    await message.client.sendMessage(message.jid,Buffer.from(ttinullimage.data), MessageType.sticker, { mimetype: Mimetype.webp })
+  } else {
+    if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.NEED_WORD, MessageType.text);
+    var uri = encodeURI(match[1])
+    var ttinullimage = await axios.get('https://api.xteam.xyz/attp?file&text=' + uri, { responseType: 'arraybuffer' })
+    await message.client.sendMessage(message.jid,Buffer.from(ttinullimage.data), MessageType.sticker, { mimetype: Mimetype.webp })
+  }
+}));
+Asena.addCommand({ pattern: 'wttp ?(.*)', fromMe: wk, dontAddCommandList: true }, (async (message, match) => {
+  if (message.reply_message) {
+    var text = message.reply_message.text
+    var ttinullimage = await NitrossStack.ttp(text, 'https://api.flamingtext.com/logo/Design-Water?_variations=true&text=', '&_loc=catdynamic')
+    var download = async(uri, filename, callback) => {
+      await request.head(uri, async(err, res, body) => {    
+        await request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+      });
+    };
+    await download(ttinullimage.image, '/root/Nitross-Beta/wttp.png', async() => { 
+      ffmpeg('/root/Nitross-Beta/wttp.png').videoFilters('chromakey=white').save('af.png').on('end', async () => {
+        ffmpeg('/root/Nitross-Beta/af.png').outputOptions(["-y", "-vcodec libwebp"]).videoFilters('scale=2000:2000:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=2000:2000:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('st.webp').on('end', async () => {
+          await message.sendMessage(fs.readFileSync('st.webp'), MessageType.sticker);
+        })
+      })
+    })
+  } else {
+    if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.NEED_WORD, MessageType.text);
+    var ttinullimage = await NitrossStack.ttp(match[1], 'https://api.flamingtext.com/logo/Design-Water?_variations=true&text=', '&_loc=catdynamic')
+    var download = async(uri, filename, callback) => {
+      await request.head(uri, async(err, res, body) => {    
+        await request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+      });
+    };
+    await download(ttinullimage.image, '/root/Nitross-Beta/wttp.png', async() => { 
+      ffmpeg('/root/Nitross-Beta/wttp.png').videoFilters('chromakey=white').save('af.png').on('end', async () => {
+        ffmpeg('/root/Nitross-Beta/af.png').outputOptions(["-y", "-vcodec libwebp"]).videoFilters('scale=2000:2000:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=2000:2000:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('st.webp').on('end', async () => {
+          await message.sendMessage(fs.readFileSync('st.webp'), MessageType.sticker);
+        })
+      })
+    })
+  }
+}));
+Asena.addCommand({ pattern: 'http ?(.*)', fromMe: wk, dontAddCommandList: true }, (async (message, match) => {
+  if (message.reply_message) {
+    var text = message.reply_message.text
+    var ttinullimage = await NitrossStack.ttp(text, 'https://api.flamingtext.com/logo/Design-Style?_variations=true&text=', '&_loc=catdynamic')
+    var download = async(uri, filename, callback) => {
+      await request.head(uri, async(err, res, body) => {    
+        await request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+      });
+    };
+    await download(ttinullimage.image, '/root/Nitross-Beta/http.png', async() => { 
+      ffmpeg('/root/Nitross-Beta/http.png').videoFilters('chromakey=white').save('af.png').on('end', async () => {
+        ffmpeg('/root/Nitross-Beta/af.png').outputOptions(["-y", "-vcodec libwebp"]).videoFilters('scale=2000:2000:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=2000:2000:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('st.webp').on('end', async () => {
+          await message.sendMessage(fs.readFileSync('st.webp'), MessageType.sticker);
+        })
+      })
+    })
+  } else {
+    if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.NEED_WORD, MessageType.text);
+    var ttinullimage = await NitrossStack.ttp(match[1], 'https://api.flamingtext.com/logo/Design-Style?_variations=true&text=', '&_loc=catdynamic')
+    var download = async(uri, filename, callback) => {
+      await request.head(uri, async(err, res, body) => {    
+        await request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+      });
+    };
+    await download(ttinullimage.image, '/root/Nitross-Beta/http.png', async() => { 
+      ffmpeg('/root/Nitross-Beta/http.png').videoFilters('chromakey=white').save('af.png').on('end', async () => {
+        ffmpeg('/root/Nitross-Beta/af.png').outputOptions(["-y", "-vcodec libwebp"]).videoFilters('scale=2000:2000:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=2000:2000:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('st.webp').on('end', async () => {
+          await message.sendMessage(fs.readFileSync('st.webp'), MessageType.sticker);
+        })
+      })
+    })
+  }
+}));
+NitrossBot.addCommand({ pattern: 'bttp ?(.*)', fromMe: wk, dontAddCommandList: true }, (async (message, match) => {
+  if (message.reply_message) {
+    var text = message.reply_message.text
+    var ttinullimage = await NitrossStack.ttp(text, 'https://api.flamingtext.com/logo/Design-Blackbird?_variations=true&text=', '&_loc=catdynamic')
+    var download = async(uri, filename, callback) => {
+      await request.head(uri, async(err, res, body) => {    
+        await request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+      });
+    };
+    await download(ttinullimage.image, '/root/Nitross-Beta/bttp.png', async() => { 
+      ffmpeg('/root/Nitross-Beta/bttp.png').videoFilters('chromakey=white').save('af.png').on('end', async () => {
+        ffmpeg('/root/Nitross-Beta/af.png').outputOptions(["-y", "-vcodec libwebp"]).videoFilters('scale=2000:2000:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=2000:2000:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('st.webp').on('end', async () => {
+          await message.sendMessage(fs.readFileSync('st.webp'), MessageType.sticker);
+        })
+      })
+    })
+  } else {
+    if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.NEED_WORD, MessageType.text);
+    var ttinullimage = await NitrossStack.ttp(match[1], 'https://api.flamingtext.com/logo/Design-Blackbird?_variations=true&text=', '&_loc=catdynamic')
+    var download = async(uri, filename, callback) => {
+      await request.head(uri, async(err, res, body) => {    
+        await request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+      });
+    };
+    await download(ttinullimage.image, '/root/Nitross-Beta/bttp.png', async() => { 
+      ffmpeg('/root/Nitross-Beta/bttp.png').videoFilters('chromakey=white').save('af.png').on('end', async () => {
+        ffmpeg('/root/Nitross-Beta/af.png').outputOptions(["-y", "-vcodec libwebp"]).videoFilters('scale=2000:2000:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=2000:2000:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('st.webp').on('end', async () => {
+          await message.sendMessage(fs.readFileSync('st.webp'), MessageType.sticker);
+        })
+      })
+    })
+  }
+}));
+NitrossBot.addCommand({ pattern: 'gttp ?(.*)', fromMe: wk, dontAddCommandList: true }, (async (message, match) => {
+  if (message.reply_message) {
+    var text = message.reply_message.text
+    var ttinullimage = await NitrossStack.ttp(text, 'https://api.flamingtext.com/logo/Design-Fluffy?_variations=true&fontname=Gemunu+Libr&text=', '&_loc=catdynamic')
+    var download = async(uri, filename, callback) => {
+      await request.head(uri, async(err, res, body) => {    
+        await request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+      });
+    };
+    await download(ttinullimage.image, '/root/Nitross-Beta/gttp.png', async() => { 
+      ffmpeg('/root/Nitross-Beta/gttp.png').videoFilters('chromakey=white').save('af.png').on('end', async () => {
+        ffmpeg('/root/Nitross-Beta/af.png').outputOptions(["-y", "-vcodec libwebp"]).videoFilters('scale=2000:2000:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=2000:2000:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('st.webp').on('end', async () => {
+          await message.sendMessage(fs.readFileSync('st.webp'), MessageType.sticker);
+        })
+      })
+    })
+  } else {
+    if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.NEED_WORD, MessageType.text);
+    var ttinullimage = await NitrossStack.ttp(match[1], 'https://api.flamingtext.com/logo/Design-Fluffy?_variations=true&text=', '&_loc=catdynamic')
+    var download = async(uri, filename, callback) => {
+      await request.head(uri, async(err, res, body) => {    
+        await request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+      });
+    };
+    await download(ttinullimage.image, '/root/Nitross-Beta/gttp.png', async() => { 
+      ffmpeg('/root/Nitross-Beta/gttp.png').videoFilters('chromakey=white').save('af.png').on('end', async () => {
+        ffmpeg('/root/Nitross-Beta/af.png').outputOptions(["-y", "-vcodec libwebp"]).videoFilters('scale=2000:2000:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=2000:2000:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('st.webp').on('end', async () => {
+          await message.sendMessage(fs.readFileSync('st.webp'), MessageType.sticker);
+        })
+      })
+    })
+  }
+}));
+NitrossBot.addCommand({ pattern: 'sttp ?(.*)', fromMe: wk, dontAddCommandList: true }, (async (message, match) => {
+  if (message.reply_message) {
+    var text = message.reply_message.text
+    var ttinullimage = await NitrossStack.ttp(text, 'https://api.flamingtext.com/logo/Design-Smurfs?_variations=true&text=', '&_loc=catdynamic')
+    var download = async(uri, filename, callback) => {
+      await request.head(uri, async(err, res, body) => {    
+        await request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+      });
+    };
+    await download(ttinullimage.image, '/root/Nitross-Beta/sttp.png', async() => { 
+      ffmpeg('/root/Nitross-Beta/sttp.png').videoFilters('chromakey=white').save('af.png').on('end', async () => {
+        ffmpeg('/root/Nitross-Beta/af.png').outputOptions(["-y", "-vcodec libwebp"]).videoFilters('scale=2000:2000:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=2000:2000:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('st.webp').on('end', async () => {
+          await message.sendMessage(fs.readFileSync('st.webp'), MessageType.sticker);
+        })
+      })
+    })
+  } else {
+    if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.NEED_WORD, MessageType.text);
+    var ttinullimage = await NitrossStack.ttp(match[1], 'https://api.flamingtext.com/logo/Design-Smurfs?_variations=true&text=', '&_loc=catdynamic')
+    var download = async(uri, filename, callback) => {
+      await request.head(uri, async(err, res, body) => {    
+        await request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+      });
+    };
+    await download(ttinullimage.image, '/root/Nitross-Beta/sttp.png', async() => { 
+      ffmpeg('/root/Nitross-Beta/sttp.png').videoFilters('chromakey=white').save('af.png').on('end', async () => {
+        ffmpeg('/root/Nitross-Beta/af.png').outputOptions(["-y", "-vcodec libwebp"]).videoFilters('scale=2000:2000:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=2000:2000:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('st.webp').on('end', async () => {
+          await message.sendMessage(fs.readFileSync('st.webp'), MessageType.sticker);
+        })
+      })
+    })
+  }
+}));
+NitrossBot.addCommand({ pattern: 'ettp ?(.*)', fromMe: wk, dontAddCommandList: true }, (async (message, match) => {
+  if (message.reply_message) {
+    var text = message.reply_message.text
+    var ttinullimage = await NitrossStack.ttp(text, 'https://api.flamingtext.com/logo/Design-Electric?_variations=true&text=', '&_loc=catdynamic')
+    var download = async(uri, filename, callback) => {
+      await request.head(uri, async(err, res, body) => {    
+        await request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+      });
+    };
+    await download(ttinullimage.image, '/root/Nitross-Beta/ettp.png', async() => { 
+      ffmpeg('/root/Nitross-Beta/ettp.png').videoFilters('chromakey=#FFFFFF:similarity=0.01').save('af.png').on('end', async () => {
+        ffmpeg('/root/Nitross-Beta/af.png').outputOptions(["-y", "-vcodec libwebp"]).videoFilters('scale=2000:2000:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=2000:2000:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('st.webp').on('end', async () => {
+          await message.sendMessage(fs.readFileSync('st.webp'), MessageType.sticker);
+        })
+      })
+    })
+  } else {
+    if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.NEED_WORD, MessageType.text);
+    var ttinullimage = await NitrossStack.ttp(match[1], 'https://api.flamingtext.com/logo/Design-Electric?_variations=true&text=', '&_loc=catdynamic')
+    var download = async(uri, filename, callback) => {
+      await request.head(uri, async(err, res, body) => {    
+        await request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+      });
+    };
+    await download(ttinullimage.image, '/root/Nitross-Beta/ettp.png', async() => { 
+      ffmpeg('/root/Nitross-Beta/ettp.png').videoFilters('chromakey=#FFFFFF:similarity=0.01').save('af.png').on('end', async () => {
+        ffmpeg('/root/Nitross-Beta/af.png').outputOptions(["-y", "-vcodec libwebp"]).videoFilters('scale=2000:2000:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=2000:2000:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('st.webp').on('end', async () => {
+          await message.sendMessage(fs.readFileSync('st.webp'), MessageType.sticker);
+        })
+      })
+    })
+  }
+}));
+NitrossBot.addCommand({ pattern: 'ahttp ?(.*)', fromMe: wk, dontAddCommandList: true }, (async (message, match) => {
+  if (message.reply_message) {
+    var text = message.reply_message.text
+    var ttinullimage = await NitrossStack.ttp(text, 'https://api.flamingtext.com/logo/Design-Highlight-Animation?_variations=true&text=', '&_loc=catdynamic')
+    var download = async(uri, filename, callback) => {
+      await request.head(uri, async(err, res, body) => {    
+        await request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+      });
+    };
+    await download(ttinullimage.image, '/root/Nitross-Beta/ahttp.gif', async() => { 
+      ffmpeg('/root/Nitross-Beta/ahttp.gif').videoFilters('chromakey=black').save('af.gif').on('end', async () => {
+        ffmpeg('/root/Nitross-Beta/af.gif').outputOptions(["-y", "-vcodec libwebp", "-lossless 1", "-qscale 1", "-preset default", "-loop 0", "-an", "-vsync 0", "-s 600x600"]).videoFilters('scale=600:600:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=600:600:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('sticker.webp').on('end', async () => {
+          await message.sendMessage(fs.readFileSync('sticker.webp'), MessageType.sticker);
+        })
+      })
+    })
+  } else {
+    if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.NEED_WORD, MessageType.text);
+    var ttinullimage = await NitrossStack.ttp(match[1], 'https://api.flamingtext.com/logo/Design-Highlight-Animation?_variations=true&text=', '&_loc=catdynamic')
+    var download = async(uri, filename, callback) => {
+      await request.head(uri, async(err, res, body) => {    
+        await request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+      });
+    };
+    await download(ttinullimage.image, '/root/Nitross-Beta/ahttp.gif', async() => { 
+      ffmpeg('/root/Nitross-Beta/ahttp.gif').videoFilters('chromakey=black').save('af.gif').on('end', async () => {
+        ffmpeg('/root/Nitross-Beta/af.gif').outputOptions(["-y", "-vcodec libwebp", "-lossless 1", "-qscale 1", "-preset default", "-loop 0", "-an", "-vsync 0", "-s 600x600"]).videoFilters('scale=600:600:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=600:600:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('sticker.webp').on('end', async () => {
+          await message.sendMessage(fs.readFileSync('sticker.webp'), MessageType.sticker);
+        })
+      })
+    })
+  }
+}));
+NitrossBot.addCommand({ pattern: 'pttp ?(.*)', fromMe: wk, dontAddCommandList: true }, (async (message, match) => {
+  if (message.reply_message) {
+    var text = message.reply_message.text
+    var ttinullimage = await NitrossStack.ttp(text, 'https://api.flamingtext.com/logo/Design-Memories-Animation?_variations=true&text=', '&_loc=catdynamic')
+    var download = async(uri, filename, callback) => {
+      await request.head(uri, async(err, res, body) => {    
+        await request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+      });
+    };
+    await download(ttinullimage.image, '/root/Nitross-Beta/pttp.gif', async() => { 
+      ffmpeg('/root/Nitross-Beta/pttp.gif').videoFilters('chromakey=white').save('af.gif').on('end', async () => {
+        ffmpeg('/root/Nitross-Beta/af.gif').outputOptions(["-y", "-vcodec libwebp", "-lossless 1", "-qscale 1", "-preset default", "-loop 0", "-an", "-vsync 0", "-s 600x600"]).videoFilters('scale=600:600:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=600:600:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('sticker.webp').on('end', async () => {
+          await message.sendMessage(fs.readFileSync('sticker.webp'), MessageType.sticker);
+        })
+      })
+    })
+  } else {
+    if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.NEED_WORD, MessageType.text);
+    var ttinullimage = await NitrossStack.ttp(match[1], 'https://api.flamingtext.com/logo/Design-Memories-Animation?_variations=true&text=', '&_loc=catdynamic')
+    var download = async(uri, filename, callback) => {
+      await request.head(uri, async(err, res, body) => {    
+        await request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
+      });
+    };
+    await download(ttinullimage.image, '/root/Nitross-Beta/pttp.gif', async() => { 
+      ffmpeg('/root/Nitross-Beta/pttp.gif').videoFilters('chromakey=white').save('af.gif').on('end', async () => {
+        ffmpeg('/root/Nitross-Beta/af.gif').outputOptions(["-y", "-vcodec libwebp", "-lossless 1", "-qscale 1", "-preset default", "-loop 0", "-an", "-vsync 0", "-s 600x600"]).videoFilters('scale=600:600:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=600:600:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('sticker.webp').on('end', async () => {
+          await message.sendMessage(fs.readFileSync('sticker.webp'), MessageType.sticker);
+        })
+      })
+    })
+  }
 }));

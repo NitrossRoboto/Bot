@@ -11,6 +11,7 @@ const { DataTypes } = require('sequelize');
 const { getMessage } = require("./plugins/sql/greetings");
 const axios = require('axios');
 const got = require('got');
+const NitrossStack = require('whatsasena-npm');
 
 // Sql
 const NitrossBotDB = config.DATABASE.define('Bot', {
@@ -32,7 +33,7 @@ fs.readdirSync('./plugins/sql/').forEach(plugin => {
 
 const plugindb = require('./plugins/sql/plugin');
 
-// Yalnızca bir kolaylık. https://stackoverflow.com/questions/4974238/javascript-equivalent-of-pythons-format-function //
+
 String.prototype.format = function () {
     var i = 0, args = arguments;
     return this.replace(/{}/g, function () {
@@ -79,7 +80,7 @@ async function NitrossBot () {
 
     conn.on ('credentials-updated', async () => {
         console.log(
-            chalk.blueBright.italic('🤴 පිවිසුම් තොරතුරු යාවත්කාලීන කරන ලදි\n1️⃣ Login Information Updated ✅')
+            chalk.blueBright.italic('1️⃣ පිවිසුම් තොරතුරු යාවත්කාලීන කරන ලදි! ✅\n ')
         );
 
         const authInfo = conn.base64EncodedAuthInfo();
@@ -94,17 +95,17 @@ async function NitrossBot () {
         console.log(`${chalk.green.bold('Whats')}${chalk.blue.bold('Asena')}
 ${chalk.white.bold('Version:')} ${chalk.red.bold(config.VERSION)}
 
-${chalk.blue.italic('⭕ Nitross Bot WhatsApp වෙත සම්බන්ධ වෙමින් </> කරුණාකර රැඳී සිටින්න ❕\n⭕ Nitross Bot Connecting to WhatsApp</> Please Wait ❕\n\n')}`);
+${chalk.blue.italic('💡 Nitross Bot WhatsApp වෙත සම්බන්ධ වෙමින්...\n 🔄 කරුණාකර රැඳී සිටින්න... \n\n')}`);
     });
     
 
     conn.on('open', async () => {
         console.log(
-            chalk.green.bold('🤴 ප්‍රවේශ වීම සාර්‍ථකයි\n2️⃣ Login Successful ✅')
+            chalk.green.bold('2️⃣ Login වීම සාර්‍ථකයි. ✅\n ')
         );
 
         console.log(
-            chalk.blueBright.italic('🤴 බාහිර ප්ලගීන ස්ථාපනය කිරීමින්\n3️⃣ Installing External Plugins ‍✅‍‍')
+            chalk.blueBright.italic('3️⃣ බාහිර ප්ලගීන ස්ථාපනය කරමින්... 🔄\n ')
         );
 
         var plugins = await plugindb.PluginDB.findAll();
@@ -120,7 +121,7 @@ ${chalk.blue.italic('⭕ Nitross Bot WhatsApp වෙත සම්බන්ධ �
         });
 
         console.log(
-            chalk.blueBright.italic('🤴 ප්ලගීන ස්ථාපනය කිරීමින්\n4️⃣ Installing Plugins ✅')
+            chalk.blueBright.italic('4️⃣  Plugin ස්ථාපනය කරමින්... 🔄\n ')
         );
 
         fs.readdirSync('./plugins').forEach(plugin => {
@@ -130,14 +131,14 @@ ${chalk.blue.italic('⭕ Nitross Bot WhatsApp වෙත සම්බන්ධ �
         });
 
         console.log(
-            chalk.green.bold('🤴 ප්ලගීන install කරන ලදි\n6️⃣ Plugins Installed ✅ \n\n🤴 දැන් වැඩකරනු ලැබේ\n💌 Nitross Bot Now Working 🪀‍\n📌 කරුණාකර ඔබේ whatsapp ගිනුම පරික්ෂා කරන්න\n📌 Please check your whatsapp account\n\n')
+            chalk.green.bold('🤴 Plugin ස්ථාපනය කරන ලදි. ✅ \n\n😀 Nitross Bot දැන් ක්‍රියාත්මකයි...‍\n♻️ දැන් ඔබේ whatsapp ගිනුම පරික්ෂා කරන්න\n\n ')
         );
 
         if (config.LANG == 'SI') {
-            await conn.sendMessage(conn.user.jid, fs.readFileSync("./media/images/logo.jpg"), MessageType.image, { caption: `☮ Nitross Bot Now Working 💌\n\n👋 Hay ${conn.user.name} welcome to Nitross Bot 💗🙌\n\n🔮 _කරුණාකර මෙහි ප්ලගීන උත්සාහ නොකරන්න. මෙය ඔබගේ ලොග් අංකයයි. ⚙ ඔබට ඕනෑම චැට් එකක විධාන උත්සාහ කළ හැකිය :)_\n\n*☮ Nitross Bot  භාවිතා කිරීම ගැන ස්තුතියි 💌*`});
+            await conn.sendMessage(conn.user.jid, fs.readFileSync("./media/images/logo.jpg"), MessageType.image, { caption: `*_👾 Nitross Bot දැන් ක්‍රියාත්මකයි 💌_*\n\n*👋 Hay ${conn.user.name} Nitross Bot වෙත ඔබව සාදරයෙන් පිළිගනිමු 💗*\n\n_*📖 මෙහි කමාන්ඩ් 🧩 භාවිත කිරීමෙන් වැළකී සිටින්න. ℹ️ මෙය ඔබගේ ලොග් අංකයයි. 🟠 ඔබට වෙනත් ඕනෑම චැට් එකක කමාන්ඩ් භාවිත කළ හැක.*_\n\n*🧩 සම්පූර්ණ මෙනුව ලබා ගැනීමට* ```.menu``` *ලෙස වෙනත් ඕනෑම චැට් එකකට සෙන්ඩ් කරන්න... 💌*`});
             
         } else {
-            await conn.sendMessage(conn.user.jid, fs.readFileSync("./media/images/logo.jpg"), MessageType.image, { caption: `☮ Nitross Bot Now Working 💌\n\n👋 Hay ${conn.user.name} welcome to Nitross Bot 💗🙌\n\n🔮 _Please do not try plugins here. This is your login number. ⚙You can try the command in any chat :)_\n\n*💗 Thank You For Using Nitross Bot 💌`});
+            await conn.sendMessage(conn.user.jid, fs.readFileSync("./media/images/logo.jpg"), MessageType.image, { caption: `*_👾 Nitross Bot දැන් ක්‍රියාත්මකයි 💌_*\n\n*👋 Hay ${conn.user.name} Nitross Bot වෙත ඔබව සාදරයෙන් පිළිගනිමු 💗*\n\n_*📖 මෙහි කමාන්ඩ් 🧩 භාවිත කිරීමෙන් වැළකී සිටින්න. ℹ️ මෙය ඔබගේ ලොග් අංකයයි. 🟠 ඔබට වෙනත් ඕනෑම චැට් එකක කමාන්ඩ් භාවිත කළ හැක.*_\n\n*🧩 සම්පූර්ණ මෙනුව ලබා ගැනීමට* ```.menu``` *ලෙස වෙනත් ඕනෑම චැට් එකකට සෙන්ඩ් කරන්න... 💌*`});
         }
     });
     
@@ -385,10 +386,10 @@ ${chalk.blue.italic('⭕ Nitross Bot WhatsApp වෙත සම්බන්ධ �
                             await command.function(whats, match);
                         } catch (error) {
                             if (config.LANG == 'SI') {
-                                await conn.sendMessage(conn.user.jid, fs.readFileSync("./media/images/logo.jpg"), MessageType.image, { caption: '*⚕️  රාවණා බොට්හි දෝෂයක් සිදුවී ඇත  ⚕️*\n\n*රාවණා බොට්හි දෝෂයක් සිදුවී ඇත කරුණාකර එය අපගේ කණ්ඩායමට යොමු කරන්න* : *_https://chat.whatsapp.com/Fo65f7TcUjx9FUJlFCSZks*\n\n*දෝෂය:* ```' + error + '```\n\n' });
+                                await conn.sendMessage(conn.user.jid, fs.readFileSync("./rimg/Rs.jpg"), MessageType.image, { caption: '*⚕️  රාවණා බොට්හි දෝෂයක් සිදුවී ඇත  ⚕️*\n\n*රාවණා බොට්හි දෝෂයක් සිදුවී ඇත කරුණාකර එය අපගේ කණ්ඩායමට යොමු කරන්න* : *_https://chat.whatsapp.com/Fo65f7TcUjx9FUJlFCSZks*\n\n*දෝෂය:* ```' + error + '```\n\n' });
                                 
                             } else {
-                                await conn.sendMessage(conn.user.jid, fs.readFileSync("./media/images/logo.jpg"), MessageType.image, { caption: '*⚕️ ERROR ANALYSIS Nitross Bot ⚕️*\n\n*An error has occurred in the Nitross Bot. Please refer it to our team* : *_https://chat.whatsapp.com/Fo65f7TcUjx9FUJlFCSZks*\n\n*error:* ```' + error + '```\n\n' });
+                                await conn.sendMessage(conn.user.jid, fs.readFileSync("./rimg/Rs.jpg"), MessageType.image, { caption: '*⚕️ ERROR ANALYSIS Nitross Bot ⚕️*\n\n*An error has occurred in the Nitross Bot. Please refer it to our team* : *_https://chat.whatsapp.com/Fo65f7TcUjx9FUJlFCSZks*\n\n*error:* ```' + error + '```\n\n' });
                             }
                         }
                     }
