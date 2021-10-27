@@ -1,0 +1,32 @@
+{
+  "name": "NitrossBot",
+  "version": "3.0.0",
+  "description": "NitrossBot project - a Whatsapp userbot helping to improve your Whatsapp experience.",
+  "main": "./NitrossBot/bot.js",
+  "scripts": {
+    "start": "supervisor -s bot.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NitrossRoboto/Bot.git"
+  },
+  "keywords": [
+    "whatsapp",
+    "bot",
+    "ai",
+    "nitross-bot",
+    "api",
+    "nitross-roboto",
+    "whatsapp api"
+  ],
+  "author": "NitrossRoboto",
+  "developer": "@nitrossroboto",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/NitrossRoboto/Bot/issues"
+  },
+  "homepage": "https://github.com/NitrossRoboto/Bot#readme",
+  "dependencies": {
+    "@nitrossroboto/nitrossbot-npm-pkg": "^1.2.1"
+  }
+}
