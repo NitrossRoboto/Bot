@@ -1,29 +1,28 @@
-const NitrossBot = require('../events')
+const Nitrossbot = require('../events')
 const { MessageType } = require('@adiwajshing/baileys')
 const axios = require('axios')
-const Config = require('../config');
+const cn = require('../config');
 
 const Language = require('../language')
 const { errorMessage, infoMessage } = require('../helpers')
 const Lang = Language.getString('instagram')
-const NEED = "plz enter tiktok link"
-const DOWN = "Downlading plz waite"
-const NOT = "i cloud't find this"
-if (Config.WORKTYPE == 'private') {
+const Tlang = Language.getString('tiktok')
 
-    NitrossBot.addCommand({ pattern: 'ig ?(.*)', fromMe: true, desc: 'Download in instagram' }, (async (message, match) => {
+if (cn.WORKTYPE == 'private') {
+
+    Nitrossbot.addCommand({ pattern: 'insta ?(.*)', fromMe: true, desc: Lang.DESC }, (async (message, match) => {
         if (match[0].includes('install')) return;
         if (match[1] === '') return await message.client.sendMessage(message.jid, Lang.NEED_WORD, MessageType.text, { quoted: message.data });
         if (!match[1].includes('www.instagram.com')) return await message.client.sendMessage(message.jid, Lang.NEED_WORD, MessageType.text, { quoted: message.data });
 	
-        let urls = `https://api.xteam.xyz/dl/ig?url=${match[1]}&APIKEY=${Config.XTEAM_API}`
+        let urls = `https://api.xteam.xyz/dl/ig?url=${match[1]}&APIKEY=ab9942f95c09ca89`
         let response
         try { response = await got(urls) } catch { return await message.client.sendMessage(message.jid, Lang.FİX, MessageType.text, { quoted: message.data });
         }
         const json = JSON.parse(response.body);
 
         if (json.status === false) return await message.client.sendMessage(message.jid, Lang.NOT_FOUND, MessageType.text, { quoted: message.data });
-        if (json.code === 403) return await message.client.sendMessage(message.jid, '```api inviled```', MessageType.text, { quoted: message.data });
+        if (json.code === 403) return await message.client.sendMessage(message.jid, '```API Error!```', MessageType.text, { quoted: message.data });
 
         await message.client.sendMessage(message.jid, Tlang.DOWN, MessageType.text, { quoted: message.data });
 
@@ -35,9 +34,7 @@ if (Config.WORKTYPE == 'private') {
         });
 
     }));
-
-    /*
-    NitrossBot.addCommand({ pattern: 'tiktok ?(.*)', fromMe: true, desc: Tlang.TİKTOK }, async (message, match) => {
+    Nitrossbot.addCommand({ pattern: 'tiktok ?(.*)', fromMe: true, desc: Tlang.TİKTOK }, async (message, match) => {
 
         const userName = match[1]
 
@@ -57,7 +54,7 @@ if (Config.WORKTYPE == 'private') {
             })
 
             await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
-              caption: 'Made by WhatsAsena',
+              caption: 'Made by WhatsNitrossbot',
             })
           })
           .catch(
@@ -65,23 +62,22 @@ if (Config.WORKTYPE == 'private') {
           )
       },
     )
-    */
 }
-else if (Config.WORKTYPE == 'public') {
+else if (cn.WORKTYPE == 'public') {
 
-    NitrossBot.addCommand({ pattern: 'ig ?(.*)', fromMe: false, desc: Lang.DESC }, (async (message, match) => {
+    Nitrossbot.addCommand({ pattern: 'insta ?(.*)', fromMe: false, desc: Lang.DESC }, (async (message, match) => {
         if (match[0].includes('install')) return;
         if (match[1] === '') return await message.client.sendMessage(message.jid, Lang.NEED_WORD, MessageType.text, { quoted: message.data });
         if (!match[1].includes('www.instagram.com')) return await message.client.sendMessage(message.jid, Lang.NEED_WORD, MessageType.text, { quoted: message.data });
 	
-        let urls = `https://api.xteam.xyz/dl/ig?url=${match[1]}&APIKEY=${Config.XTEAM_API}`
+        let urls = `https://api.xteam.xyz/dl/ig?url=${match[1]}&APIKEY=ab9942f95c09ca89`
         let response
         try { response = await got(urls) } catch { return await message.client.sendMessage(message.jid, Lang.FİX, MessageType.text, { quoted: message.data });
         }
         const json = JSON.parse(response.body);
 
         if (json.status === false) return await message.client.sendMessage(message.jid, Lang.NOT_FOUND, MessageType.text, { quoted: message.data });
-        if (json.code === 403) return await message.client.sendMessage(message.jid, '```api inviled```', MessageType.text, { quoted: message.data });
+        if (json.code === 403) return await message.client.sendMessage(message.jid, '```API Error!```', MessageType.text, { quoted: message.data });
 
         await message.client.sendMessage(message.jid, Tlang.DOWN, MessageType.text, { quoted: message.data });
 
@@ -93,20 +89,19 @@ else if (Config.WORKTYPE == 'public') {
         });
 
     }));
-
-    NitrossBot.addCommand({ pattern: 'ig ?(.*)', fromMe: true, desc: Lang.DESC, dontAddCommandList: true }, (async (message, match) => {
+    Nitrossbot.addCommand({ pattern: 'insta ?(.*)', fromMe: true, desc: Lang.DESC, dontAddCommandList: true }, (async (message, match) => {
         if (match[0].includes('install')) return;
         if (match[1] === '') return await message.client.sendMessage(message.jid, Lang.NEED_WORD, MessageType.text, { quoted: message.data });
         if (!match[1].includes('www.instagram.com')) return await message.client.sendMessage(message.jid, Lang.NEED_WORD, MessageType.text, { quoted: message.data });
 	
-        let urls = `https://api.xteam.xyz/dl/ig?url=${match[1]}&APIKEY=${Config.XTEAM_API}`
+        let urls = `https://api.xteam.xyz/dl/ig?url=${match[1]}&APIKEY=ab9942f95c09ca89`
         let response
         try { response = await got(urls) } catch { return await message.client.sendMessage(message.jid, Lang.FİX, MessageType.text, { quoted: message.data });
         }
         const json = JSON.parse(response.body);
 
         if (json.status === false) return await message.client.sendMessage(message.jid, Lang.NOT_FOUND, MessageType.text, { quoted: message.data });
-        if (json.code === 403) return await message.client.sendMessage(message.jid, '```api inviled```', MessageType.text, { quoted: message.data });
+        if (json.code === 403) return await message.client.sendMessage(message.jid, '```API Error!```', MessageType.text, { quoted: message.data });
 
         await message.client.sendMessage(message.jid, Tlang.DOWN, MessageType.text, { quoted: message.data });
 
@@ -118,17 +113,16 @@ else if (Config.WORKTYPE == 'public') {
         });
 
     }));
-    
-    NitrossBot.addCommand({ pattern: 'tiktok ?(.*)', fromMe: false, desc: 'Download in tiktok (with out watermark)' }, async (message, match) => {
+    Nitrossbot.addCommand({ pattern: 'tiktok ?(.*)', fromMe: false, desc: Tlang.TİKTOK }, async (message, match) => {
 
         const userName = match[1]
 
-        if (!userName) return await message.client.sendMessage(message.jid, NEED, MessageType.text)
+        if (!userName) return await message.client.sendMessage(message.jid, Tlang.NEED, MessageType.text)
 
-        await message.client.sendMessage(message.jid, DOWN, MessageType.text)
+        await message.client.sendMessage(message.jid, Tlang.DOWN, MessageType.text)
 
         await axios
-          .get(`https://api.xteam.xyz/dl/tiktok?url=${userName}&APIKEY=${Config.XTEAM_API}`)
+          .get(`https://api.xteam.xyz/dl/tiktok?url=${userName}&APIKEY=ab9942f95c09ca89`)
           .then(async (response) => {
             const {
               server_1,
@@ -139,16 +133,15 @@ else if (Config.WORKTYPE == 'public') {
             })
 
             await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
-              caption: Config.CP_TEXT,
+              caption: 'Made by Nitrossbot',
             })
           })
           .catch(
-            async (err) => await message.client.sendMessage(message.jid, NOT + userName, MessageType.text),
+            async (err) => await message.client.sendMessage(message.jid, Tlang.NOT + userName, MessageType.text),
           )
       },
     )
-    /*
-    NitrossBot.addCommand({ pattern: 'tiktok ?(.*)', fromMe: true, desc: Tlang.TİKTOK }, async (message, match) => {
+    Nitrossbot.addCommand({ pattern: 'tiktok ?(.*)', fromMe: true, desc: Tlang.TİKTOK }, async (message, match) => {
 
         const userName = match[1]
 
@@ -168,7 +161,7 @@ else if (Config.WORKTYPE == 'public') {
             })
 
             await message.sendMessage(Buffer.from(profileBuffer.data), MessageType.video, {
-              caption: 'Made by WhatsAsena',
+              caption: 'Made by WhatsNitrossbot',
             })
           })
           .catch(
@@ -176,5 +169,4 @@ else if (Config.WORKTYPE == 'public') {
           )
       },
     )
-    */
 }

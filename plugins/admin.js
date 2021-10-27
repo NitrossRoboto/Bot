@@ -1,11 +1,18 @@
+/* Copyright (C) 2021 Nitross Roboto.
+
+Licensed under the  GPL-3.0 License;
+you may not use this file except in compliance with the License.
+
+Nitross Bot - From NitrossRoboto
+*/
+
 const {MessageType, GroupSettingChange} = require('@adiwajshing/baileys');
-const NitrossBot = require('../events');
+const Nitrossbot = require('../events');
 const Config = require('../config');
 
 const Language = require('../language');
 const Lang = Language.getString('admin');
 const mut = Language.getString('mute');
-const fs = require('fs');
 
 async function checkImAdmin(message, user = message.client.user.jid) {
     var grup = await message.client.groupMetadata(message.jid);
@@ -16,7 +23,7 @@ async function checkImAdmin(message, user = message.client.user.jid) {
     return sonuc.includes(true);
 }
 
-NitrossBot.addCommand({pattern: 'ban ?(.*)', fromMe: true, dontAddCommandList: true, onlyGroup: true, desc: Lang.BAN_DESC}, (async (message, match) => {  
+Nitrossbot.addCommand({pattern: 'ban ?(.*)', fromMe: true, onlyGroup: true, desc: Lang.BAN_DESC}, (async (message, match) => {  
     var im = await checkImAdmin(message);
     if (!im) return await message.client.sendMessage(message.jid,Lang.IM_NOT_ADMIN,MessageType.text);
 
@@ -54,7 +61,7 @@ NitrossBot.addCommand({pattern: 'ban ?(.*)', fromMe: true, dontAddCommandList: t
     }
 }));
 
-NitrossBot.addCommand({pattern: 'add(?: |$)(.*)', fromMe: true, dontAddCommandList: true, onlyGroup: true, desc: Lang.ADD_DESC}, (async (message, match) => {  
+Nitrossbot.addCommand({pattern: 'add(?: |$)(.*)', fromMe: true, onlyGroup: true, desc: Lang.ADD_DESC}, (async (message, match) => {  
     var im = await checkImAdmin(message);
     if (!im) return await message.client.sendMessage(message.jid,Lang.IM_NOT_ADMIN,MessageType.text);
 
@@ -62,7 +69,7 @@ NitrossBot.addCommand({pattern: 'add(?: |$)(.*)', fromMe: true, dontAddCommandLi
         if (match[1] !== '') {
             match[1].split(' ').map(async (user) => {
                 await message.client.groupAdd(message.jid, [user + "@s.whatsapp.net"]);
-                await message.client.sendMessage(message.jid,'*_' + user + ' ' + Lang.ADDED +'_*', MessageType.text);
+                await message.client.sendMessage(message.jid,'```' + user + ' ' + Lang.ADDED +'```', MessageType.text);
             });
         } 
         else if (match[1].includes('+')) {
@@ -76,7 +83,7 @@ NitrossBot.addCommand({pattern: 'add(?: |$)(.*)', fromMe: true, dontAddCommandLi
         if (match[1] !== '') {
             match[1].split(' ').map(async (user) => {
                 await message.client.groupAdd(message.jid, [user + "@s.whatsapp.net"]);
-                await message.client.sendMessage(message.jid,'*_' + user + '_* ' + Config.ADDMSG, MessageType.text);
+                await message.client.sendMessage(message.jid,'```' + user + '``` ' + Config.ADDMSG, MessageType.text);
             });
         }
         else if (match[1].includes('+')) {
@@ -88,7 +95,7 @@ NitrossBot.addCommand({pattern: 'add(?: |$)(.*)', fromMe: true, dontAddCommandLi
     }
 }));
 
-NitrossBot.addCommand({pattern: 'promote ?(.*)', fromMe: true, dontAddCommandList: true, onlyGroup: true, desc: Lang.PROMOTE_DESC}, (async (message, match) => {    
+Nitrossbot.addCommand({pattern: 'promote ?(.*)', fromMe: true, onlyGroup: true, desc: Lang.PROMOTE_DESC}, (async (message, match) => {    
     var im = await checkImAdmin(message);
     if (!im) return await message.client.sendMessage(message.jid,Lang.IM_NOT_ADMIN,MessageType.text);
 
@@ -146,37 +153,65 @@ NitrossBot.addCommand({pattern: 'promote ?(.*)', fromMe: true, dontAddCommandLis
     }
 }));
 
-NitrossBot.addCommand({pattern: 'demote ?(.*)', fromMe: true, onlyGroup: true, desc: Lang.DEMOTE_DESC, dontAddCommandList: true}, (async (message, match) => {    
+Nitrossbot.addCommand({pattern: 'demote ?(.*)', fromMe: true, onlyGroup: true, desc: Lang.DEMOTE_DESC}, (async (message, match) => {    
     var im = await checkImAdmin(message);
     if (!im) return await message.client.sendMessage(message.jid,Lang.IM_NOT_ADMIN);
 
-    if (message.reply_message !== false) {
-        var checkAlready = await checkImAdmin(message, message.reply_message.data.participant.split('@')[0]);
-        if (!checkAlready) {
-            return await message.client.sendMessage(message.jid,Lang.ALREADY_NOT_ADMIN, MessageType.text);
-        }
-
-        await message.client.sendMessage(message.jid,'@' + message.reply_message.data.participant.split('@')[0] + Lang.DEMOTED, MessageType.text, {contextInfo: {mentionedJid: [message.reply_message.data.participant]}});
-        await message.client.groupDemoteAdmin(message.jid, [message.reply_message.data.participant]);
-    } else if (message.reply_message === false && message.mention !== false) {
-        var etiketler = '';
-        message.mention.map(async (user) => {
-            var checkAlready = await checkImAdmin(message, user);
+    if (Config.DEMOTEMSG == 'default') {
+        if (message.reply_message !== false) {
+            var checkAlready = await checkImAdmin(message, message.reply_message.data.participant.split('@')[0]);
             if (!checkAlready) {
                 return await message.client.sendMessage(message.jid,Lang.ALREADY_NOT_ADMIN, MessageType.text);
             }
-            
-            etiketler += '@' + user.split('@')[0] + ',';
-        });
 
-        await message.client.sendMessage(message.jid,etiketler + Lang.DEMOTED, MessageType.text, {contextInfo: {mentionedJid: message.mention}});
-        await message.client.groupDemoteAdmin(message.jid, message.mention);
-    } else {
-        return await message.client.sendMessage(message.jid,Lang.GIVE_ME_USER,MessageType.text);
+            await message.client.sendMessage(message.jid,'@' + message.reply_message.data.participant.split('@')[0] + Lang.DEMOTED, MessageType.text, {contextInfo: {mentionedJid: [message.reply_message.data.participant]}});
+            await message.client.groupDemoteAdmin(message.jid, [message.reply_message.data.participant]);
+        } else if (message.reply_message === false && message.mention !== false) {
+            var etiketler = '';
+            message.mention.map(async (user) => {
+                var checkAlready = await checkImAdmin(message, user);
+                if (!checkAlready) {
+                    return await message.client.sendMessage(message.jid,Lang.ALREADY_NOT_ADMIN, MessageType.text);
+                }
+            
+                etiketler += '@' + user.split('@')[0] + ',';
+            });
+
+            await message.client.sendMessage(message.jid,etiketler + Lang.DEMOTED, MessageType.text, {contextInfo: {mentionedJid: message.mention}});
+            await message.client.groupDemoteAdmin(message.jid, message.mention);
+        } else {
+            return await message.client.sendMessage(message.jid,Lang.GIVE_ME_USER,MessageType.text);
+        }
+    }
+    else {
+        if (message.reply_message !== false) {
+            var checkAlready = await checkImAdmin(message, message.reply_message.data.participant.split('@')[0]);
+            if (!checkAlready) {
+                return await message.client.sendMessage(message.jid,Lang.ALREADY_NOT_ADMIN, MessageType.text);
+            }
+
+            await message.client.sendMessage(message.jid,'@' + message.reply_message.data.participant.split('@')[0] + Config.DEMOTEMSG, MessageType.text, {contextInfo: {mentionedJid: [message.reply_message.data.participant]}});
+            await message.client.groupDemoteAdmin(message.jid, [message.reply_message.data.participant]);
+        } else if (message.reply_message === false && message.mention !== false) {
+            var etiketler = '';
+            message.mention.map(async (user) => {
+                var checkAlready = await checkImAdmin(message, user);
+                if (!checkAlready) {
+                    return await message.client.sendMessage(message.jid,Lang.ALREADY_NOT_ADMIN, MessageType.text);
+                }
+            
+                etiketler += '@' + user.split('@')[0] + ',';
+            });
+
+            await message.client.sendMessage(message.jid,etiketler + Config.DEMOTEMSG, MessageType.text, {contextInfo: {mentionedJid: message.mention}});
+            await message.client.groupDemoteAdmin(message.jid, message.mention);
+        } else {
+            return await message.client.sendMessage(message.jid,Lang.GIVE_ME_USER,MessageType.text);
+        }
     }
 }));
 
-NitrossBot.addCommand({pattern: 'mute ?(.*)', fromMe: true, dontAddCommandList: true, onlyGroup: true, desc: Lang.MUTE_DESC}, (async (message, match) => {    
+Nitrossbot.addCommand({pattern: 'mute ?(.*)', fromMe: true, onlyGroup: true, desc: Lang.MUTE_DESC}, (async (message, match) => {    
     var im = await checkImAdmin(message);
     if (!im) return await message.client.sendMessage(message.jid,Lang.IM_NOT_ADMIN,MessageType.text);
 
@@ -1532,7 +1567,7 @@ NitrossBot.addCommand({pattern: 'mute ?(.*)', fromMe: true, dontAddCommandList: 
     }
 }));
 
-NitrossBot.addCommand({pattern: 'unmute ?(.*)', fromMe: true, dontAddCommandList: true, onlyGroup: true, desc: Lang.UNMUTE_DESC}, (async (message, match) => {    
+Nitrossbot.addCommand({pattern: 'unmute ?(.*)', fromMe: true, onlyGroup: true, desc: Lang.UNMUTE_DESC}, (async (message, match) => {    
     var im = await checkImAdmin(message);
     if (!im) return await message.client.sendMessage(message.jid,Lang.IM_NOT_ADMIN,MessageType.text);
 
@@ -1546,21 +1581,12 @@ NitrossBot.addCommand({pattern: 'unmute ?(.*)', fromMe: true, dontAddCommandList
     }
 }));
 
-NitrossBot.addCommand({pattern: 'invite ?(.*)', fromMe: true, dontAddCommandList: true, onlyGroup: true, desc: Lang.INVITE_DESC}, (async (message, match) => {    
+Nitrossbot.addCommand({pattern: 'invite ?(.*)', fromMe: true, onlyGroup: true, desc: Lang.INVITE_DESC}, (async (message, match) => {    
     var im = await checkImAdmin(message);
     if (!im) return await message.client.sendMessage(message.jid,Lang.IM_NOT_ADMIN, MessageType.text);
     var invite = await message.client.groupInviteCode(message.jid);
     await message.client.sendMessage(message.jid,Lang.INVITE + ' https://chat.whatsapp.com/' + invite, MessageType.text);
 }));
-
-NitrossBot.addCommand({pattern: 'rename ?(.*)', onlyGroup: true, fromMe: true,desc: 'you can chang group name'}, (async (message, match) => {
-    var im = await checkImAdmin(message);
-    if (!im) return await message.client.sendMessage(message.jid,'i am not admin',MessageType.text);
-    if (match[1] === '') return await message.client.sendMessage(message.jid,'changing',MessageType.text);
-    await message.client.groupUpdateSubject(message.jid, match[1]);
-    await message.client.sendMessage(message.jid,'group name changed to  *_' + match[1] + '_*' ,MessageType.text);
-    }
-));
 
 module.exports = {
     checkImAdmin: checkImAdmin

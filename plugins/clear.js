@@ -1,30 +1,40 @@
+/* Copyright (C) 2020 Yusuf Usta.
+Licensed under the  GPL-3.0 License;
+you may not use this file except in compliance with the License.
+
+WhatsNitrossbot - Yusuf Usta
+*/
+
 const {MessageType, GroupSettingChange, ChatModification, WAConnectionTest} = require('@adiwajshing/baileys');
-const NitrossBot = require('../events');
+const Nitrossbot = require('../events');
 const Config = require('../config');
+const NitrossStack = require('nitrossbot-npm-pkg');
 
-const Language = require('../language');
-const Lang = Language.getString('admin');
-const mut = Language.getString('mute');
-const END = "clear all messages"
+var CLR_DESC = ''
+if (Config.LANG == 'SI') CLR_DESC = 'Clears all the messages from the chat.'
+if (Config.LANG == 'EN') CLR_DESC = 'Clears all the messages from the chat.'
 
-async function checkImAdmin(message, user = message.client.user.jid) {
-    var grup = await message.client.groupMetadata(message.jid);
-    var sonuc = grup['participants'].map((member) => {
-        if (member.id.split('@')[0] === user.split('@')[0] && member.isAdmin) return true; else; return false;
-    });
-    return sonuc.includes(true);
-}
-
-NitrossBot.addCommand({pattern: 'clear', fromMe: true, desc: END, dontAddCommandList: true}, (async (message, match) => {
-
-    await message.sendMessage('```🗑️ Cleaning Chat By NitrossBot...```');
-    await message.client.modifyChat (message.jid, ChatModification.delete);
-    await message.sendMessage('```✅ Chat cleared By NitrossBot```');
-}));
-
-NitrossBot.addCommand({pattern: 'clean ?(.*)', fromMe: true, desc: END, dontAddCommandList: true}, (async (message, match) => {
-
-    await message.sendMessage('Chat clearing...');   
-    await message.client.modifyChat (match[1] == '' ? message.jid : match [1], ChatModification.delete);
-    await message.sendMessage('🚮 Chat cleared By NitrossBot');
+Nitrossbot.addCommand({pattern: 'clear ?(.*)', fromMe: true, desc: CLR_DESC, usage: '.clear // .clear 9055xxx // .clear 9055xxx-12345@g.us'}, (async (message, match) => {
+    if (message.reply_message) {
+        var client_id = message.reply_message.data.participant
+        var payload = await NitrossStack.clear(Config.LANG, message.client.user.jid)
+        await message.client.sendMessage(client_id, payload.Action, MessageType.text);
+        await message.client.modifyChat(client_id, ChatModification.delete);
+        await message.client.sendMessage(client_id, payload.Finish, MessageType.text);
+    } else {
+        if (match[1] == '') {
+            var client_id = message.jid
+            var payload = await NitrossStack.clear(Config.LANG, message.client.user.jid)
+            await message.client.sendMessage(client_id, payload.Action, MessageType.text);
+            await message.client.modifyChat(client_id, ChatModification.delete);
+            await message.client.sendMessage(client_id, payload.Finish, MessageType.text);
+        } else if (match[1] !== '') {
+            let if_group = message.jid.includes('-') ? '' : '@s.whatsapp.net'
+            var client_id = match[1] + if_group
+            var payload = await NitrossStack.clear(Config.LANG, message.client.user.jid)
+            await message.client.sendMessage(client_id, payload.Action, MessageType.text);
+            await message.client.modifyChat(client_id, ChatModification.delete);
+            await message.client.sendMessage(client_id, payload.Finish, MessageType.text);
+        }
+    }
 }));

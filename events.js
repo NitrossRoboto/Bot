@@ -1,4 +1,5 @@
-//Nitross Roboto From WhatsAsena
+/* /* Copyright (C) 2021 Nitross Roboto.
+*/
 
 // Komutları burada tutacağız.
 var config = require('./config');

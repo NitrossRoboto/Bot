@@ -1,4 +1,4 @@
-const NitrossBot = require('../events');
+const Nitrossbot = require('../events');
 const { MessageType, MessageOptions, Mimetype } = require('@adiwajshing/baileys');
 const fs = require('fs');
 const axios = require('axios');
@@ -7,7 +7,7 @@ const ffmpeg = require('fluent-ffmpeg');
 const {execFile} = require('child_process');
 const cwebp = require('cwebp-bin');
 let wk = Config.WORKTYPE == 'public' ? false : true
-const NitrossStack = require('whatsasena-npm')
+const NitrossStack = require('nitrossbot-npm-pkg')
 const request = require('request');
 
 const Language = require('../language');
@@ -26,7 +26,7 @@ if (Config.LANG == 'ML') description = 'എല്ലാ ttp കമാൻഡു�
 if (Config.LANG == 'PT') description = 'Mostra todos os comandos ttp.', cmd = '*Comando:* ', cmd_desc = '*Explicação:* '
 if (Config.LANG == 'ID') description = '*Menampilkan semua perintah ttp.', cmd = '*Memerintah:* ', cmd_desc = '*Penjelasan:* '
 
-NitrossBot.addCommand({ pattern: 'allttp$', fromMe: wk, desc: description }, (async (message, match) => {
+Nitrossbot.addCommand({ pattern: 'allttp$', fromMe: wk, desc: description }, (async (message, match) => {
   var t1 = Lang.TTP_DESC
   var t2 = Lang.ATTP_DESC
   var t3 = Config.LANG == 'TR' || Config.LANG == 'AZ' ? "Yazıyı su temalı sticker'e çevirir." : "Converts text to water-themed sticker."
@@ -51,20 +51,20 @@ NitrossBot.addCommand({ pattern: 'allttp$', fromMe: wk, desc: description }, (as
     
   await message.client.sendMessage(message.jid,payload, MessageType.text)
 }));
-NitrossBot.addCommand({ pattern: 'ttp ?(.*)', fromMe: wk, dontAddCommandList: true }, (async (message, match) => {
+Nitrossbot.addCommand({ pattern: 'ttp ?(.*)', fromMe: wk, dontAddCommandList: true }, (async (message, match) => {
   if (message.reply_message) {
     var text = message.reply_message.text
     var uri = encodeURI(text)
     var ttinullimage = await axios.get('https://api.xteam.xyz/ttp?file&text=' + uri, { responseType: 'arraybuffer' })
-    await message.client.sendMessage(message.jid,Buffer.from(ttinullimage.data), MessageType.image, { mimetype: Mimetype.png, caption: 'Made by WhatsAsena' })
+    await message.client.sendMessage(message.jid,Buffer.from(ttinullimage.data), MessageType.image, { mimetype: Mimetype.png, caption: 'Made by WhatsNitrossbot' })
   } else {
     if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.NEED_WORD, MessageType.text);
     var uri = encodeURI(match[1])
     var ttinullimage = await axios.get('https://api.xteam.xyz/ttp?file&text=' + uri, { responseType: 'arraybuffer' })
-    await message.client.sendMessage(message.jid,Buffer.from(ttinullimage.data), MessageType.image, { mimetype: Mimetype.png, caption: 'Made by WhatsAsena' })
+    await message.client.sendMessage(message.jid,Buffer.from(ttinullimage.data), MessageType.image, { mimetype: Mimetype.png, caption: 'Made by WhatsNitrossbot' })
   }
 }));
-NitrossBot.addCommand({ pattern: 'attp ?(.*)', fromMe: wk, dontAddCommandList: true }, (async (message, match) => {
+Nitrossbot.addCommand({ pattern: 'attp ?(.*)', fromMe: wk, dontAddCommandList: true }, (async (message, match) => {
   if (message.reply_message) {
     var text = message.reply_message.text
     var uri = encodeURI(text)
@@ -77,7 +77,7 @@ NitrossBot.addCommand({ pattern: 'attp ?(.*)', fromMe: wk, dontAddCommandList: t
     await message.client.sendMessage(message.jid,Buffer.from(ttinullimage.data), MessageType.sticker, { mimetype: Mimetype.webp })
   }
 }));
-Asena.addCommand({ pattern: 'wttp ?(.*)', fromMe: wk, dontAddCommandList: true }, (async (message, match) => {
+Nitrossbot.addCommand({ pattern: 'wttp ?(.*)', fromMe: wk, dontAddCommandList: true }, (async (message, match) => {
   if (message.reply_message) {
     var text = message.reply_message.text
     var ttinullimage = await NitrossStack.ttp(text, 'https://api.flamingtext.com/logo/Design-Water?_variations=true&text=', '&_loc=catdynamic')
@@ -86,9 +86,9 @@ Asena.addCommand({ pattern: 'wttp ?(.*)', fromMe: wk, dontAddCommandList: true }
         await request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
       });
     };
-    await download(ttinullimage.image, '/root/Nitross-Beta/wttp.png', async() => { 
-      ffmpeg('/root/Nitross-Beta/wttp.png').videoFilters('chromakey=white').save('af.png').on('end', async () => {
-        ffmpeg('/root/Nitross-Beta/af.png').outputOptions(["-y", "-vcodec libwebp"]).videoFilters('scale=2000:2000:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=2000:2000:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('st.webp').on('end', async () => {
+    await download(ttinullimage.image, '/root/Bot/wttp.png', async() => { 
+      ffmpeg('/root/Bot/wttp.png').videoFilters('chromakey=white').save('af.png').on('end', async () => {
+        ffmpeg('/root/Bot/af.png').outputOptions(["-y", "-vcodec libwebp"]).videoFilters('scale=2000:2000:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=2000:2000:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('st.webp').on('end', async () => {
           await message.sendMessage(fs.readFileSync('st.webp'), MessageType.sticker);
         })
       })
@@ -101,16 +101,16 @@ Asena.addCommand({ pattern: 'wttp ?(.*)', fromMe: wk, dontAddCommandList: true }
         await request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
       });
     };
-    await download(ttinullimage.image, '/root/Nitross-Beta/wttp.png', async() => { 
-      ffmpeg('/root/Nitross-Beta/wttp.png').videoFilters('chromakey=white').save('af.png').on('end', async () => {
-        ffmpeg('/root/Nitross-Beta/af.png').outputOptions(["-y", "-vcodec libwebp"]).videoFilters('scale=2000:2000:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=2000:2000:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('st.webp').on('end', async () => {
+    await download(ttinullimage.image, '/root/Bot/wttp.png', async() => { 
+      ffmpeg('/root/Bot/wttp.png').videoFilters('chromakey=white').save('af.png').on('end', async () => {
+        ffmpeg('/root/Bot/af.png').outputOptions(["-y", "-vcodec libwebp"]).videoFilters('scale=2000:2000:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=2000:2000:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('st.webp').on('end', async () => {
           await message.sendMessage(fs.readFileSync('st.webp'), MessageType.sticker);
         })
       })
     })
   }
 }));
-Asena.addCommand({ pattern: 'http ?(.*)', fromMe: wk, dontAddCommandList: true }, (async (message, match) => {
+Nitrossbot.addCommand({ pattern: 'http ?(.*)', fromMe: wk, dontAddCommandList: true }, (async (message, match) => {
   if (message.reply_message) {
     var text = message.reply_message.text
     var ttinullimage = await NitrossStack.ttp(text, 'https://api.flamingtext.com/logo/Design-Style?_variations=true&text=', '&_loc=catdynamic')
@@ -119,9 +119,9 @@ Asena.addCommand({ pattern: 'http ?(.*)', fromMe: wk, dontAddCommandList: true }
         await request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
       });
     };
-    await download(ttinullimage.image, '/root/Nitross-Beta/http.png', async() => { 
-      ffmpeg('/root/Nitross-Beta/http.png').videoFilters('chromakey=white').save('af.png').on('end', async () => {
-        ffmpeg('/root/Nitross-Beta/af.png').outputOptions(["-y", "-vcodec libwebp"]).videoFilters('scale=2000:2000:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=2000:2000:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('st.webp').on('end', async () => {
+    await download(ttinullimage.image, '/root/Bot/http.png', async() => { 
+      ffmpeg('/root/Bot/http.png').videoFilters('chromakey=white').save('af.png').on('end', async () => {
+        ffmpeg('/root/Bot/af.png').outputOptions(["-y", "-vcodec libwebp"]).videoFilters('scale=2000:2000:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=2000:2000:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('st.webp').on('end', async () => {
           await message.sendMessage(fs.readFileSync('st.webp'), MessageType.sticker);
         })
       })
@@ -134,16 +134,16 @@ Asena.addCommand({ pattern: 'http ?(.*)', fromMe: wk, dontAddCommandList: true }
         await request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
       });
     };
-    await download(ttinullimage.image, '/root/Nitross-Beta/http.png', async() => { 
-      ffmpeg('/root/Nitross-Beta/http.png').videoFilters('chromakey=white').save('af.png').on('end', async () => {
-        ffmpeg('/root/Nitross-Beta/af.png').outputOptions(["-y", "-vcodec libwebp"]).videoFilters('scale=2000:2000:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=2000:2000:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('st.webp').on('end', async () => {
+    await download(ttinullimage.image, '/root/Bot/http.png', async() => { 
+      ffmpeg('/root/Bot/http.png').videoFilters('chromakey=white').save('af.png').on('end', async () => {
+        ffmpeg('/root/Bot/af.png').outputOptions(["-y", "-vcodec libwebp"]).videoFilters('scale=2000:2000:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=2000:2000:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('st.webp').on('end', async () => {
           await message.sendMessage(fs.readFileSync('st.webp'), MessageType.sticker);
         })
       })
     })
   }
 }));
-NitrossBot.addCommand({ pattern: 'bttp ?(.*)', fromMe: wk, dontAddCommandList: true }, (async (message, match) => {
+Nitrossbot.addCommand({ pattern: 'bttp ?(.*)', fromMe: wk, dontAddCommandList: true }, (async (message, match) => {
   if (message.reply_message) {
     var text = message.reply_message.text
     var ttinullimage = await NitrossStack.ttp(text, 'https://api.flamingtext.com/logo/Design-Blackbird?_variations=true&text=', '&_loc=catdynamic')
@@ -152,9 +152,9 @@ NitrossBot.addCommand({ pattern: 'bttp ?(.*)', fromMe: wk, dontAddCommandList: t
         await request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
       });
     };
-    await download(ttinullimage.image, '/root/Nitross-Beta/bttp.png', async() => { 
-      ffmpeg('/root/Nitross-Beta/bttp.png').videoFilters('chromakey=white').save('af.png').on('end', async () => {
-        ffmpeg('/root/Nitross-Beta/af.png').outputOptions(["-y", "-vcodec libwebp"]).videoFilters('scale=2000:2000:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=2000:2000:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('st.webp').on('end', async () => {
+    await download(ttinullimage.image, '/root/Bot/bttp.png', async() => { 
+      ffmpeg('/root/Bot/bttp.png').videoFilters('chromakey=white').save('af.png').on('end', async () => {
+        ffmpeg('/root/Bot/af.png').outputOptions(["-y", "-vcodec libwebp"]).videoFilters('scale=2000:2000:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=2000:2000:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('st.webp').on('end', async () => {
           await message.sendMessage(fs.readFileSync('st.webp'), MessageType.sticker);
         })
       })
@@ -167,27 +167,27 @@ NitrossBot.addCommand({ pattern: 'bttp ?(.*)', fromMe: wk, dontAddCommandList: t
         await request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
       });
     };
-    await download(ttinullimage.image, '/root/Nitross-Beta/bttp.png', async() => { 
-      ffmpeg('/root/Nitross-Beta/bttp.png').videoFilters('chromakey=white').save('af.png').on('end', async () => {
-        ffmpeg('/root/Nitross-Beta/af.png').outputOptions(["-y", "-vcodec libwebp"]).videoFilters('scale=2000:2000:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=2000:2000:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('st.webp').on('end', async () => {
+    await download(ttinullimage.image, '/root/Bot/bttp.png', async() => { 
+      ffmpeg('/root/Bot/bttp.png').videoFilters('chromakey=white').save('af.png').on('end', async () => {
+        ffmpeg('/root/Bot/af.png').outputOptions(["-y", "-vcodec libwebp"]).videoFilters('scale=2000:2000:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=2000:2000:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('st.webp').on('end', async () => {
           await message.sendMessage(fs.readFileSync('st.webp'), MessageType.sticker);
         })
       })
     })
   }
 }));
-NitrossBot.addCommand({ pattern: 'gttp ?(.*)', fromMe: wk, dontAddCommandList: true }, (async (message, match) => {
+Nitrossbot.addCommand({ pattern: 'gttp ?(.*)', fromMe: wk, dontAddCommandList: true }, (async (message, match) => {
   if (message.reply_message) {
     var text = message.reply_message.text
-    var ttinullimage = await NitrossStack.ttp(text, 'https://api.flamingtext.com/logo/Design-Fluffy?_variations=true&fontname=Gemunu+Libr&text=', '&_loc=catdynamic')
+    var ttinullimage = await NitrossStack.ttp(text, 'https://api.flamingtext.com/logo/Design-Fluffy?_variations=true&text=', '&_loc=catdynamic')
     var download = async(uri, filename, callback) => {
       await request.head(uri, async(err, res, body) => {    
         await request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
       });
     };
-    await download(ttinullimage.image, '/root/Nitross-Beta/gttp.png', async() => { 
-      ffmpeg('/root/Nitross-Beta/gttp.png').videoFilters('chromakey=white').save('af.png').on('end', async () => {
-        ffmpeg('/root/Nitross-Beta/af.png').outputOptions(["-y", "-vcodec libwebp"]).videoFilters('scale=2000:2000:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=2000:2000:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('st.webp').on('end', async () => {
+    await download(ttinullimage.image, '/root/Bot/gttp.png', async() => { 
+      ffmpeg('/root/Bot/gttp.png').videoFilters('chromakey=white').save('af.png').on('end', async () => {
+        ffmpeg('/root/Bot/af.png').outputOptions(["-y", "-vcodec libwebp"]).videoFilters('scale=2000:2000:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=2000:2000:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('st.webp').on('end', async () => {
           await message.sendMessage(fs.readFileSync('st.webp'), MessageType.sticker);
         })
       })
@@ -200,16 +200,16 @@ NitrossBot.addCommand({ pattern: 'gttp ?(.*)', fromMe: wk, dontAddCommandList: t
         await request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
       });
     };
-    await download(ttinullimage.image, '/root/Nitross-Beta/gttp.png', async() => { 
-      ffmpeg('/root/Nitross-Beta/gttp.png').videoFilters('chromakey=white').save('af.png').on('end', async () => {
-        ffmpeg('/root/Nitross-Beta/af.png').outputOptions(["-y", "-vcodec libwebp"]).videoFilters('scale=2000:2000:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=2000:2000:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('st.webp').on('end', async () => {
+    await download(ttinullimage.image, '/root/Bot/gttp.png', async() => { 
+      ffmpeg('/root/Bot/gttp.png').videoFilters('chromakey=white').save('af.png').on('end', async () => {
+        ffmpeg('/root/Bot/af.png').outputOptions(["-y", "-vcodec libwebp"]).videoFilters('scale=2000:2000:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=2000:2000:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('st.webp').on('end', async () => {
           await message.sendMessage(fs.readFileSync('st.webp'), MessageType.sticker);
         })
       })
     })
   }
 }));
-NitrossBot.addCommand({ pattern: 'sttp ?(.*)', fromMe: wk, dontAddCommandList: true }, (async (message, match) => {
+Nitrossbot.addCommand({ pattern: 'sttp ?(.*)', fromMe: wk, dontAddCommandList: true }, (async (message, match) => {
   if (message.reply_message) {
     var text = message.reply_message.text
     var ttinullimage = await NitrossStack.ttp(text, 'https://api.flamingtext.com/logo/Design-Smurfs?_variations=true&text=', '&_loc=catdynamic')
@@ -218,9 +218,9 @@ NitrossBot.addCommand({ pattern: 'sttp ?(.*)', fromMe: wk, dontAddCommandList: t
         await request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
       });
     };
-    await download(ttinullimage.image, '/root/Nitross-Beta/sttp.png', async() => { 
-      ffmpeg('/root/Nitross-Beta/sttp.png').videoFilters('chromakey=white').save('af.png').on('end', async () => {
-        ffmpeg('/root/Nitross-Beta/af.png').outputOptions(["-y", "-vcodec libwebp"]).videoFilters('scale=2000:2000:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=2000:2000:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('st.webp').on('end', async () => {
+    await download(ttinullimage.image, '/root/Bot/sttp.png', async() => { 
+      ffmpeg('/root/Bot/sttp.png').videoFilters('chromakey=white').save('af.png').on('end', async () => {
+        ffmpeg('/root/Bot/af.png').outputOptions(["-y", "-vcodec libwebp"]).videoFilters('scale=2000:2000:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=2000:2000:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('st.webp').on('end', async () => {
           await message.sendMessage(fs.readFileSync('st.webp'), MessageType.sticker);
         })
       })
@@ -233,16 +233,16 @@ NitrossBot.addCommand({ pattern: 'sttp ?(.*)', fromMe: wk, dontAddCommandList: t
         await request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
       });
     };
-    await download(ttinullimage.image, '/root/Nitross-Beta/sttp.png', async() => { 
-      ffmpeg('/root/Nitross-Beta/sttp.png').videoFilters('chromakey=white').save('af.png').on('end', async () => {
-        ffmpeg('/root/Nitross-Beta/af.png').outputOptions(["-y", "-vcodec libwebp"]).videoFilters('scale=2000:2000:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=2000:2000:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('st.webp').on('end', async () => {
+    await download(ttinullimage.image, '/root/Bot/sttp.png', async() => { 
+      ffmpeg('/root/Bot/sttp.png').videoFilters('chromakey=white').save('af.png').on('end', async () => {
+        ffmpeg('/root/Bot/af.png').outputOptions(["-y", "-vcodec libwebp"]).videoFilters('scale=2000:2000:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=2000:2000:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('st.webp').on('end', async () => {
           await message.sendMessage(fs.readFileSync('st.webp'), MessageType.sticker);
         })
       })
     })
   }
 }));
-NitrossBot.addCommand({ pattern: 'ettp ?(.*)', fromMe: wk, dontAddCommandList: true }, (async (message, match) => {
+Nitrossbot.addCommand({ pattern: 'ettp ?(.*)', fromMe: wk, dontAddCommandList: true }, (async (message, match) => {
   if (message.reply_message) {
     var text = message.reply_message.text
     var ttinullimage = await NitrossStack.ttp(text, 'https://api.flamingtext.com/logo/Design-Electric?_variations=true&text=', '&_loc=catdynamic')
@@ -251,9 +251,9 @@ NitrossBot.addCommand({ pattern: 'ettp ?(.*)', fromMe: wk, dontAddCommandList: t
         await request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
       });
     };
-    await download(ttinullimage.image, '/root/Nitross-Beta/ettp.png', async() => { 
-      ffmpeg('/root/Nitross-Beta/ettp.png').videoFilters('chromakey=#FFFFFF:similarity=0.01').save('af.png').on('end', async () => {
-        ffmpeg('/root/Nitross-Beta/af.png').outputOptions(["-y", "-vcodec libwebp"]).videoFilters('scale=2000:2000:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=2000:2000:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('st.webp').on('end', async () => {
+    await download(ttinullimage.image, '/root/Bot/ettp.png', async() => { 
+      ffmpeg('/root/Bot/ettp.png').videoFilters('chromakey=#FFFFFF:similarity=0.01').save('af.png').on('end', async () => {
+        ffmpeg('/root/Bot/af.png').outputOptions(["-y", "-vcodec libwebp"]).videoFilters('scale=2000:2000:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=2000:2000:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('st.webp').on('end', async () => {
           await message.sendMessage(fs.readFileSync('st.webp'), MessageType.sticker);
         })
       })
@@ -266,16 +266,16 @@ NitrossBot.addCommand({ pattern: 'ettp ?(.*)', fromMe: wk, dontAddCommandList: t
         await request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
       });
     };
-    await download(ttinullimage.image, '/root/Nitross-Beta/ettp.png', async() => { 
-      ffmpeg('/root/Nitross-Beta/ettp.png').videoFilters('chromakey=#FFFFFF:similarity=0.01').save('af.png').on('end', async () => {
-        ffmpeg('/root/Nitross-Beta/af.png').outputOptions(["-y", "-vcodec libwebp"]).videoFilters('scale=2000:2000:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=2000:2000:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('st.webp').on('end', async () => {
+    await download(ttinullimage.image, '/root/Bot/ettp.png', async() => { 
+      ffmpeg('/root/Bot/ettp.png').videoFilters('chromakey=#FFFFFF:similarity=0.01').save('af.png').on('end', async () => {
+        ffmpeg('/root/Bot/af.png').outputOptions(["-y", "-vcodec libwebp"]).videoFilters('scale=2000:2000:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=2000:2000:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('st.webp').on('end', async () => {
           await message.sendMessage(fs.readFileSync('st.webp'), MessageType.sticker);
         })
       })
     })
   }
 }));
-NitrossBot.addCommand({ pattern: 'ahttp ?(.*)', fromMe: wk, dontAddCommandList: true }, (async (message, match) => {
+Nitrossbot.addCommand({ pattern: 'ahttp ?(.*)', fromMe: wk, dontAddCommandList: true }, (async (message, match) => {
   if (message.reply_message) {
     var text = message.reply_message.text
     var ttinullimage = await NitrossStack.ttp(text, 'https://api.flamingtext.com/logo/Design-Highlight-Animation?_variations=true&text=', '&_loc=catdynamic')
@@ -284,9 +284,9 @@ NitrossBot.addCommand({ pattern: 'ahttp ?(.*)', fromMe: wk, dontAddCommandList: 
         await request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
       });
     };
-    await download(ttinullimage.image, '/root/Nitross-Beta/ahttp.gif', async() => { 
-      ffmpeg('/root/Nitross-Beta/ahttp.gif').videoFilters('chromakey=black').save('af.gif').on('end', async () => {
-        ffmpeg('/root/Nitross-Beta/af.gif').outputOptions(["-y", "-vcodec libwebp", "-lossless 1", "-qscale 1", "-preset default", "-loop 0", "-an", "-vsync 0", "-s 600x600"]).videoFilters('scale=600:600:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=600:600:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('sticker.webp').on('end', async () => {
+    await download(ttinullimage.image, '/root/Bot/ahttp.gif', async() => { 
+      ffmpeg('/root/Bot/ahttp.gif').videoFilters('chromakey=black').save('af.gif').on('end', async () => {
+        ffmpeg('/root/Bot/af.gif').outputOptions(["-y", "-vcodec libwebp", "-lossless 1", "-qscale 1", "-preset default", "-loop 0", "-an", "-vsync 0", "-s 600x600"]).videoFilters('scale=600:600:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=600:600:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('sticker.webp').on('end', async () => {
           await message.sendMessage(fs.readFileSync('sticker.webp'), MessageType.sticker);
         })
       })
@@ -299,16 +299,16 @@ NitrossBot.addCommand({ pattern: 'ahttp ?(.*)', fromMe: wk, dontAddCommandList: 
         await request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
       });
     };
-    await download(ttinullimage.image, '/root/Nitross-Beta/ahttp.gif', async() => { 
-      ffmpeg('/root/Nitross-Beta/ahttp.gif').videoFilters('chromakey=black').save('af.gif').on('end', async () => {
-        ffmpeg('/root/Nitross-Beta/af.gif').outputOptions(["-y", "-vcodec libwebp", "-lossless 1", "-qscale 1", "-preset default", "-loop 0", "-an", "-vsync 0", "-s 600x600"]).videoFilters('scale=600:600:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=600:600:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('sticker.webp').on('end', async () => {
+    await download(ttinullimage.image, '/root/Bot/ahttp.gif', async() => { 
+      ffmpeg('/root/Bot/ahttp.gif').videoFilters('chromakey=black').save('af.gif').on('end', async () => {
+        ffmpeg('/root/Bot/af.gif').outputOptions(["-y", "-vcodec libwebp", "-lossless 1", "-qscale 1", "-preset default", "-loop 0", "-an", "-vsync 0", "-s 600x600"]).videoFilters('scale=600:600:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=600:600:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('sticker.webp').on('end', async () => {
           await message.sendMessage(fs.readFileSync('sticker.webp'), MessageType.sticker);
         })
       })
     })
   }
 }));
-NitrossBot.addCommand({ pattern: 'pttp ?(.*)', fromMe: wk, dontAddCommandList: true }, (async (message, match) => {
+Nitrossbot.addCommand({ pattern: 'pttp ?(.*)', fromMe: wk, dontAddCommandList: true }, (async (message, match) => {
   if (message.reply_message) {
     var text = message.reply_message.text
     var ttinullimage = await NitrossStack.ttp(text, 'https://api.flamingtext.com/logo/Design-Memories-Animation?_variations=true&text=', '&_loc=catdynamic')
@@ -317,9 +317,9 @@ NitrossBot.addCommand({ pattern: 'pttp ?(.*)', fromMe: wk, dontAddCommandList: t
         await request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
       });
     };
-    await download(ttinullimage.image, '/root/Nitross-Beta/pttp.gif', async() => { 
-      ffmpeg('/root/Nitross-Beta/pttp.gif').videoFilters('chromakey=white').save('af.gif').on('end', async () => {
-        ffmpeg('/root/Nitross-Beta/af.gif').outputOptions(["-y", "-vcodec libwebp", "-lossless 1", "-qscale 1", "-preset default", "-loop 0", "-an", "-vsync 0", "-s 600x600"]).videoFilters('scale=600:600:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=600:600:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('sticker.webp').on('end', async () => {
+    await download(ttinullimage.image, '/root/Bot/pttp.gif', async() => { 
+      ffmpeg('/root/Bot/pttp.gif').videoFilters('chromakey=white').save('af.gif').on('end', async () => {
+        ffmpeg('/root/Bot/af.gif').outputOptions(["-y", "-vcodec libwebp", "-lossless 1", "-qscale 1", "-preset default", "-loop 0", "-an", "-vsync 0", "-s 600x600"]).videoFilters('scale=600:600:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=600:600:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('sticker.webp').on('end', async () => {
           await message.sendMessage(fs.readFileSync('sticker.webp'), MessageType.sticker);
         })
       })
@@ -332,9 +332,9 @@ NitrossBot.addCommand({ pattern: 'pttp ?(.*)', fromMe: wk, dontAddCommandList: t
         await request(uri).pipe(fs.createWriteStream(filename)).on('close', callback);
       });
     };
-    await download(ttinullimage.image, '/root/Nitross-Beta/pttp.gif', async() => { 
-      ffmpeg('/root/Nitross-Beta/pttp.gif').videoFilters('chromakey=white').save('af.gif').on('end', async () => {
-        ffmpeg('/root/Nitross-Beta/af.gif').outputOptions(["-y", "-vcodec libwebp", "-lossless 1", "-qscale 1", "-preset default", "-loop 0", "-an", "-vsync 0", "-s 600x600"]).videoFilters('scale=600:600:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=600:600:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('sticker.webp').on('end', async () => {
+    await download(ttinullimage.image, '/root/Bot/pttp.gif', async() => { 
+      ffmpeg('/root/Bot/pttp.gif').videoFilters('chromakey=white').save('af.gif').on('end', async () => {
+        ffmpeg('/root/Bot/af.gif').outputOptions(["-y", "-vcodec libwebp", "-lossless 1", "-qscale 1", "-preset default", "-loop 0", "-an", "-vsync 0", "-s 600x600"]).videoFilters('scale=600:600:flags=lanczos:force_original_aspect_ratio=decrease,format=rgba,pad=600:600:(ow-iw)/2:(oh-ih)/2:color=#00000000,setsar=1').save('sticker.webp').on('end', async () => {
           await message.sendMessage(fs.readFileSync('sticker.webp'), MessageType.sticker);
         })
       })

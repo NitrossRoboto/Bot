@@ -1,13 +1,13 @@
 const fs = require('fs/promises')
 const path = require('path')
-const { MessageType } = require('@adiwajshing/baileys')
-const NitrossBot = require('../events');
+const { MessageType, Mimetype, MessageOptions } = require('@adiwajshing/baileys')
+const Nitrossbot = require('../events');
 const { successfullMessage, errorMessage, infoMessage } = require('../helpers');
 const NotesDB = require('./sql/notes');
 const Language = require('../language')
 const Lang = Language.getString('notes')
 
-NitrossBot.addCommand({ pattern: 'notes', fromMe: true, desc: Lang.NOTES_USAGE }, async (message, match) => {
+Nitrossbot.addCommand({ pattern: 'notes', fromMe: true, desc: Lang.NOTES_USAGE }, async (message, match) => {
 
 
     const _notes = await NotesDB.getNotes()
@@ -28,7 +28,7 @@ NitrossBot.addCommand({ pattern: 'notes', fromMe: true, desc: Lang.NOTES_USAGE }
     _notes.filter(note => note.note.includes('IMG;;;')).forEach(async (note) => {
         const imageName = note.note.replace('IMG;;;', '')
         const image = await fs.readFile(path.resolve('media', imageName))
-        await message.sendMessage(image, MessageType.image)
+        await message.sendMessage(image, MessageType.image, { mimetype: Mimetype.png })
     })
 
 
@@ -36,7 +36,7 @@ NitrossBot.addCommand({ pattern: 'notes', fromMe: true, desc: Lang.NOTES_USAGE }
 
 
 
-NitrossBot.addCommand({ pattern: 'save ?(.*)', fromMe: true, desc: Lang.SAVE_USAGE }, async (message, match) => {
+Nitrossbot.addCommand({ pattern: 'save ?(.*)', fromMe: true, desc: Lang.SAVE_USAGE }, async (message, match) => {
 
     const userNote = match[1]
 
@@ -84,7 +84,7 @@ NitrossBot.addCommand({ pattern: 'save ?(.*)', fromMe: true, desc: Lang.SAVE_USA
     }
 })
 
-NitrossBot.addCommand({ pattern: 'deleteNotes', fromMe: true, desc: Lang.DELETE_USAGE }, async (message, match) => {
+Nitrossbot.addCommand({ pattern: 'deleteNotes', fromMe: true, desc: Lang.DELETE_USAGE }, async (message, match) => {
 
     await NotesDB.deleteAllNotes()
 

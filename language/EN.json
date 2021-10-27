@@ -1,17 +1,15 @@
 {
-    "__ASENAJSON__": true,
+    "__NITROSSJSON__": true,
     "LANGUAGE": "English",
     "LANGCODE": "en",
-    "AUTHOR": "Nitross Roboto",
+    "AUTHOR": "NitrossRoboto",
     "STRINGS": {
         "_nitross": {
-            "EXAMPLE": "Eg:- ",
             "COMMAND": "Command",
             "DESC": "Description",
             "EXAMPLE": "Example",
             "NOT_FOUND": "*I couldnt find a command like this*",
             "WARN": "Warn"
-            
         },
         "_plugin": {
             "INSTALL_DESC": "Install external plugins.",
@@ -24,10 +22,10 @@
             "INSTALLED_FROM_REMOTE": "*Plugins you install externally:*\n",
             "NO_PLUGIN": "*You have not installed any external plugins!*",
             "REMOVE_DESC": "Removes the plugin.",
-            "NEED_PLUGIN": "```Please enter a Plugin! Example: .plugin __බලු ප්ලගින්```",
+            "NEED_PLUGIN": "```Please enter a Plugin! Example: .plugin __test```",
             "NOT_FOUND_PLUGIN": "```Maybe you have installed such a plugin, or maybe not. But it sure isn't right now.```",
             "DELETED": "*✅ Module successfully deleted!*",
-            "WARN": "*Get plugins only from මගුලෙ channel.*"
+            "WARN": "Get plugins only from t.me/remasterplugin channel."
         },
         "admin": {
             "BAN_DESC": "Ban someone in the group. Reply to message or tag a person to use command.",
@@ -37,7 +35,6 @@
             "ADD_DESC": "Adds someone to the group.",
             "ADDED": "added to the group!",
             "ALREADY_PROMOTED": "```How can I make someone admin who is already admin?```",
-            "PLKADMIN": ".report you are not admin \n\n 🇩​🇴​🇳​🇹​ 🇹​🇷​🇾​ 🇦​🇬​🇦​🇮​🇳​, 🇮​🇫​ 🇾​🇴​🇺​ 🇹​🇷​🇾​ 🇾​🇴​🇺​ 🇼​🇮​🇱​🇱​ 🇧​🇪​ 🇷​🇪​🇲​🇴​🇻​🇪​🇩​ 🇧​🇾​ 🇦​🇩​🇲​🇮​🇳​🇸​",
             "PROMOTED": "```, admin role was given!```",
             "PROMOTE_DESC": "Makes any person an admin.",
             "DEMOTE_DESC": "Takes the authority of any admin.",
@@ -53,9 +50,6 @@
         "locate": {
             "L_DESC": "It send your location.",
             "L_WARN": "Please open your location before using command!"
-        },
-        "news": {
-            "NEWS_DESC": "It send News."
         },
         "afk": {
             "AFK_DESC": "It makes you AFK - Away From Keyboard.",
@@ -81,10 +75,10 @@
             "MUST_TEXT": "```Please reply to any message```"
         },
         "heroku": {
-            "RESTART_DESC": "Restart Nitross",
-            "RESTART_MSG": "```🔁 Restarting Nitross...```",
-            "SHUTDOWN_DESC": "Shutdown Nitross",
-            "SHUTDOWN_MSG": "```Shutting down Nitross 😴👋```",
+            "RESTART_DESC": "Restart NitrossBot",
+            "RESTART_MSG": "```Restarting...```",
+            "SHUTDOWN_DESC": "Shutdown NitrossBot",
+            "SHUTDOWN_MSG": "```Shutting down ⛔```",
             "DYNO_DESC": "Check heroku dyno usage",
             "DYNO_TOTAL": "```Total Quota```",
             "DYNO_USED": "```Quota used```",
@@ -101,7 +95,7 @@
             "NOT_FOUND": "```no results found for this key```",
             "SUCC": "*Successfully Setted Up ✅* \n*Please wait a little while.*",
             "SUCC_AF": "*To restore, use* ```default```",
-            "DEGİS_NONE": "```Please Enter Any Module Name!``` \n\n*.degis afk*\n*.degis alive* << **Variables** >> \n_{pp}: You only need to use it once. Adds your profile photo to the message._ \n_{info}: Shows your status._ \n_{version}: Shows the version of the bot._ \n_{plugin}: Shows the plugin channel._\n*.degis ban*\n*.degis add*\n*.degis mute*\n*.degis unmute*\n*.degis promote*\n*.degis demote*\n*.degis welcome* \n*.degis goodbye* \n*.degis kickme*\n*.degis block*\n*.degis unblock*",
+            "DEGİS_NONE": "```Please Enter Any Module Name!``` \n\n*.degis afk*\n*.degis alive* << *Variables* >> \n_{pp}: You only need to use it once. Adds your profile photo to the message._ \n_{Nitrossobotlogo}: Adds animated NitrossBot logo._ \n_{info}: Shows your status._ \n_{version}: Shows the version of the bot._ \n_{plugin}: Shows the plugin channel._\n*.degis ban*\n*.degis add*\n*.degis mute*\n*.degis unmute*\n*.degis promote*\n*.degis demote*\n*.degis welcome* \n*.degis goodbye* \n*.degis kickme*\n*.degis block*\n*.degis unblock*",
             "WR": "*Please use the modules that exists!*",
             "DEGİS_DESC": "Changes the text of modules like alive, afk etc.."       
         },
@@ -123,7 +117,6 @@
             "NEED_WELCOME_TEXT": "*You must write a message to set up the welcome message.*\n*Example:* ```.welcome hi && hi#how are you?```",
             "WELCOME_DELETED": "*✅ Welcome message has been deleted successfully!*",
             "WELCOME_SETTED": "*✅ Welcome message has been set successfully!*",
-            "PLKADMIN": ".report you are not admin \n\n 🇩​🇴​🇳​🇹​ 🇹​🇷​🇾​ 🇦​🇬​🇦​🇮​🇳​, 🇮​🇫​ 🇾​🇴​🇺​ 🇹​🇷​🇾​ 🇾​🇴​🇺​ 🇼​🇮​🇱​🇱​ 🇧​🇪​ 🇷​🇪​🇲​🇴​🇻​🇪​🇩​ 🇧​🇾​ 🇦​🇩​🇲​🇮​🇳​🇸​",
             "GOODBYE_DESC": "Sets the goodbye message. If you leave blank, it show's the goodbye message.",
             "NOT_SET_GOODBYE": "*You didn't set a goodbye message!*\n*To set:* ```.goodbye bye && bye#see ya```",
             "GOODBYE_ALREADY_SETTED": "*✅ Goodbye message has been set!*\n*Message:* ```",
@@ -178,14 +171,11 @@
         },
         "scrapers": {
             "TRANSLATE_DESC": "It translates with Google Translate. You must reply any message.",
-            "TRANSLATE_USAGE": ".trt auto si (From Detect language to Sinhala)",
+            "TRANSLATE_USAGE": ".trt tr it (From Turkish to Italian)",
             "NEED_REPLY": "```Please reply to any message!```",
             "LANG": "Language",
-            "SING_DESC": "It sings song that you have written",
-            "CURRENCY_DESC": "It coverts currency",
             "FROM": "Translated Language",
             "RESULT": "Translate",
-            "DEVICE": "It shows the details of requested devices",
             "TRANSLATE_ERROR": "❌ An error occured while translating!*",
             "CURRENCY_ERROR": "```Syntax error! Example: .currency 1 TRY USD```",
             "INVALID_CURRENCY": "```Foreign currency transaction failed. You wrote wrong currency!```",
@@ -193,20 +183,14 @@
             "TTS_DESC": "It converts text to sound.",
             "TTS_ERROR": "```Error, Speech example of your sentence couldn't be made!```",
             "SONG_DESC": "Uploads the song you wrote.",
-            "ISONG_DESC": "Uploads the song you wrote for ios users.",
             "NEED_TEXT_SONG": "*Please write a song!*\n*Example:* ```.song eminem - rap god```",
             "NO_RESULT": "*I couldn't find anything :(*",
-            "DOWNLOADING_SONG": "Downloading",
-            "NAMEY": "NAME",
-            "URL": "LINK",
-            "THUMB": "THUMB",
-            "RATING": "RATING",
-            "UPLOADING_SONG": "*Uploading*",
+            "DOWNLOADING_SONG": "```Downloading your song...```",
+            "UPLOADING_SONG": "```Uploading your song...```",
             "VIDEO_DESC": "Downloads video from YouTube.",
             "NEED_VIDEO": "*Please write a video link!*\n*Example:* ```.video https://www.youtube.com/watch?v=nAFlVm5qeBc```",
-            "DOWNLOADING_VIDEO": "*Downloading*",
-            "UPLOADING_VIDEO": "*Uploading*",
-            "LOADING": "*Downloading video*",
+            "DOWNLOADING_VIDEO": "```Downloading your video...```",
+            "UPLOADING_VIDEO": "```Uploading your video...```",
             "YT_DESC": "It searchs on YouTube.",
             "NEED_WORDS": "```Please write a few words!```",
             "GETTING_VIDEOS": "```I'm bringing videos...```",
@@ -219,7 +203,7 @@
         "sticker": {
             "STICKER_DESC": "It converts your replied photo or video to sticker.",
             "NEED_REPLY": "*Reply to a photo or video!*",
-            "DOWNLOADING": "```Converting..🧭```"
+            "DOWNLOADING": "```Media downloading & converting to sticker...```"
         },
         "system_stats": {
             "ALIVE_DESC": "Does bot work?",
@@ -229,10 +213,9 @@
             "TAGALL_DESC": "Tags everyone in the group.",
             "ADMİN": "*I am not admin in this group!*",
             "SCAN": "Checks whether the entered number is registered on WhatApp.",
-            "NO": "*Please Enter Any Phone Number!*\n*Example:* ```.scan 94xxxx```",
+            "NO": "*Please Enter Any Phone Number!*\n*Example:* ```.scan 90xxxx```",
             "SUC": "*Numbered Person Uses WhatsApp! ✅*",
             "UNSUC": "*Numbered Person Does Not Use WhatsApp! ❌*",
-            "PLKADMIN": ".report you are not admin \n\n 🇩​🇴​🇳​🇹​ 🇹​🇷​🇾​ 🇦​🇬​🇦​🇮​🇳​, 🇮​🇫​ 🇾​🇴​🇺​ 🇹​🇷​🇾​ 🇾​🇴​🇺​ 🇼​🇮​🇱​🇱​ 🇧​🇪​ 🇷​🇪​🇲​🇴​🇻​🇪​🇩​ 🇧​🇾​ 🇦​🇩​🇲​🇮​🇳​🇸​",
             "TAGADMİN": "Tags group admins.",
             "REPORT": "Sends reports to group admins.",
             "USER": "=== ```Report``` ===\n\n*User:* ",
@@ -242,13 +225,13 @@
         "updater": {
             "UPDATER_DESC": "Checks the update.",
             "UPDATE": "*Your bot is completely up-to-date!*",
-            "NEW_UPDATE": "*New update available for Bot!*\n\nChanges:\n",
+            "NEW_UPDATE": "*New update available for Bot!*\n\nChanges:\n```",
             "UPDATE_NOW_DESC": "It makes updates.",
-            "UPDATING": "Updating..🤴♂️",
-            "INVALID_HEROKU": "*❌ Your Heroku app name or api key wrong!*",
-            "UPDATED": "*✅  Updated!*",
-            "UPDATED_LOCAL": "*✅ Updated!*",
-            "AFTER_UPDATE": "*Nitross Restarting !*",
+            "UPDATING": "_Updating..._",
+            "INVALID_HEROKU": "*❌ Your Heroku information is wrong!*",
+            "UPDATED": "*✅ Successfully Updated!*",
+            "UPDATED_LOCAL": "*✅ Successfully Updated!*",
+            "AFTER_UPDATE": "*💬 NitrossBot Restarting Automatically!*",
             "IN_AF": "*Please check* ```HEROKU_APP_NAME``` *and* ```app name``` *They must be same.*\n*If these two values ​​are the same, please restore* ```HEROKU_API_KEY```\n\n_To access these settings, use Heroku >> App >> Settings >> Reavel Config Vars_\n_To renew your API key, follow these steps, Heroku >> Account >> API Key then replace old api key in config vars._"
         },
         "whois": {
@@ -274,26 +257,7 @@
             "WEATHER_DESC": "Shows the weather.",
             "NEED_LOCATION": "* Please write a location!*\n*Example:* ```.weather Bakü```",
             "LOCATION": "Location",
-            "NAME": "Name:",
-            "PUBLISHER": "ප්රකාශක",
-            "MODINFO": "Info",
-            "DOWNLOAD": "Download",
-            "SIZE": "Size:",
-            "MODD_DESC": "MODDROID  Apk get.",
-            "HMODD_DESC": "HappyMod Apk get.",
-            "NEED_APPNAME": "*Wrong name*",
-            "NOT_FOUNDMD": "```Sorry.Coudn't Find.```",
-            "HMOD": "Finds mod apps from happymod",
-            "QUOTE_DESC": "It shares famous quotes",
-            "CM_DESC": "It sends complimentry sentenses",
-            "EVINS_DESC": "It sends insulted words",
-            "JOKE_DESC": "It sends random jokes",
-            "APK_MOD": "It sends some special mod apks",
-            "CARBON_DESC": "It sends carbon picture",
             "TEMP": "Temperature",
-            "BOT_DESC": "Chat with Nitross.\n Use .molu <message>",
-            "BOT": ":",
-            "DEVICE": "It shows the details of device",
             "DESC": "Description",
             "HUMI": "Humidity",
             "WIND": "Wind Speed",
@@ -326,9 +290,6 @@
             "T_FALSE": "```❌ Incorrect Blend Effect Entered!```\n```🔎 Existing Commands:```\n\n*$dodge* - Applies a pink color filter to the video.\n*$multiply* - Applies a green color filter to the video.\n*$grainmerge* - Increases the contrast of the video.\n*$and* - Applies black lightning effect according to the speed of the video.\n*$or* - Applies a white lightning effect according to the speed of the video.\n*$burn* - Applies green contrast to video.\n*$difference* - Shows the differences by applying green relief to the video.\n*$grainextract* - Shows the differences by applying gray relief to the video.\n*$divide* - Demonstrates the differences by applying a pink relief to the video.\n*$xor* - Applies both green relief and lightning effect to video.\n*$hardmix* - Mixes the colors of the video into a yellow and red tone.\n*$negation* - Turns the dynamics of the video to pink.",
             "T_NOT": "```💭 You Need To Enter Any Blend Effects!\n```🔎 Existing Commands:```\n\n*$dodge* - Applies a pink color filter to the video.\n*$multiply* - Applies a green color filter to the video.\n*$grainmerge* - Increases the contrast of the video.\n*$and* - Applies black lightning effect according to the speed of the video.\n*$or* - Applies a white lightning effect according to the speed of the video.\n*$burn* - Applies green contrast to video.\n*$difference* - Shows the differences by applying green relief to the video.\n*$grainextract* - Shows the differences by applying gray relief to the video.\n*$divide* - Demonstrates the differences by applying a pink relief to the video.\n*$xor* - Applies both green relief and lightning effect to video.\n*$hardmix* - Mixes the colors of the video into a yellow and red tone.\n*$negation* - Turns the dynamics of the video to pink.",
             "T_DESC": "Applies the selected TBlend effect to videos." 
-        },
-        "multiuse": {
-            "NEED_WORD": "*Please enter username of any instagram account.*"
         },
         "mute": {
             "BİRMUTE": "*The group was silenced for 1 minute!*",
@@ -439,7 +400,7 @@
             "CARBON_WARN": "Please only type in en and tr character!"
         },
         "scam": {
-            "SCAM_DESC": "Creates 5 minutes of fake actions.",
+            "SCAM_DESC": "Creates fake actions.",
             "SCAM_NOTFOUND": "*You Must Enter Fake Action!*\nExisting Types: ```typing & recording & online & stop```",
             "SCAM_NULL": "```Wrong Action Entered! Please use existing types.```"
         },
@@ -477,26 +438,28 @@
             "SAVE_USAGE": "Reply a message and type .save or just use .save <Your note> without replying",
             "REPLY": "Please provide a note or reply to a message.",
             "SUCCESSFULLY_ADDED": "Successfully added new note, check your notes with .notes.",
-            "UNSUCCESSFUL": "Could not add note, please try again later or contact WhatsAsena developers.",
+            "UNSUCCESSFUL": "Could not add note, please try again later or contact NitrossBot developers.",
             "DELETE_USAGE": "Deletes *all* your saved notes.",
             "SUCCESSFULLY_DELETED": "Successfully deleted all your notes."
         },
         "instagram": {
-            "NEED_WORD": "*Please enter username of any instagram account.*",
+            "NEED_WORD": "*Enter Any Instagram Post Link!*",
             "USAGE": ".insta <userName>",
-            "DESC": "Fetches user informations from instagram",
-            "LOADING": "*Searching*",
+            "DESC": "Downloads videos or photos from Instagram.",
+            "LOADING": "Fetching user data.. please wait.",
             "USERNAME": "Username",
-            "FULL_NAME": "Fullname",
-            "PRIVATE": "Private",
-            "VERIFIED": "Verified",
+            "NAME": "Name",
+            "BIO": "Biography",
+            "FİX": "*Carrying out maintenance work!*",
+            "FOLLOWERS": "Followers",
+            "FOLLOWS": "Follows",
             "ACCOUNT": "Account privacy",
             "PUBLIC": "Public",
             "HIDDEN": "Hidden",
-            "NOT_FOUND":"User not found: "
+            "NOT_FOUND": "*Media Not Found!*"
         },
         "github": {
-            "GİTHUB_DESC": "Collects github information from the given username.",
+            "GİTHUB_DESC": "Collects github information from the given username.\n⌨️ Example: .github phaticusthiccy",
             "REPLY": "```You Need To Type Any Username!```",
             "NOT": "```User not found!```",
             "FOLLOWERS": "Followers:",

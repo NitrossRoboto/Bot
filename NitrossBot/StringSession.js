@@ -1,3 +1,11 @@
+/* Copyright (C) 2021 Nitross Roboto.
+
+Licensed under the  GPL-3.0 License;
+you may not use this file except in compliance with the License.
+
+Nitross Bot - From NitrossRoboto
+*/
+
 const fs = require('fs');
 
 class StringSession {
@@ -5,7 +13,7 @@ class StringSession {
     }
 
     deCrypt(string = undefined) {
-        if ('NITROSS_SESSION' in process.env && string === undefined) {
+        if ('A_NITROSS_SESSION' in process.env && string === undefined) {
             string = process.env.STRING_SESSION;
         } else if (string !== undefined) {
             if (fs.existsSync(string)) {

@@ -1,4 +1,4 @@
-const NitrossBot = require('../events');
+const Nitrossbot = require('../events');
 const Config = require('../config');
 const Heroku = require('heroku-client');
 const {secondsToHms} = require('./afk');
@@ -17,7 +17,7 @@ const heroku = new Heroku({
 
 let baseURI = '/apps/' + Config.HEROKU.APP_NAME;
 
-NitrossBot.addCommand({pattern: 'degis ?(.*)', fromMe: true, dontAddCommandList: true, desc: Lang.DEGİS_DESC}, (async (message, match) => {
+Nitrossbot.addCommand({pattern: 'degis ?(.*)', fromMe: true, desc: Lang.DEGİS_DESC}, (async (message, match) => {
 
     if (match[1] == '') {
         return await message.client.sendMessage(message.jid, Lang.DEGİS_NONE, MessageType.text); 
@@ -151,7 +151,7 @@ NitrossBot.addCommand({pattern: 'degis ?(.*)', fromMe: true, dontAddCommandList:
 }));
 
 
-NitrossBot.addCommand({pattern: 'restart$', fromMe: true, dontAddCommandList: true, desc: Lang.RESTART_DESC}, (async (message, match) => {
+Nitrossbot.addCommand({pattern: 'restart$', fromMe: true, desc: Lang.RESTART_DESC}, (async (message, match) => {
 
     await message.client.sendMessage(message.jid,Lang.RESTART_MSG, MessageType.text);
     console.log(baseURI);
@@ -160,7 +160,7 @@ NitrossBot.addCommand({pattern: 'restart$', fromMe: true, dontAddCommandList: tr
     });
 }));
 
-NitrossBot.addCommand({pattern: 'shutdown$', fromMe: true, dontAddCommandList: true, desc: Lang.SHUTDOWN_DESC}, (async(message, match) => {
+Nitrossbot.addCommand({pattern: 'shutdown$', fromMe: true, desc: Lang.SHUTDOWN_DESC}, (async(message, match) => {
 
     await heroku.get(baseURI + '/formation').then(async (formation) => {
         forID = formation[0].id;
@@ -178,7 +178,7 @@ NitrossBot.addCommand({pattern: 'shutdown$', fromMe: true, dontAddCommandList: t
 
 if (Config.WORKTYPE == 'private') {
 
-    NitrossBot.addCommand({pattern: 'dyno$', fromMe: true, dontAddCommandList: true, desc: Lang.DYNO_DESC}, (async (message, match) => {
+    Nitrossbot.addCommand({pattern: 'dyno$', fromMe: true, desc: Lang.DYNO_DESC}, (async (message, match) => {
 
         heroku.get('/account').then(async (account) => {
             // have encountered some issues while calling this API via heroku-client
@@ -211,7 +211,7 @@ if (Config.WORKTYPE == 'private') {
 }
 else if (Config.WORKTYPE == 'public') {
 
-    NitrossBot.addCommand({pattern: 'dyno$', fromMe: false, dontAddCommandList: true, desc: Lang.DYNO_DESC}, (async (message, match) => {
+    Nitrossbot.addCommand({pattern: 'dyno$', fromMe: false, desc: Lang.DYNO_DESC}, (async (message, match) => {
 
         heroku.get('/account').then(async (account) => {
             // have encountered some issues while calling this API via heroku-client
@@ -243,7 +243,7 @@ else if (Config.WORKTYPE == 'public') {
     }));
 }
 
-NitrossBot.addCommand({pattern: 'setvar ?(.*)', fromMe: true, dontAddCommandList: true, desc: Lang.SETVAR_DESC}, (async(message, match) => {
+Nitrossbot.addCommand({pattern: 'setvar ?(.*)', fromMe: true, desc: Lang.SETVAR_DESC}, (async(message, match) => {
 
     if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.KEY_VAL_MISSING, MessageType.text);
 
@@ -400,7 +400,7 @@ NitrossBot.addCommand({pattern: 'setvar ?(.*)', fromMe: true, dontAddCommandList
             });
         }
     }
-    if (match[1] == 'NO_ONLİNE: false' || match[1] == 'NO_ONLİNE: False' || match[1] == 'NO_ONLİNE: FALSE' || match[1] == 'NO_ONLİNE:False' || match[1] == 'NO_ONLİNE:FALSE' || match[1] == 'NO_ONLİNE:fakse' || match[1] == 'NO_ONLİNE: fakse' || match[1] == 'NO_ONLİNE:falde' || match[1] == 'NO_ONLİNE: falde' || match[1] == 'NO_ONLİNE:flase' || match[1] == 'NO_ONLİNE:Flase' || match[1] == 'NO_ONLİNE: flase') {
+    if (match[1] == 'NO_ONLINE: false' || match[1] == 'NO_ONLINE: False' || match[1] == 'NO_ONLINE: FALSE' || match[1] == 'NO_ONLINE:False' || match[1] == 'NO_ONLINE:FALSE' || match[1] == 'NO_ONLINE:fakse' || match[1] == 'NO_ONLINE: fakse' || match[1] == 'NO_ONLINE:falde' || match[1] == 'NO_ONLINE: falde' || match[1] == 'NO_ONLINE:flase' || match[1] == 'NO_ONLINE:Flase' || match[1] == 'NO_ONLINE: flase') {
 
         if (Config.LANG == 'TR' || Config.LANG == 'AZ') {
             await message.client.sendMessage(
@@ -410,7 +410,7 @@ NitrossBot.addCommand({pattern: 'setvar ?(.*)', fromMe: true, dontAddCommandList
             );
             return await heroku.patch(baseURI + '/config-vars', {
                 body: {
-                    ['NO_ONLİNE']: 'false'
+                    ['NO_ONLINE']: 'false'
                 }
             });
         }
@@ -422,12 +422,12 @@ NitrossBot.addCommand({pattern: 'setvar ?(.*)', fromMe: true, dontAddCommandList
             );
             return await heroku.patch(baseURI + '/config-vars', {
                 body: {
-                    ['NO_ONLİNE']: 'false'
+                    ['NO_ONLINE']: 'false'
                 }
             });
         }
     }
-    if (match[1] == 'NO_ONLİNE: true' || match[1] == 'NO_ONLİNE: True' || match[1] == 'NO_ONLİNE: TRUE' || match[1] == 'NO_ONLİNE:True' || match[1] == 'NO_ONLİNE:TRUE' || match[1] == 'NO_ONLİNE:ture' || match[1] == 'NO_ONLİNE: ture' || match[1] == 'NO_ONLİNE:ttue' || match[1] == 'NO_ONLİNE:trie' || match[1] == 'NO_ONLİNE: trie' || match[1] == 'NO_ONLİNE:Trie' || match[1] == 'NO_ONLİNE: Trie') {
+    if (match[1] == 'NO_ONLINE: true' || match[1] == 'NO_ONLINE: True' || match[1] == 'NO_ONLINE: TRUE' || match[1] == 'NO_ONLINE:True' || match[1] == 'NO_ONLINE:TRUE' || match[1] == 'NO_ONLINE:ture' || match[1] == 'NO_ONLINE: ture' || match[1] == 'NO_ONLINE:ttue' || match[1] == 'NO_ONLINE:trie' || match[1] == 'NO_ONLINE: trie' || match[1] == 'NO_ONLINE:Trie' || match[1] == 'NO_ONLINE: Trie') {
 
         if (Config.LANG == 'TR' || Config.LANG == 'AZ') {
             await message.client.sendMessage(
@@ -437,7 +437,7 @@ NitrossBot.addCommand({pattern: 'setvar ?(.*)', fromMe: true, dontAddCommandList
             );
             return await heroku.patch(baseURI + '/config-vars', {
                 body: {
-                    ['NO_ONLİNE']: 'true'
+                    ['NO_ONLINE']: 'true'
                 }
             });
         }
@@ -449,7 +449,7 @@ NitrossBot.addCommand({pattern: 'setvar ?(.*)', fromMe: true, dontAddCommandList
             );
             return await heroku.patch(baseURI + '/config-vars', {
                 body: {
-                    ['NO_ONLİNE']: 'true'
+                    ['NO_ONLINE']: 'true'
                 }
             });
         }
@@ -659,7 +659,7 @@ NitrossBot.addCommand({pattern: 'setvar ?(.*)', fromMe: true, dontAddCommandList
 }));
 
 
-NitrossBot.addCommand({pattern: 'delvar ?(.*)', fromMe: true, dontAddCommandList: true, desc: Lang.DELVAR_DESC}, (async (message, match) => {
+Nitrossbot.addCommand({pattern: 'delvar ?(.*)', fromMe: true, desc: Lang.DELVAR_DESC}, (async (message, match) => {
 
     if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.KEY_VAL_MISSING, MessageType.text);
     await heroku.get(baseURI + '/config-vars').then(async (vars) => {
@@ -681,7 +681,7 @@ NitrossBot.addCommand({pattern: 'delvar ?(.*)', fromMe: true, dontAddCommandList
 
 }));
 
-NitrossBot.addCommand({pattern: 'getvar ?(.*)', fromMe: true, dontAddCommandList: true, desc: Lang.GETVAR_DESC}, (async (message, match) => {
+Nitrossbot.addCommand({pattern: 'getvar ?(.*)', fromMe: true, desc: Lang.GETVAR_DESC}, (async (message, match) => {
 
     if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.KEY_VAL_MISSING, MessageType.text);
     await heroku.get(baseURI + '/config-vars').then(async (vars) => {

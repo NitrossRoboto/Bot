@@ -1,63 +1,53 @@
 {
-    "name": "NITROSS ROBOTO",
-    "description": "NitrossBot is the Modified Version of WhatsAsena, Made By @RAVANA_SL Team with Baileys.",
-    "logo": "https://telegra.ph/file/d61b511f6769c9b7424.jpg",
-    "keywords": ["whatsapp", "userbot", "nitross", "srilanka", "bot", "ai"],
+    "name": "Nitrossbot",
+    "description": "NitrossBot project - Makes it easy and fun to use Whatsapp. World’s first UserBot made for WhatsApp.",
+    "logo": "https://i.hizliresim.com/6Bbj7i.jpg",
+    "keywords": ["whatsapp", "userbot", "nitross-bot", "nitrossbot", "bot", "api", "ai", "nitrossroboto", "ai-bot", "roboto", "wabot", "wabot nitross"],
     "repository": "https://github.com/NitrossRoboto/Bot",
-    "website":   "https://github.com/NitrossRoboto/Bot",
+    "website":   "https://nitrossroboto.github.io",
     "success_url": "https://github.com/NitrossRoboto/Bot",
     "stack": "container",
     "env": {
-        "NITROSS_SESSION": {
-            "description": "Type here yours Asena Session.",
+        "A_NITROSS_SESSION": {
+            "description": "Type here yours NitrossBot Session.",
             "required": true
         },
         "SUDO": {
-            "description": "Leave blank if you don't know how to use it! Sudo mode; Your number must be an international number. So you should have your number after the country code. Example: 91xxxxxxxxx,0",
+            "description": "It gives all the privileges to the users. => 90xxx,0,90xxx,0,90xxx...",
             "required": false
         },
         "LANGUAGE": {
-            "description": "Bot language.සිංහල => si, English => en.",
+            "description": "Bot language. English => en, Sinhala => si",
             "required": true,
             "value": "si"
         },
-        "WELCOME": {
-            "description": "You can select welcome as gif/pp",
-            "required": false,
-            "value": "pp"
-        },
-        "WEL_GIF": {
-            "description": "Fill here any gif link if you selected gif as WEELCOME",
-            "required": false,
+        "ANTI_LINK": {
+            "description": "Link Blocking System.",
+            "required": true,
             "value": "false"
         },
-        "ALIVE_IMG_TYPE": {
-            "description": "You can change alive msg image. Image => img, Profile photo => pp",
-            "required": false,
-            "value": "pp"
+        "MENU_COMMAND": {
+            "description": "Custom Menu Command.",
+            "required": true,
+            "value": "menu"
         },
-        "ALIVE_LOGO": {
-            "description": "if alive logo as Image you can change it. use this data store for upload your image => https://telegra.ph/",
-            "required": false,
-            "value": "https://telegra.ph/file/cc76f880d8583b8d2bfe0.jpg"
-        },
-        "BYE_GIF": {
-            "description": "Fill here any gif link if you selected gif as WEELCOME",
-            "required": false,
-            "value": "false"
-        },
-        "AUTO_BİO": {
-            "description": " Set true for auto date, time in biography.",
+        "AUTO_BIO": {
+            "description": "Set true for auto date, time in biography.",
             "required": true,
             "value": "false"
         },
         "HANDLERS": {
             "description": "For commands.",
             "required": true,
-            "value": "^[,/.]"
+            "value": "^[.!;]"
+        },
+        "FULL_EVA": {
+            "description": "Turn your account into a chatbot!",
+            "required": true,
+            "value": "false"
         },
         "NO_LOG": {
-            "description": " Set true if you don't want to see error log.",
+            "description": "Set true if you don't want to see error log.",
             "required": true,
             "value": "false"
         },
@@ -66,17 +56,13 @@
             "required": true,
             "value": "true"
         },
-        "CP_TEXT": {
-            "description": "Caption for images and videos",
-            "required": false
-        },
         "HEROKU": {
             "description": "If it is running in Heroku, type true.",
             "required": true,
             "value": "true"
         },
         "HEROKU_API_KEY": {
-            "description": "Heroku API Key.",
+            "description": "Heroku API Key. ===> https://t.me/herokuapikeyscraper",
             "required": true
         },
         "MUTE_MESSAGE": {
@@ -85,7 +71,7 @@
             "value": "default"
         },
         "BLOCK_CHAT": {
-            "description": "Choose in which chat the bot won't work there. Ex: 947xxxx1xxx,0 or both number 947xxxxxxxx,947xxxxxxxx,0",
+            "description": "Choose in which chat the bot won't work there. Ex: 94771234567 && 94711234567 or 94761234567,94711234567...",
             "required": false,
             "value": "false"
         },
@@ -104,50 +90,39 @@
             "required": false,
             "value": "default"
         },
-        "BOT_NAME": {
-            "description": "heading for .ravana command reply",
-            "required": false
-        },
         "WORK_TYPE": {
-            "description": "If you use “public”, everyone can use the bot. Else if you use “private”, only you can use your bot.",
+            "description": "NitrossBot Working Type. If you use “public”, everyone can use the bot. Else if you use “private”, only you can use your bot.",
             "required": true,
-            "value": "public"
+            "value": "private"
         },
         "HEROKU_APP_NAME": {
-            "description": "Heroku APP Name.",
+            "description": "Heroku APP Name. Must be the same as the App name!",
             "required": true
         },
         "DEBUG": {
-            "description": "Debugging",
+            "description": "For Developers => all, info, warn, fatal, error, debug, off",
             "required": true,
             "value": "false"
         },
         "REMOVE_BG_API_KEY": {
-            "description": "https://remove.bg",
+            "description": "RemoveBG Api Key. https://remove.bg",
+            "value": "false",
+            "required": false
+        },
+        "DEEPAI_API_KEY": {
+            "description": "For DeepAI Command ===> https://github.com/phaticusthiccy/NitrossBotDuplicated/wiki/DeepAI-API-Key",
+            "value": "false",
             "required": false
         },
         "ALIVE_MESSAGE": {
             "description": "Customizable Alive Message! Use => default, to change back.",
             "required": false,
-            "value": "```♧😂  нί丨𝕀 𝔽яĮẸ𝐧𝐃ｓ яᗩ𝕍ᵃŇ卂-𝐛ⓞ𝕋 ⓃⓄⓦ ˢ𝐭𝓲ＬẸ 卂𝔩ι𝓥έ  ♨♞```\n\n*Version:* ```v4.0 Stable```\n\n*Developer:* ```RAVANA_SL_TEAM```\n\n*Youtube channel :* https://www.youtube.com/channel/UC4WaTaXOPPFP3V6sDBogJug\n\n```Ravana_Bot භාවිතා කිරීම ගැන ස්තූතියි.```"
+            "value": "default"
         },
         "BAN_MESSAGE": {
             "description": "Customizable Ban Message! Use => default, to change back.",
             "required": false,
             "value": "default"
-        },
-        "MENU_LOGO": {
-            "description": "You Can Customiz Ravana-Bot Menu Logo. get image links use this site => https://telegra.ph/",
-            "required": false,
-            "value": "https://telegra.ph/file/196687b452f1a1a49079c.jpg"
-        },
-        "SONG_D": {
-            "description": "Customizable song DOWNLOADING message'",
-            "required": false
-        },
-        "SONG_UP": {
-            "description": "Customizable song UPLOADING message",
-            "required": false
         },
         "ADD_MESSAGE": {
             "description": "Customizable Add Message! Use => default, to change back.",
@@ -174,51 +149,15 @@
             "required": false,
             "value": "default"
         },
+        "GAN_IMAGE": {
+            "description": "Type image link for Gan Style plugin.",
+            "required": true,
+            "value": "https://i.hizliresim.com/loUtAb.jpg"
+        },
         "NO_ONLINE": {
-            "description": "Chang whatsapp web status",
+            "description": "Type true if you don't want to appear online.",
             "required": false,
             "value": "true"
-        },
-        "VIDEO_DOWN": {
-            "description": "Customizable video DOWNLOADING message",
-            "required": false
-        },
-        "VIDEO_UP": {
-            "description": "Customizable video UPLOADING message",
-            "required": false
-        },
-        "VID_CP": {
-            "description": "Caption for video UPLOADING image",
-            "required": false
-        },
-        "OWNERNUM": {
-            "description": "Type bot owner number.",
-            "required": false,
-            "value": "947xxxxxxxx"
-        },
-        "XTEAM_API": {
-            "description": "xteam api get hear => https://api.xteam.xyz/",
-            "required": false
-        },
-        "ZEKS_API": {
-            "description": "zeks api get hear => https://zeks.xyz/",
-            "required": false
-        },
-        "LOLUHUMAN_API": {
-            "description": "lolhuman api get hear => https://lolhuman.herokuapp.com/",
-            "required": false
-        },
-        "MENUTEXT": {
-            "description": "You can customiz Ravana Bot command menu text",
-            "required": false
-        },
-        "MENU_HELP_EMOJI": {
-            "description": "You can customiz Ravana Bot command menu help emoji ❗NOTE use emoji only.",
-            "required": false
-        },
-        "MENU_EXAMPLE_EMOJI": {
-            "description": "You can customiz Ravana Bot command menu example emoji ❗NOTE use emoji only.",
-            "required": false
         }
     },
     "addons": [{

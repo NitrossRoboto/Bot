@@ -1,4 +1,4 @@
-const NitrossBot = require('../events');
+const Nitrossbot = require('../events');
 const {MessageType, Mimetype} = require('@adiwajshing/baileys');
 const Config = require('../config');
 const fs = require('fs');
@@ -14,10 +14,10 @@ const Lang = Language.getString('removebg');
 
 if (Config.WORKTYPE == 'private') {
 
-    NitrossBot.addCommand({pattern: 'removebg ?(.*)', fromMe: true, desc: Lang.REMOVEBG_DESC}, (async (message, match) => {    
+    Nitrossbot.addCommand({pattern: 'removebg ?(.*)', fromMe: true, desc: Lang.REMOVEBG_DESC}, (async (message, match) => {    
 
         if (message.reply_message === false || message.reply_message.image === false) return await message.client.sendMessage(message.jid,Lang.NEED_PHOTO,MessageType.text);
-        if (Config.RBG_API_KEY === false) return await message.client.sendMessage(message.jid,Lang.NO_API_KEY.replace('remove.bg', 'https://github.com/phaticusthiccy/WhatsAsenaDuplicated/wiki/Remove-BG-API-Key'),MessageType.text);
+        if (Config.RBG_API_KEY === false) return await message.client.sendMessage(message.jid,Lang.NO_API_KEY.replace('remove.bg', 'https://github.com/phaticusthiccy/WhatsNitrossbotDuplicated/wiki/Remove-BG-API-Key'),MessageType.text);
     
         var load = await message.reply(Lang.RBGING);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -44,16 +44,16 @@ if (Config.WORKTYPE == 'private') {
 		    fs.createWriteStream('rbg.png')
         );
     
-        await message.client.sendMessage(message.jid,fs.readFileSync('rbg.png'), MessageType.document, {filename: 'WhatsAsena.png', mimetype: Mimetype.png});
+        await message.client.sendMessage(message.jid,fs.readFileSync('rbg.png'), MessageType.document, {filename: 'WhatsNitrossbot.png', mimetype: Mimetype.png});
         await load.delete();
     }));
 }
 else if (Config.WORKTYPE == 'public') {
 
-    NitrossBot.addCommand({pattern: 'removebg ?(.*)', fromMe: false, desc: Lang.REMOVEBG_DESC}, (async (message, match) => {    
+    Nitrossbot.addCommand({pattern: 'removebg ?(.*)', fromMe: false, desc: Lang.REMOVEBG_DESC}, (async (message, match) => {    
 
         if (message.reply_message === false || message.reply_message.image === false) return await message.client.sendMessage(message.jid,Lang.NEED_PHOTO,MessageType.text);
-        if (Config.RBG_API_KEY === false) return await message.client.sendMessage(message.jid,Lang.NO_API_KEY.replace('remove.bg', 'https://github.com/phaticusthiccy/WhatsAsenaDuplicated/wiki/Remove-BG-API-Key'),MessageType.text);
+        if (Config.RBG_API_KEY === false) return await message.client.sendMessage(message.jid,Lang.NO_API_KEY.replace('remove.bg', 'https://github.com/phaticusthiccy/WhatsNitrossbotDuplicated/wiki/Remove-BG-API-Key'),MessageType.text);
     
         var load = await message.reply(Lang.RBGING);
         var location = await message.client.downloadAndSaveMediaMessage({
@@ -80,7 +80,7 @@ else if (Config.WORKTYPE == 'public') {
 		    fs.createWriteStream('rbg.png')
         );
     
-        await message.client.sendMessage(message.jid,fs.readFileSync('rbg.png'), MessageType.document, {filename: 'WhatsAsena.png', mimetype: Mimetype.png});
+        await message.client.sendMessage(message.jid,fs.readFileSync('rbg.png'), MessageType.document, {filename: 'WhatsNitrossbot.png', mimetype: Mimetype.png});
         await load.delete();
     }));
     

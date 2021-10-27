@@ -1,11 +1,15 @@
+/*
+https://github.com/NitrossRoboto/bot
+*/
+
 function successfullMessage(msg) {
-    return "*_" + msg + "_*"
+    return "✅ *NitrossBot*:  ```" + msg + "```"
 }
 function errorMessage(msg) {
-    return "*_" + msg + "_*"
+    return "🛑 *NitrossBot*:  ```" + msg + "```"
 }
 function infoMessage(msg) {
-    return "*_" + msg + "_*"
+    return "⏺️ *NitrossBot*:  ```" + msg + "```"
 }
 
 

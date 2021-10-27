@@ -1,25 +1,30 @@
+/* Copyright (C) 2021 Nitross Roboto.
+
+Licensed under the  GPL-3.0 License;
+you may not use this file except in compliance with the License.
+
+Nitross Bot - From NitrossRoboto
+*/
+
 const NitrossBot = require('../events');
-const {WAConnection, MessageOptions, MessageType, Mimetype, Presence} = require('@adiwajshing/baileys');
 const Config = require('../config');
-const fs = require('fs');
-const axios = require('axios');
+const {MessageType} = require('@adiwajshing/baileys');
+
 const Language = require('../language');
 const Lang = Language.getString('_nitross');
 
-const td = Config.WORKTYPE == 'public' ? false : true
+if (Config.WORKTYPE == 'private') {
 
-const MTEXT = '\n*꧁𓊈𒆜🅱🅾🆃 🅸🅽🅵🅾𒆜𓊉꧂*\n\nHay Im '+Config.BOT+',\n\n'+Config.MENUTEXT+'\n\n★彡[ Contact Owner: *wa.me/'+Config.OWNERNUM+'*\n★彡[ Version: *'+Config.VERSION+'*\n★彡[ Branch: *'+Config.BRANCH+'*\n★彡[ Language: *EN*\n★彡[ Work Type: *'+Config.WORKTYPE+'*\n\n\n   *🌷😲 Nitross Roboto Commands Menu 💝♙*\n\n'
+    NitrossBot.addCommand({pattern: ''+Config.MENUCOMMAND+' ?(.*)', fromMe: true, dontAddCommandList: true}, (async (message, match) => {
 
-
-    NitrossBot.addCommand({pattern: 'menu ?(.*)', fromMe: td, dontAddCommandList: true}, (async (message, match) => {
-        
         var CMD_HELP = '';
         if (match[1] === '') {
             NitrossBot.commands.map(
                 async (command) =>  {
-                    if (command.dontAddCommandList || command.pattern === undefined) return;
+                    if (command.dontAddCommandList || command.pattern === undefined) return;
                     try {
-                        var match = command.pattern.toString().match(/(\W*)([A-Za-zğüşiöç1234567890]*)/);
+                        var match = command.pattern.toString().match(/(\W*)([A-Za-zğüşıiöç1234567890 ]*)/);
+                        var mmatch = command.pattern.toString().match(/(\W*)([A-Za-züşiğ öç1234567890]*)/)[2]
                     } catch {
                         var match = [command.pattern];
                     }
@@ -31,30 +36,50 @@ const MTEXT = '\n*꧁𓊈𒆜🅱🅾🆃 🅸🅽🅵🅾𒆜𓊉꧂*\n\nHay Im
                     } else {
                         HANDLER = '.';
                     }
-                    CMD_HELP += Config.MENU_H + ' *' + Lang.COMMAND + ':* ' + (match.length >= 3 ? (HANDLER + match[2]) : command.pattern) + (command.desc === '' ? '\n\n' : '\n');
-                    if (command.desc !== '') CMD_HELP += Config.MENU_E + ' *' + Lang.DESC + ':* ' + command.desc + (command.warn === '' ? '\n\n' : '\n');
-                    if (command.usage !== '') CMD_HELP += '*⌨️ ' + Lang.EXAMPLE + ':* ' + command.usage + '\n\n';
-                    if (command.warn !== '') CMD_HELP += '*⚠️ ' + Lang.WARN + ':* ' + command.warn + '\n\n';
-
+                    if (command.desc == '' && !command.usage == '' && command.warn == '') {
+                        CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (match.length >= 3 ? (HANDLER + mmatch) : command.pattern) + '```\n' + '*⌨️ ' + Lang.EXAMPLE + ':* ```' + command.usage + '```\n\n';
+                    }
+                    if (!command.desc == '' && command.usage == '' && command.warn == '') {
+                        CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (match.length >= 3 ? (HANDLER + mmatch) : command.pattern) + '```\n' + '*💬 ' + Lang.DESC + ':* ```' + command.desc + '``` \n\n';
+                    }
+                    if (command.desc == '' && command.usage == '' && !command.warn == '') {
+                        CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (match.length >= 3 ? (HANDLER + mmatch) : command.pattern) + '```\n' + '*⚠️ ' + Lang.WARN + ':* ```' + command.warn + '```\n\n'
+                    }
+                    if (!command.desc == '' && !command.usage == '' && command.warn == '') {
+                        CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (match.length >= 3 ? (HANDLER + mmatch) : command.pattern) + '```\n' + '*💬 ' + Lang.DESC + ':* ```' + command.desc + '``` \n' + '*⌨️ ' + Lang.EXAMPLE + ':* ```' + command.usage + '```\n\n';
+                    }
+                    if (!command.desc == '' && command.usage == '' && !command.warn == '') {
+                        CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (match.length >= 3 ? (HANDLER + mmatch) : command.pattern) + '```\n' + '*💬 ' + Lang.DESC + ':* ```' + command.desc + '``` \n' + '*⚠️ ' + Lang.WARN + ':* ```' + command.warn + '```\n\n'
+                    }
+                    if (command.desc == '' && !command.usage == '' && !command.warn == '') {
+                        CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (match.length >= 3 ? (HANDLER + mmatch) : command.pattern) + '```\n' + '*⌨️ ' + Lang.EXAMPLE + ':* ```' + command.usage + '```\n' + '*⚠️ ' + Lang.WARN + ':* ```' + command.warn + '```\n\n'
+                    }
+                    if  (command.desc == '' && command.usage == '' && command.warn == '') {
+                        CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (match.length >= 3 ? (HANDLER + mmatch) : command.pattern) + '```\n\n'
+                    }
+                    if  (!command.desc == '' && !command.usage == '' && !command.warn == '') {
+                        CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (match.length >= 3 ? (HANDLER + mmatch) : command.pattern) + '```\n' + '*💬 ' + Lang.DESC + ':* ```' + command.desc + '``` \n' + '*⌨️ ' + Lang.EXAMPLE + ':* ```' + command.usage + '```\n' + '*⚠️ ' + Lang.WARN + ':* ```' + command.warn + '```\n\n'
+                    }
                 }
             );
-        
-            var webimage = await axios.get(Config.MENU_LOGO, { responseType: 'arraybuffer' })
-
-    await message.client.sendMessage(message.jid,Buffer.from(webimage.data), MessageType.image, {mimetype: Mimetype.png, caption: MTEXT + CMD_HELP, quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(message.jid ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc", "mimetype": "image/jpeg", "caption": "꧁༺ֆʟ ʀǟʋǟռǟ ȶɛǟʍ༻꧂", "fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=", "fileLength": "28777", "height": 1080, "width": 1079, "mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=", "fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=", "directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69", "mediaKeyTimestamp": "1610993486", "jpegThumbnail": fs.readFileSync('./media/images/cmdlogo.jpg')}}}});
+            await message.client.sendMessage(
+                message.jid,'●▬▬▬ *NitrossBot Private* ▬▬▬●\n\n' + CMD_HELP, MessageType.text
+            );    
         } else {
-            
             var CMD_HELP = '';
             NitrossBot.commands.map(
                 async (command) =>  {
-                    if (command.dontAddCommandList || command.pattern === undefined) return;
+                    if (command.dontAddCommandList || command.pattern === undefined) return;
                     try {
-                        var cmatch = command.pattern.toString().match(/(\W*)([A-Za-zğüşiöç1234567890]*)/);
+                        var cmatch = command.pattern.toString().match(/(\W*)([A-Za-zğüşıiöç1234567890 ]*)/);
+                        var cmmatch = command.pattern.toString().match(/(\W*)([A-Za-züşiğ öç1234567890]*)/)[2]
                     } catch {
                         var cmatch = [command.pattern];
                     }
-                
-                    if (cmatch[2] == match[1]) {
+                    if (cmmatch.endsWith(' ')) {
+                        var cmmatch = command.pattern.toString().match(/(\W*)([A-Za-züşiğ öç1234567890]*)/)[2].replace(' ', '')
+                    }
+                    if (cmmatch == match[1]) {
                         var HANDLER = '';
     
                         if (/\[(\W*)\]/.test(Config.HANDLERS)) {
@@ -62,30 +87,52 @@ const MTEXT = '\n*꧁𓊈𒆜🅱🅾🆃 🅸🅽🅵🅾𒆜𓊉꧂*\n\nHay Im
                         } else {
                             HANDLER = '.';
                         }
-                        CMD_HELP += Config.MENU_H + ' *' + Lang.COMMAND + ':* ' + (cmatch.length >= 3 ? (HANDLER + cmatch[2]) : command.pattern) + (command.desc === '' ? '\n\n' : '\n');
-                        if (command.desc !== '') CMD_HELP += Config.MENU_E + ' *' + Lang.DESC + ':* ' + command.desc + (command.warn === '' ? '\n\n' : '\n');
-                        if (command.usage !== '') CMD_HELP += '*⌨️ ' + Lang.EXAMPLE + ':* ' + command.usage + '\n\n';
-                        if (command.warn !== '') CMD_HELP += '*⚠️ ' + Lang.WARN + ':* ' + command.warn + '\n\n';
-
+                        if (command.desc == '' && !command.usage == '' && command.warn == '') {
+                        CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (cmatch.length >= 3 ? (HANDLER + cmmatch) : command.pattern) + '```\n' + '*⌨️ ' + Lang.EXAMPLE + ':* ```' + command.usage + '```\n\n';
+                        }
+                        if (!command.desc == '' && command.usage == '' && command.warn == '') {
+                            CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (cmatch.length >= 3 ? (HANDLER + cmmatch) : command.pattern) + '```\n' + '*💬 ' + Lang.DESC + ':* ```' + command.desc + '``` \n\n';
+                        }
+                        if (command.desc == '' && command.usage == '' && !command.warn == '') {
+                            CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (cmatch.length >= 3 ? (HANDLER + cmmatch) : command.pattern) + '```\n' + '*⚠️ ' + Lang.WARN + ':* ```' + command.warn + '```\n\n'
+                        }
+                        if (!command.desc == '' && !command.usage == '' && command.warn == '') {
+                            CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (cmatch.length >= 3 ? (HANDLER + cmmatch) : command.pattern) + '```\n' + '*💬 ' + Lang.DESC + ':* ```' + command.desc + '``` \n' + '*⌨️ ' + Lang.EXAMPLE + ':* ```' + command.usage + '```\n\n';
+                        }
+                        if (!command.desc == '' && command.usage == '' && !command.warn == '') {
+                            CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (cmatch.length >= 3 ? (HANDLER + cmmatch) : command.pattern) + '```\n' + '*💬 ' + Lang.DESC + ':* ```' + command.desc + '``` \n' + '*⚠️ ' + Lang.WARN + ':* ```' + command.warn + '```\n\n'
+                        }
+                        if (command.desc == '' && !command.usage == '' && !command.warn == '') {
+                            CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (cmatch.length >= 3 ? (HANDLER + cmmatch) : command.pattern) + '```\n' + '*⌨️ ' + Lang.EXAMPLE + ':* ```' + command.usage + '```\n' + '*⚠️ ' + Lang.WARN + ':* ```' + command.warn + '```\n\n'
+                        }
+                        if  (command.desc == '' && command.usage == '' && command.warn == '') {
+                            CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (cmatch.length >= 3 ? (HANDLER + cmmatch) : command.pattern) + '```\n\n'
+                        }
+                        if  (!command.desc == '' && !command.usage == '' && !command.warn == '') {
+                            CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (cmatch.length >= 3 ? (HANDLER + cmmatch) : command.pattern) + '```\n' + '*💬 ' + Lang.DESC + ':* ```' + command.desc + '``` \n' + '*⌨️ ' + Lang.EXAMPLE + ':* ```' + command.usage + '```\n' + '*⚠️ ' + Lang.WARN + ':* ```' + command.warn + '```\n\n'
+                        }
                     }
                 }
             );
             if (CMD_HELP === '') CMD_HELP += Lang.NOT_FOUND;
-            var webimage = await axios.get(Config.MENU_LOGO, { responseType: 'arraybuffer' })
-
-    await message.client.sendMessage(message.jid,Buffer.from(webimage.data), MessageType.image, {mimetype: Mimetype.png, caption: MTEXT + CMD_HELP, quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(message.jid ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc", "mimetype": "image/jpeg", "caption": "꧁༺ֆʟ ʀǟʋǟռǟ ȶɛǟʍ༻꧂", "fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=", "fileLength": "28777", "height": 1080, "width": 1079, "mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=", "fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=", "directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69", "mediaKeyTimestamp": "1610993486", "jpegThumbnail": fs.readFileSync('./media/images/cmdlogo.jpg')}}}});
+            await message.client.sendMessage(
+                message.jid,'●▬▬▬ *NitrossBot Private* ▬▬▬●\n\n' + CMD_HELP, MessageType.text
+            );
         }
     }));
+}
+else if (Config.WORKTYPE == 'public') {
 
-    NitrossBot.addCommand({pattern: 'menu ?(.*)', fromMe: td, dontAddCommandList: true}, (async (message, match) => {
+    NitrossBot.addCommand({pattern: 'menu ?(.*)', fromMe: false, dontAddCommandList: true}, (async (message, match) => {
 
         var CMD_HELP = '';
         if (match[1] === '') {
             NitrossBot.commands.map(
                 async (command) =>  {
-                    if (command.dontAddCommandList || command.pattern === undefined) return;
+                    if (command.dontAddCommandList || command.pattern === undefined) return;
                     try {
-                        var match = command.pattern.toString().match(/(\W*)([A-Za-zğüşiöç1234567890]*)/);
+                        var match = command.pattern.toString().match(/(\W*)([A-Za-zğüşıiöç1234567890 ]*)/);
+                        var mmatch = command.pattern.toString().match(/(\W*)([A-Za-züşiğ öç1234567890]*)/)[2]
                     } catch {
                         var match = [command.pattern];
                     }
@@ -97,30 +144,50 @@ const MTEXT = '\n*꧁𓊈𒆜🅱🅾🆃 🅸🅽🅵🅾𒆜𓊉꧂*\n\nHay Im
                     } else {
                         HANDLER = '.';
                     }
-                    CMD_HELP += Config.MENU_H + ' *' + Lang.COMMAND + ':* ' + (match.length >= 3 ? (HANDLER + match[2]) : command.pattern) + (command.desc === '' ? '\n\n' : '\n');
-                    if (command.desc !== '') CMD_HELP += Config.MENU_E + ' *' + Lang.DESC + ':* ' + command.desc + (command.warn === '' ? '\n\n' : '\n');
-                    if (command.usage !== '') CMD_HELP += '*⌨️ ' + Lang.EXAMPLE + ':* ' + command.usage + '\n\n';
-                    if (command.warn !== '') CMD_HELP += '*⚠️ ' + Lang.WARN + ':* ' + command.warn + '\n\n';
-
+                    if (command.desc == '' && !command.usage == '' && command.warn == '') {
+                        CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (match.length >= 3 ? (HANDLER + mmatch) : command.pattern) + '```\n' + '*⌨️ ' + Lang.EXAMPLE + ':* ```' + command.usage + '```\n\n';
+                    }
+                    if (!command.desc == '' && command.usage == '' && command.warn == '') {
+                        CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (match.length >= 3 ? (HANDLER + mmatch) : command.pattern) + '```\n' + '*💬 ' + Lang.DESC + ':* ```' + command.desc + '``` \n\n';
+                    }
+                    if (command.desc == '' && command.usage == '' && !command.warn == '') {
+                        CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (match.length >= 3 ? (HANDLER + mmatch) : command.pattern) + '```\n' + '*⚠️ ' + Lang.WARN + ':* ```' + command.warn + '```\n\n'
+                    }
+                    if (!command.desc == '' && !command.usage == '' && command.warn == '') {
+                        CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (match.length >= 3 ? (HANDLER + mmatch) : command.pattern) + '```\n' + '*💬 ' + Lang.DESC + ':* ```' + command.desc + '``` \n' + '*⌨️ ' + Lang.EXAMPLE + ':* ```' + command.usage + '```\n\n';
+                    }
+                    if (!command.desc == '' && command.usage == '' && !command.warn == '') {
+                        CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (match.length >= 3 ? (HANDLER + mmatch) : command.pattern) + '```\n' + '*💬 ' + Lang.DESC + ':* ```' + command.desc + '``` \n' + '*⚠️ ' + Lang.WARN + ':* ```' + command.warn + '```\n\n'
+                    }
+                    if (command.desc == '' && !command.usage == '' && !command.warn == '') {
+                        CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (match.length >= 3 ? (HANDLER + mmatch) : command.pattern) + '```\n' + '*⌨️ ' + Lang.EXAMPLE + ':* ```' + command.usage + '```\n' + '*⚠️ ' + Lang.WARN + ':* ```' + command.warn + '```\n\n'
+                    }
+                    if  (command.desc == '' && command.usage == '' && command.warn == '') {
+                        CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (match.length >= 3 ? (HANDLER + mmatch) : command.pattern) + '```\n\n'
+                    }
+                    if  (!command.desc == '' && !command.usage == '' && !command.warn == '') {
+                        CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (match.length >= 3 ? (HANDLER + mmatch) : command.pattern) + '```\n' + '*💬 ' + Lang.DESC + ':* ```' + command.desc + '``` \n' + '*⌨️ ' + Lang.EXAMPLE + ':* ```' + command.usage + '```\n' + '*⚠️ ' + Lang.WARN + ':* ```' + command.warn + '```\n\n'
+                    }
                 }
             );
-        
-            var webimage = await axios.get(Config.MENU_LOGO, { responseType: 'arraybuffer' })
-
-    await message.client.sendMessage(message.jid,Buffer.from(webimage.data), MessageType.image, {mimetype: Mimetype.png, caption: MTEXT + CMD_HELP, quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(message.jid ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc", "mimetype": "image/jpeg", "caption": "꧁༺ֆʟ ʀǟʋǟռǟ ȶɛǟʍ༻꧂", "fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=", "fileLength": "28777", "height": 1080, "width": 1079, "mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=", "fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=", "directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69", "mediaKeyTimestamp": "1610993486", "jpegThumbnail": fs.readFileSync('./media/images/cmdlogo.jpg')}}}});
+            await message.client.sendMessage(
+                message.jid,'●▬▬▬ *WhatsNitrossBot Public* ▬▬▬●\n\n' + CMD_HELP, MessageType.text
+            );    
         } else {
-
             var CMD_HELP = '';
             NitrossBot.commands.map(
                 async (command) =>  {
-                    if (command.dontAddCommandList || command.pattern === undefined) return;
+                    if (command.dontAddCommandList || command.pattern === undefined) return;
                     try {
-                        var cmatch = command.pattern.toString().match(/(\W*)([A-Za-zğüşiöç1234567890]*)/);
+                        var cmatch = command.pattern.toString().match(/(\W*)([A-Za-zğüşıiöç1234567890 ]*)/);
+                        var cmmatch = command.pattern.toString().match(/(\W*)([A-Za-züşiğ öç1234567890]*)/)[2]
                     } catch {
                         var cmatch = [command.pattern];
                     }
-                
-                    if (cmatch[2] == match[1]) {
+                    if (cmmatch.endsWith(' ')) {
+                        var cmmatch = command.pattern.toString().match(/(\W*)([A-Za-züşiğ öç1234567890]*)/)[2].replace(' ', '')
+                    }
+                    if (cmmatch == match[1]) {
                         var HANDLER = '';
     
                         if (/\[(\W*)\]/.test(Config.HANDLERS)) {
@@ -128,215 +195,37 @@ const MTEXT = '\n*꧁𓊈𒆜🅱🅾🆃 🅸🅽🅵🅾𒆜𓊉꧂*\n\nHay Im
                         } else {
                             HANDLER = '.';
                         }
-                        CMD_HELP += Config.MENU_H + ' *' + Lang.COMMAND + ':* ' + (cmatch.length >= 3 ? (HANDLER + cmatch[2]) : command.pattern) + (command.desc === '' ? '\n\n' : '\n');
-                        if (command.desc !== '') CMD_HELP += Config.MENU_E + ' *' + Lang.DESC + ':* ' + command.desc + (command.warn === '' ? '\n\n' : '\n');
-                        if (command.usage !== '') CMD_HELP += '*⌨️ ' + Lang.EXAMPLE + ':* ' + command.usage + '\n\n';
-                        if (command.warn !== '') CMD_HELP += '*⚠️ ' + Lang.WARN + ':* ' + command.warn + '\n\n';
-
-                    }
-                }
-            );
-            if (CMD_HELP === '') CMD_HELP += Lang.NOT_FOUND;
-            var webimage = await axios.get(Config.MENU_LOGO, { responseType: 'arraybuffer' })
-
-    await message.client.sendMessage(message.jid,Buffer.from(webimage.data), MessageType.image, {mimetype: Mimetype.png, caption: MTEXT + CMD_HELP, quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(message.jid ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc", "mimetype": "image/jpeg", "caption": "꧁༺ֆʟ ʀǟʋǟռǟ ȶɛǟʍ༻꧂", "fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=", "fileLength": "28777", "height": 1080, "width": 1079, "mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=", "fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=", "directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69", "mediaKeyTimestamp": "1610993486", "jpegThumbnail": fs.readFileSync('./media/images/cmdlogo.jpg')}}}});
-        }
-    }));
-
-    NitrossBot.addCommand({pattern: 'help ?(.*)', fromMe: td, dontAddCommandList: true}, (async (message, match) => {
-
-        var CMD_HELP = '';
-        if (match[1] === '') {
-            NitrossBot.commands.map(
-                async (command) =>  {
-                    if (command.dontAddCommandList || command.pattern === undefined) return;
-                    try {
-                        var match = command.pattern.toString().match(/(\W*)([A-Za-zğüşiöç1234567890]*)/);
-                    } catch {
-                        var match = [command.pattern];
-                    }
-    
-                    var HANDLER = '';
-    
-                    if (/\[(\W*)\]/.test(Config.HANDLERS)) {
-                        HANDLER = Config.HANDLERS.match(/\[(\W*)\]/)[1][0];
-                    } else {
-                        HANDLER = '.';
-                    }
-                    CMD_HELP += Config.MENU_H + ' *' + Lang.COMMAND + ':* ' + (match.length >= 3 ? (HANDLER + match[2]) : command.pattern) + (command.desc === '' ? '\n\n' : '\n');
-                    if (command.desc !== '') CMD_HELP += Config.MENU_E + ' *' + Lang.DESC + ':* ' + command.desc + (command.warn === '' ? '\n\n' : '\n');
-                    if (command.usage !== '') CMD_HELP += '*⌨️ ' + Lang.EXAMPLE + ':* ' + command.usage + '\n\n';
-                    if (command.warn !== '') CMD_HELP += '*⚠️ ' + Lang.WARN + ':* ' + command.warn + '\n\n';
-
-                }
-            );
-        
-            var webimage = await axios.get(Config.MENU_LOGO, { responseType: 'arraybuffer' })
-
-    await message.client.sendMessage(message.jid,Buffer.from(webimage.data), MessageType.image, {mimetype: Mimetype.png, caption: MTEXT + CMD_HELP, quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(message.jid ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc", "mimetype": "image/jpeg", "caption": "꧁༺ֆʟ ʀǟʋǟռǟ ȶɛǟʍ༻꧂", "fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=", "fileLength": "28777", "height": 1080, "width": 1079, "mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=", "fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=", "directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69", "mediaKeyTimestamp": "1610993486", "jpegThumbnail": fs.readFileSync('./media/images/cmdlogo.jpg')}}}});
-        } else {
-
-            var CMD_HELP = '';
-            NitrossBot.commands.map(
-                async (command) =>  {
-                    if (command.dontAddCommandList || command.pattern === undefined) return;
-                    try {
-                        var cmatch = command.pattern.toString().match(/(\W*)([A-Za-zğüşiöç1234567890]*)/);
-                    } catch {
-                        var cmatch = [command.pattern];
-                    }
-                
-                    if (cmatch[2] == match[1]) {
-                        var HANDLER = '';
-    
-                        if (/\[(\W*)\]/.test(Config.HANDLERS)) {
-                            HANDLER = Config.HANDLERS.match(/\[(\W*)\]/)[1][0];
-                        } else {
-                            HANDLER = '.';
+                        if (command.desc == '' && !command.usage == '' && command.warn == '') {
+                        CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (cmatch.length >= 3 ? (HANDLER + cmmatch) : command.pattern) + '```\n' + '*⌨️ ' + Lang.EXAMPLE + ':* ```' + command.usage + '```\n\n';
                         }
-                        CMD_HELP += Config.MENU_H + ' *' + Lang.COMMAND + ':* ' + (cmatch.length >= 3 ? (HANDLER + cmatch[2]) : command.pattern) + (command.desc === '' ? '\n\n' : '\n');
-                        if (command.desc !== '') CMD_HELP += Config.MENU_E + ' *' + Lang.DESC + ':* ' + command.desc + (command.warn === '' ? '\n\n' : '\n');
-                        if (command.usage !== '') CMD_HELP += '*⌨️ ' + Lang.EXAMPLE + ':* ' + command.usage + '\n\n';
-                        if (command.warn !== '') CMD_HELP += '*⚠️ ' + Lang.WARN + ':* ' + command.warn + '\n\n';
-
-                    }
-                }
-            );
-            if (CMD_HELP === '') CMD_HELP += Lang.NOT_FOUND;
-            var webimage = await axios.get(Config.MENU_LOGO, { responseType: 'arraybuffer' })
-
-    await message.client.sendMessage(message.jid,Buffer.from(webimage.data), MessageType.image, {mimetype: Mimetype.png, caption: MTEXT + CMD_HELP, quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(message.jid ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc", "mimetype": "image/jpeg", "caption": "꧁༺ֆʟ ʀǟʋǟռǟ ȶɛǟʍ༻꧂", "fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=", "fileLength": "28777", "height": 1080, "width": 1079, "mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=", "fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=", "directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69", "mediaKeyTimestamp": "1610993486", "jpegThumbnail": fs.readFileSync('./media/images/cmdlogo.jpg')}}}});
-        }
-    }));
-
-    NitrossBot.addCommand({pattern: 'list ?(.*)', fromMe: td, dontAddCommandList: true}, (async (message, match) => {
-
-        var CMD_HELP = '';
-        if (match[1] === '') {
-            NitrossBot.commands.map(
-                async (command) =>  {
-                    if (command.dontAddCommandList || command.pattern === undefined) return;
-                    try {
-                        var match = command.pattern.toString().match(/(\W*)([A-Za-zğüşiöç1234567890]*)/);
-                    } catch {
-                        var match = [command.pattern];
-                    }
-    
-                    var HANDLER = '';
-    
-                    if (/\[(\W*)\]/.test(Config.HANDLERS)) {
-                        HANDLER = Config.HANDLERS.match(/\[(\W*)\]/)[1][0];
-                    } else {
-                        HANDLER = '.';
-                    }
-                    CMD_HELP += Config.MENU_H + ' *' + Lang.COMMAND + ':* ' + (match.length >= 3 ? (HANDLER + match[2]) : command.pattern) + (command.desc === '' ? '\n\n' : '\n');
-                    if (command.desc !== '') CMD_HELP += Config.MENU_E + ' *' + Lang.DESC + ':* ' + command.desc + (command.warn === '' ? '\n\n' : '\n');
-                    if (command.usage !== '') CMD_HELP += '*⌨️ ' + Lang.EXAMPLE + ':* ' + command.usage + '\n\n';
-                    if (command.warn !== '') CMD_HELP += '*⚠️ ' + Lang.WARN + ':* ' + command.warn + '\n\n';
-
-                }
-            );
-        
-            var webimage = await axios.get(Config.MENU_LOGO, { responseType: 'arraybuffer' })
-
-    await message.client.sendMessage(message.jid,Buffer.from(webimage.data), MessageType.image, {mimetype: Mimetype.png, caption: MTEXT + CMD_HELP, quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(message.jid ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc", "mimetype": "image/jpeg", "caption": "꧁༺ֆʟ ʀǟʋǟռǟ ȶɛǟʍ༻꧂", "fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=", "fileLength": "28777", "height": 1080, "width": 1079, "mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=", "fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=", "directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69", "mediaKeyTimestamp": "1610993486", "jpegThumbnail": fs.readFileSync('./media/images/cmdlogo.jpg')}}}});
-        } else {
-
-            var CMD_HELP = '';
-            NitrossBot.commands.map(
-                async (command) =>  {
-                    if (command.dontAddCommandList || command.pattern === undefined) return;
-                    try {
-                        var cmatch = command.pattern.toString().match(/(\W*)([A-Za-zğüşiöç1234567890]*)/);
-                    } catch {
-                        var cmatch = [command.pattern];
-                    }
-                
-                    if (cmatch[2] == match[1]) {
-                        var HANDLER = '';
-    
-                        if (/\[(\W*)\]/.test(Config.HANDLERS)) {
-                            HANDLER = Config.HANDLERS.match(/\[(\W*)\]/)[1][0];
-                        } else {
-                            HANDLER = '.';
+                        if (!command.desc == '' && command.usage == '' && command.warn == '') {
+                            CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (cmatch.length >= 3 ? (HANDLER + cmmatch) : command.pattern) + '```\n' + '*💬 ' + Lang.DESC + ':* ```' + command.desc + '``` \n\n';
                         }
-                        CMD_HELP += Config.MENU_H + ' *' + Lang.COMMAND + ':* ' + (cmatch.length >= 3 ? (HANDLER + cmatch[2]) : command.pattern) + (command.desc === '' ? '\n\n' : '\n');
-                        if (command.desc !== '') CMD_HELP += Config.MENU_E + ' *' + Lang.DESC + ':* ' + command.desc + (command.warn === '' ? '\n\n' : '\n');
-                        if (command.usage !== '') CMD_HELP += '*⌨️ ' + Lang.EXAMPLE + ':* ' + command.usage + '\n\n';
-                        if (command.warn !== '') CMD_HELP += '*⚠️ ' + Lang.WARN + ':* ' + command.warn + '\n\n';
-
-                    }
-                }
-            );
-            if (CMD_HELP === '') CMD_HELP += Lang.NOT_FOUND;
-            var webimage = await axios.get(Config.MENU_LOGO, { responseType: 'arraybuffer' })
-
-    await message.client.sendMessage(message.jid,Buffer.from(webimage.data), MessageType.image, {mimetype: Mimetype.png, caption: MTEXT + CMD_HELP, quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(message.jid ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc", "mimetype": "image/jpeg", "caption": "꧁༺ֆʟ ʀǟʋǟռǟ ȶɛǟʍ༻꧂", "fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=", "fileLength": "28777", "height": 1080, "width": 1079, "mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=", "fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=", "directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69", "mediaKeyTimestamp": "1610993486", "jpegThumbnail": fs.readFileSync('./media/images/cmdlogo.jpg')}}}});
-        }
-    }));
-
-    NitrossBot.addCommand({pattern: 'මෙනු ?(.*)', fromMe: td, dontAddCommandList: true}, (async (message, match) => {
-
-        var CMD_HELP = '';
-        if (match[1] === '') {
-            NitrossBot.commands.map(
-                async (command) =>  {
-                    if (command.dontAddCommandList || command.pattern === undefined) return;
-                    try {
-                        var match = command.pattern.toString().match(/(\W*)([A-Za-zğüşiöç1234567890]*)/);
-                    } catch {
-                        var match = [command.pattern];
-                    }
-    
-                    var HANDLER = '';
-    
-                    if (/\[(\W*)\]/.test(Config.HANDLERS)) {
-                        HANDLER = Config.HANDLERS.match(/\[(\W*)\]/)[1][0];
-                    } else {
-                        HANDLER = '.';
-                    }
-                    CMD_HELP += Config.MENU_H + ' *' + Lang.COMMAND + ':* ' + (match.length >= 3 ? (HANDLER + match[2]) : command.pattern) + (command.desc === '' ? '\n\n' : '\n');
-                    if (command.desc !== '') CMD_HELP += Config.MENU_E + ' *' + Lang.DESC + ':* ' + command.desc + (command.warn === '' ? '\n\n' : '\n');
-                    if (command.usage !== '') CMD_HELP += '*⌨️ ' + Lang.EXAMPLE + ':* ' + command.usage + '\n\n';
-                    if (command.warn !== '') CMD_HELP += '*⚠️ ' + Lang.WARN + ':* ' + command.warn + '\n\n';
-
-                }
-            );
-        
-            var webimage = await axios.get(Config.MENU_LOGO, { responseType: 'arraybuffer' })
-
-    await message.client.sendMessage(message.jid,Buffer.from(webimage.data), MessageType.image, {mimetype: Mimetype.png, caption: MTEXT + CMD_HELP, quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(message.jid ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc", "mimetype": "image/jpeg", "caption": "꧁༺ֆʟ ʀǟʋǟռǟ ȶɛǟʍ༻꧂", "fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=", "fileLength": "28777", "height": 1080, "width": 1079, "mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=", "fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=", "directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69", "mediaKeyTimestamp": "1610993486", "jpegThumbnail": fs.readFileSync('./media/images/cmdlogo.jpg')}}}});
-        } else {
-            
-            var CMD_HELP = '';
-            NitrossBot.commands.map(
-                async (command) =>  {
-                    if (command.dontAddCommandList || command.pattern === undefined) return;
-                    try {
-                        var cmatch = command.pattern.toString().match(/(\W*)([A-Za-zğüşiöç1234567890]*)/);
-                    } catch {
-                        var cmatch = [command.pattern];
-                    }
-                
-                    if (cmatch[2] == match[1]) {
-                        var HANDLER = '';
-    
-                        if (/\[(\W*)\]/.test(Config.HANDLERS)) {
-                            HANDLER = Config.HANDLERS.match(/\[(\W*)\]/)[1][0];
-                        } else {
-                            HANDLER = '.';
+                        if (command.desc == '' && command.usage == '' && !command.warn == '') {
+                            CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (cmatch.length >= 3 ? (HANDLER + cmmatch) : command.pattern) + '```\n' + '*⚠️ ' + Lang.WARN + ':* ```' + command.warn + '```\n\n'
                         }
-                        CMD_HELP += Config.MENU_H + ' *' + Lang.COMMAND + ':* ' + (cmatch.length >= 3 ? (HANDLER + cmatch[2]) : command.pattern) + (command.desc === '' ? '\n\n' : '\n');
-                        if (command.desc !== '') CMD_HELP += Config.MENU_E + ' *' + Lang.DESC + ':* ' + command.desc + (command.warn === '' ? '\n\n' : '\n');
-                        if (command.usage !== '') CMD_HELP += '*⌨️ ' + Lang.EXAMPLE + ':* ' + command.usage + '\n\n';
-                        if (command.warn !== '') CMD_HELP += '*⚠️ ' + Lang.WARN + ':* ' + command.warn + '\n\n';
-
+                        if (!command.desc == '' && !command.usage == '' && command.warn == '') {
+                            CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (cmatch.length >= 3 ? (HANDLER + cmmatch) : command.pattern) + '```\n' + '*💬 ' + Lang.DESC + ':* ```' + command.desc + '``` \n' + '*⌨️ ' + Lang.EXAMPLE + ':* ```' + command.usage + '```\n\n';
+                        }
+                        if (!command.desc == '' && command.usage == '' && !command.warn == '') {
+                            CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (cmatch.length >= 3 ? (HANDLER + cmmatch) : command.pattern) + '```\n' + '*💬 ' + Lang.DESC + ':* ```' + command.desc + '``` \n' + '*⚠️ ' + Lang.WARN + ':* ```' + command.warn + '```\n\n'
+                        }
+                        if (command.desc == '' && !command.usage == '' && !command.warn == '') {
+                            CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (cmatch.length >= 3 ? (HANDLER + cmmatch) : command.pattern) + '```\n' + '*⌨️ ' + Lang.EXAMPLE + ':* ```' + command.usage + '```\n' + '*⚠️ ' + Lang.WARN + ':* ```' + command.warn + '```\n\n'
+                        }
+                        if  (command.desc == '' && command.usage == '' && command.warn == '') {
+                            CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (cmatch.length >= 3 ? (HANDLER + cmmatch) : command.pattern) + '```\n\n'
+                        }
+                        if  (!command.desc == '' && !command.usage == '' && !command.warn == '') {
+                            CMD_HELP += '*🛠 ' + Lang.COMMAND + ':* ```' + (cmatch.length >= 3 ? (HANDLER + cmmatch) : command.pattern) + '```\n' + '*💬 ' + Lang.DESC + ':* ```' + command.desc + '``` \n' + '*⌨️ ' + Lang.EXAMPLE + ':* ```' + command.usage + '```\n' + '*⚠️ ' + Lang.WARN + ':* ```' + command.warn + '```\n\n'
+                        }
                     }
                 }
             );
             if (CMD_HELP === '') CMD_HELP += Lang.NOT_FOUND;
-            var webimage = await axios.get(Config.MENU_LOGO, { responseType: 'arraybuffer' })
-
-    await message.client.sendMessage(message.jid,Buffer.from(webimage.data), MessageType.image, {mimetype: Mimetype.png, caption: MTEXT + CMD_HELP, quoted: { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(message.jid ? { remoteJid: "status@broadcast" } : {}) }, message: { "imageMessage": { "url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc", "mimetype": "image/jpeg", "caption": "꧁༺ֆʟ ʀǟʋǟռǟ ȶɛǟʍ༻꧂", "fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=", "fileLength": "28777", "height": 1080, "width": 1079, "mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=", "fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=", "directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69", "mediaKeyTimestamp": "1610993486", "jpegThumbnail": fs.readFileSync('./media/images/cmdlogo.jpg')}}}});
+            await message.client.sendMessage(
+                message.jid,'●▬▬▬ *NitrossBot Public* ▬▬▬●\n\n' + CMD_HELP, MessageType.text
+            );
         }
     }));
+}

@@ -1,12 +1,12 @@
-const NitrossBot = require('../events');
+const Nitrossbot = require('../events');
 const {MessageType, MessageOptions, Mimetype, Presence} = require('@adiwajshing/baileys');
-const NitrossStack = require('whatsasena-npm');
+const NitrossStack = require('nitrossbot-npm-pkg');
 const Language = require('../language');
 const Lang = Language.getString('scam');
 var data = {
   action: true
 }
-NitrossBot.addCommand({pattern: 'scam ?(.*)', fromMe: true, desc: Lang.SCAM_DESC}, (async (message, match) => {
+Nitrossbot.addCommand({pattern: 'scam ?(.*)', fromMe: true, desc: Lang.SCAM_DESC}, (async (message, match) => {
     if (match[1] === '') {
         return await message.sendMessage(Lang.SCAM_NOTFOUND);
     } else if (match[1] === 'typing') {

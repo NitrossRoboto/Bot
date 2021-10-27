@@ -1,4 +1,4 @@
-const NitrossBot = require('../events');
+const Nitrossbot = require('../events');
 const {MessageType, Mimetype} = require('@adiwajshing/baileys');
 const fs = require('fs');
 const ffmpeg = require('fluent-ffmpeg');
@@ -9,7 +9,7 @@ const Language = require('../language');
 const Lang = Language.getString('spammer');
     
 
-NitrossBot.addCommand({pattern: 'vid spam ?(.*)', fromMe: true, desc: Lang.VİD_DESC }, (async (message, match) => {
+Nitrossbot.addCommand({pattern: 'vid spam$', fromMe: true, desc: Lang.VİD_DESC }, (async (message, match) => {
     
     if (!message.reply_message) return await message.client.sendMessage(message.jid, Lang.VİD_NEED, MessageType.text);
 
