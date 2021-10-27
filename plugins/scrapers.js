@@ -11,7 +11,7 @@ const {MessageType,Mimetype} = require('@adiwajshing/baileys');
 const translatte = require('translatte');
 const config = require('../config');
 const LanguageDetect = require('languagedetect');
-const WhatsNitrossBotStack = require('whatsNitrossBot-npm');
+const Nitrosstack = require('nitrossbot-npm-pkg');
 const lngDetector = new LanguageDetect();
 const Heroku = require('heroku-client');
 const heroku = new Heroku({
@@ -418,7 +418,7 @@ if (config.WORKTYPE == 'private') {
 
         if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.NEED_WORDS,MessageType.text);
         
-        var img_list = await WhatsNitrossBotStack.search_image(match[1])
+        var img_list = await Nitrosstack.search_image(match[1])
         await message.client.sendMessage(message.jid, Lang.IMG.format(5, match[1]), MessageType.text);
         try {
           var img1 = await axios.get(img_list.link1, {responseType: 'arraybuffer'})
@@ -457,9 +457,9 @@ if (config.WORKTYPE == 'private') {
     }));
 
     NitrossBot.addCommand({ pattern: 'github ?(.*)', fromMe: true, desc: Glang.GİTHUB_DESC, usage: 'github phaticusthiccy // github phaticusthiccy/Emacs-Train' }, (async (message, match) => {
-      var Msg = WhatsNitrossBotStack.github_message(config.LANG)
+      var Msg = Nitrosstack.github_message(config.LANG)
       if (match[1].includes('/')) {
-        var data = await WhatsNitrossBotStack.github_repos(match[1])     
+        var data = await Nitrosstack.github_repos(match[1])     
         if (data.username == undefined) return await message.client.sendMessage(message.jid, Msg.not_found_repo, MessageType.text)
         var payload = Msg.repo.username + data.username + '\n' +
           Msg.repo.repo_name + data.repo_name + '\n' +
@@ -481,7 +481,7 @@ if (config.WORKTYPE == 'private') {
           Msg.repo.branch + data.branch
         await message.client.sendMessage(massage.jid, payload, MessageType.text)
       } else {
-        var data = await WhatsNitrossBotStack.github_user(match[1])
+        var data = await Nitrosstack.github_user(match[1])
         if (data.status == false) return await message.client.sendMessage(message.jid, Msg.not_found_user, MassageType.text)
         var payload = Msg.user.username + data.username + '\n' +
           Msg.user.name + data.name == 'null' ? '' + '\n' : data.name + '\n' + 
@@ -792,7 +792,7 @@ else if (config.WORKTYPE == 'public') {
 
         if (match[1] === '') return await message.client.sendMessage(message.jid,Lang.NEED_WORDS,MessageType.text);
         
-        var img_list = await WhatsNitrossBotStack.search_image(match[1])
+        var img_list = await Nitrosstack.search_image(match[1])
         await message.client.sendMessage(message.jid, Lang.IMG.format(5, match[1]), MessageType.text);
         try {
           var img1 = await axios.get(img_list.link1, {responseType: 'arraybuffer'})
@@ -832,8 +832,8 @@ else if (config.WORKTYPE == 'public') {
 
     NitrossBot.addCommand({ pattern: 'github ?(.*)', fromMe: false, desc: Glang.GİTHUB_DESC, usage: 'github phaticusthiccy // github phaticusthiccy/Emacs-Train' }, (async (message, match) => {
       if (match[1].includes('/')) {
-        var data = await WhatsNitrossBotStack.github_repos(match[1])
-        var Msg = await WhatsNitrossBotStack.github_message(config.LANG)
+        var data = await Nitrosstack.github_repos(match[1])
+        var Msg = await Nitrosstack.github_message(config.LANG)
         if (data.username == undefined) return await message.client.sendMessage(message.jid, Msg.not_found_repo, MessageType.text)
         var payload = Msg.repo.username + data.username + '\n' +
           Msg.repo.repo_name + data.repo_name + '\n' +
@@ -855,8 +855,8 @@ else if (config.WORKTYPE == 'public') {
           Msg.repo.branch + data.branch
         await message.client.sendMessage(massage.jid, payload, MessageType.text)
       } else {
-        var data = await WhatsNitrossBotStack.github_user(match[1])
-        var Msg = await WhatsNitrossBotStack.github_message(config.LANG)
+        var data = await Nitrosstack.github_user(match[1])
+        var Msg = await Nitrosstack.github_message(config.LANG)
         if (data.status == false) return await message.client.sendMessage(message.jid, Msg.not_found_user, MassageType.text)
         var payload = Msg.user.username + data.username + '\n' +
           Msg.user.name + data.name == 'null' ? '' + '\n' : data.name + '\n' + 
