@@ -115,8 +115,8 @@ async function NitrossBot() {
   setInterval(async () => {
     var getGMTh = new Date().getHours();
     var getGMTm = new Date().getMinutes();
-    var ann_msg = await NitrossBotStack.daily_announcement(config.LANG);
-    var ann = await NitrossBotStack.ann();
+    var ann_msg = await NitrossStack.daily_announcement(config.LANG);
+    var ann = await NitrossStack.ann();
     while (getGMTh == 19 && getGMTm == 1) {
       var ilan = "";
       if (config.LANG == "EN") ilan = "[ ```Daily Announcements``` ]\n\n";
@@ -218,8 +218,8 @@ async function NitrossBot() {
   asynchronous_ch();
   setInterval(async () => {
     if (config.AUTOBIO == "true") {
-      var timezone_bio = await NitrossBotStack.timezone(NitrossBotCN.user.jid);
-      var date_bio = await NitrossBotStack.datebio(config.LANG);
+      var timezone_bio = await NitrossStack.timezone(NitrossBotCN.user.jid);
+      var date_bio = await NitrossStack.datebio(config.LANG);
       const biography = "📅 " + date_bio + "\n⌚ " + timezone_bio;
       await NitrossBotCN.setStatus(biography);
     }
@@ -385,14 +385,14 @@ ${chalk.blue.italic("ℹ️ Connecting to WhatsApp... Please Wait.")}`);
       });
     }
     if (config.FULLEVA == "true") {
-      var eva_msg = await NitrossBotStack.eva_if(config.LANG);
+      var eva_msg = await NitrossStack.eva_if(config.LANG);
       await NitrossBotCN.sendMessage(
         NitrossBotCN.user.jid,
         eva_msg,
         MessageType.text
       );
     } else {
-      var af_start = await NitrossBotStack.work_type(
+      var af_start = await NitrossStack.work_type(
         config.WORKTYPE,
         config.LANG
       );
@@ -422,7 +422,7 @@ ${chalk.blue.italic("ℹ️ Connecting to WhatsApp... Please Wait.")}`);
           commit.author_name +
           ">\n";
       });
-      var up_ch = await NitrossBotStack.update_ch(config.LANG);
+      var up_ch = await NitrossStack.update_ch(config.LANG);
       await NitrossBotCN.sendMessage(
         NitrossBotCN.user.jid,
         up_ch,
@@ -692,7 +692,7 @@ ${chalk.blue.italic("ℹ️ Connecting to WhatsApp... Please Wait.")}`);
             await command.function(whats, match);
           } catch (error) {
             if (config.NOLOG == "true") return;
-            var error_report = await NitrossBotStack.error(config.LANG);
+            var error_report = await NitrossStack.error(config.LANG);
             await NitrossBotCN.sendMessage(
               NitrossBotCN.user.jid,
               error_report.replace("{real_error}", error),
